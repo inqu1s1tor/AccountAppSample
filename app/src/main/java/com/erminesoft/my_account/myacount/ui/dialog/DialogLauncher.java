@@ -1,4 +1,4 @@
-package com.erminesoft.my_account.myacount.ui;
+package com.erminesoft.my_account.myacount.ui.dialog;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,7 @@ public class DialogLauncher {
         CustomDialog dialog = new CustomDialog(activity);
         dialog.show();
     }
+
 
 
 

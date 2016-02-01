@@ -18,4 +18,5 @@ public class CustomDialog extends Dialog {
     protected CustomDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
+
 }
