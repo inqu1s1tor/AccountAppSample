@@ -1,17 +1,18 @@
 package com.erminesoft.my_account.myacount.ui;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.core.SharedHelper;
+import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 
-public class SplashScreen extends Activity {
+public class SplashScreen extends GenericActivity {
 
     private final int WORK_TIME = 5000;
     private Handler myHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +22,37 @@ public class SplashScreen extends Activity {
         myHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                moveToNextScreen();
             }
         }, WORK_TIME);
 
+        application.getSharedHelper().
+    }
+
+    private void moveToNextScreen() {
+
+        SharedHelper sharedHelper = application.getSharedHelper();
+        String login = sharedHelper.getLogin();
+        String password = sharedHelper.getUserPassword();
+
+        if (TextUtils.isEmpty(login)) {
+            //Move to registration activity
+        } else {
+            application.getNetBridge().doLogin(login, password, new NetListener());
+            //show progress dialog
+        }
+    }
+
+    private final class NetListener extends SimpleMainCallback {
+        @Override
+        public void onSuccess() {
+            // dismiss progress dialog
+            // move to next screen (main)
+        }
+
+        @Override
+        public void onError(String error) {
+
+        }
     }
 }

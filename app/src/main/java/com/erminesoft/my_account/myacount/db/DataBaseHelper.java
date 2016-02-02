@@ -7,13 +7,14 @@ import android.util.Log;
 
 import static com.erminesoft.my_account.myacount.db.Tables.*;
 
-public class DataBaseHelper extends SQLiteOpenHelper {
+final class DataBaseHelper extends SQLiteOpenHelper {
 
 
     final String LOG_TAG = "myLog";
 
     private static final String DATABASE_NAME = "Account";
     private static final int DATABASE_VERSION = 1;
+
     private StringBuilder builder;
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -1,12 +1,10 @@
 package com.erminesoft.my_account.myacount.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,13 +16,11 @@ import com.erminesoft.my_account.myacount.db.UsersData;
 import com.erminesoft.my_account.myacount.ui.dialog.RegistrationDialog;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends GenericActivity {
 
     private static final String SAVED_CONDITION = "saved";
     EditText password;
     EditText userName;
-    Button enterButton;
-    Button registration;
     CheckBox checkBox;
     UsersData usersData;
     DataBaseConnect dataBaseConnect;
@@ -35,9 +31,6 @@ public class MainActivity extends Activity {
     private String userNames;
     private String userPasswords;
 
-    private final int MIN_LENGTH = 4;
-    private final int MAX_LENGTH = 8;
-    private final int NOT_NULL = 0;
 
     private final String WRONG_LOGIN = "Login false";
     private final String WRONG_PASSWORD = "password false";
@@ -51,13 +44,12 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.registration_form);
+
+
 
         password = (EditText) findViewById(R.id.editText2);
         userName = (EditText) findViewById(R.id.editText);
-        enterButton = (Button) findViewById(R.id.button3);
-        registration = (Button) findViewById(R.id.button);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
 
         checkBox.setOnClickListener(new View.OnClickListener() {
@@ -77,29 +69,43 @@ public class MainActivity extends Activity {
             return;
         }
 
-        enterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(LOG_TAG, "methodStart");
-                if (assayField()) {
-                    Log.d(LOG_TAG, "methodStart1");
-                    usersNotInDBEnter(0);
-                }
+        View.OnClickListener listener = new Clicker();
 
-            }
-        });
+        findViewById(R.id.button3).setOnClickListener(listener);
+        findViewById(R.id.button).setOnClickListener(listener);
 
-        registration.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                if (assayField()) {
-                    write(1);
-                }
-            }
 
-        });
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(LOG_TAG, "methodStart");
+//                String state = Validator.checkEmptyState(userName.getText(), password.getText(), getResources());
+//                if (TextUtils.isEmpty(state)) {
+//                    usersNotInDBEnter(0);
+//                } else {
+//                    Toast.makeText(MainActivity.this, state, Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        });
+
+
+//                new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                String state = Validator.checkEmptyState(userName.getText(), password.getText(), getResources());
+//                if (TextUtils.isEmpty(state)) {
+//                    write(1);
+//                } else {
+//                    Toast.makeText(MainActivity.this, state, Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//        });
     }
+
+
 
     public void Shared(boolean saveCheckBox) {
         sPref = getPreferences(MODE_PRIVATE);
@@ -117,24 +123,6 @@ public class MainActivity extends Activity {
         return savedText;
     }
 
-    public boolean assayField() {
-        userNames = userName.getText().toString();
-        userPasswords = password.getText().toString();
-
-        if (userNames.length() == NOT_NULL || userNames.length() < MIN_LENGTH ||
-                userNames.length() > MAX_LENGTH) {
-            Toast.makeText(this, R.string.name_empty,
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (userPasswords.length() == NOT_NULL || userPasswords.length() < MIN_LENGTH ||
-                userPasswords.length() > MAX_LENGTH) {
-            Toast.makeText(this, R.string.password_empty,
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
 
     public String check(int numberButton) {
         userNames = userName.getText().toString();
@@ -145,13 +133,13 @@ public class MainActivity extends Activity {
 
         Log.d(LOG_TAG, "  " + usersData.getUsersLogins().size());
 
-        if(usersData.getUsersLogins().size()==0){
+        if (usersData.getUsersLogins().size() == 0) {
             Log.d(LOG_TAG, "Array");
             Log.d(LOG_TAG, "registration");
             return REGISTRATION_ACTIVETED;
         }
         int i;
-        for(i=0;i<usersData.getUsersLogins().size();i++){
+        for (i = 0; i < usersData.getUsersLogins().size(); i++) {
             String userName = usersData.getUsersLogins().get(i);
             String userPassword = usersData.getUsersPasswords().get(i);
             Log.d(LOG_TAG, " 333 " + userName);
@@ -165,8 +153,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(this, R.string.wrong_login, Toast.LENGTH_SHORT).show();
                 return WRONG_LOGIN;
 
-            }
-            else if (userName.equals(userNames) == true && userPasswords.equals(userPassword) == false
+            } else if (userName.equals(userNames) == true && userPasswords.equals(userPassword) == false
                     && numberButton == 0) {
                 Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show();
                 return WRONG_PASSWORD;
@@ -208,20 +195,32 @@ public class MainActivity extends Activity {
 
 
     }
-    public boolean usersNotInDBWrite(int numberButton){
-        if (check(numberButton).equals(ENTER) && numberButton==1){
+
+    public boolean usersNotInDBWrite(int numberButton) {
+        if (check(numberButton).equals(ENTER) && numberButton == 1) {
             return true;
         }
         return false;
     }
 
-    public boolean usersNotInDBEnter(int numberButton){
-        if (check(numberButton).equals(REGISTRATION_ACTIVETED) && numberButton==0){
+    public boolean usersNotInDBEnter(int numberButton) {
+        if (check(numberButton).equals(REGISTRATION_ACTIVETED) && numberButton == 0) {
             registrationDialog = new RegistrationDialog();
-            registrationDialog.show(getFragmentManager(),"Dialog show");
+            registrationDialog.show(getFragmentManager(), "Dialog show");
             return true;
         }
         return false;
+    }
+
+    private final class Clicker implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+
+            switch (v.getId()) {
+
+            }
+
+        }
     }
 
 }

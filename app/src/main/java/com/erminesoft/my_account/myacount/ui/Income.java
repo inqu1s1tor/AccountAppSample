@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.erminesoft.my_account.myacount.R;
-import com.erminesoft.my_account.myacount.adapters.ListAdapter;
+import com.erminesoft.my_account.myacount.ui.adapters.ListAdapter;
 
 public class Income extends AppCompatActivity {
     ListView incomeList;

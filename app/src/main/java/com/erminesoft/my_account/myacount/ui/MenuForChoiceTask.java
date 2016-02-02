@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.erminesoft.my_account.myacount.R;
-import com.erminesoft.my_account.myacount.adapters.ListAdapter;
 
 /**
  * The class for choice functionality.
