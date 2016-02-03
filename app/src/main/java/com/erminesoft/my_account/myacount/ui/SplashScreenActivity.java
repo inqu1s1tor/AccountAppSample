@@ -12,22 +12,18 @@ import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 public class SplashScreenActivity extends GenericActivity {
 
     private final int WORK_TIME = 5000;
-    private Handler myHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_layout);
 
-        myHandler = new Handler();
-        myHandler.postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 moveToNextScreen();
             }
         }, WORK_TIME);
-
-        //application.getSharedHelper();
     }
 
     private void moveToNextScreen() {

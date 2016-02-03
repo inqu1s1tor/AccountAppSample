@@ -51,12 +51,12 @@ public class AuthActivity extends GenericActivity {
 
     }
 
-   public void SignIn() {
-       application.getNetBridge().doLogin(password.getText().toString(), userName.getText().toString(), new NetListener());
+    public void signIn() {
+        application.getNetBridge().doLogin(password.getText().toString(), userName.getText().toString(), new NetListener());
 
-   }
+    }
 
-    public void SignUp() {
+    public void signUp() {
         application.getNetBridge().doRegistration(password.getText().toString(), userName.getText().toString(), new NetListener());
     }
 
@@ -66,14 +66,12 @@ public class AuthActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonSignIn:
-                    SignIn();
+                    signIn();
                     break;
                 case R.id.buttonSignUp:
-                    SignUp();
+                    signUp();
                     break;
             }
-           MainActivity.start(AuthActivity.this);
-            finish();
         }
     }
 
@@ -81,7 +79,10 @@ public class AuthActivity extends GenericActivity {
         @Override
         public void onSuccess() {
             Log.d("AA", "result success");
-            }
+
+            MainActivity.start(AuthActivity.this);
+            finish();
+        }
 
         @Override
         public void onError(String error) {
@@ -146,12 +147,6 @@ public class AuthActivity extends GenericActivity {
             finish();
             return;
         }*/
-
-
-
-
-
-
 
 
 }
