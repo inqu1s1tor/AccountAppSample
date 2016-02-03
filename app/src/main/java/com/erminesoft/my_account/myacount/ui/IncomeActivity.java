@@ -7,12 +7,12 @@ import android.widget.ListView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.adapters.ListAdapter;
 
-public class Income extends AppCompatActivity {
+public class IncomeActivity extends GenericActivity {
     ListView incomeList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.income);
+        setContentView(R.layout.income_layout);
         incomeList = (ListView)findViewById(R.id.listView);
         getListView();
     }

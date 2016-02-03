@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 
-import com.erminesoft.my_account.myacount.ui.MainActivity;
+import com.erminesoft.my_account.myacount.ui.AuthActivity;
 import com.erminesoft.my_account.myacount.R;
 
 public class RegistrationDialog extends DialogFragment{
@@ -23,14 +23,14 @@ public class RegistrationDialog extends DialogFragment{
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.d(LOG_TAG, "Start" + "Dialog_Set_True");
-                        MainActivity activity = (MainActivity) getActivity();
-                        activity.write(0);
+                        AuthActivity activity = (AuthActivity) getActivity();
+                        //activity.write(0);
 
                     }
                 })
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        MainActivity activity = (MainActivity) getActivity();
+                        AuthActivity activity = (AuthActivity) getActivity();
                         activity.finish();
                     }
                 });

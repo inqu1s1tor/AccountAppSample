@@ -18,6 +18,10 @@
     <string name="finish_registration">Регистрация прошла успешно</string>
     <string name="user_is">Пользователь уже существует</string>
     <string name="login_is">Пользователь с таим логином существует</string>
+    <string name="SignIn">SIGN IN</string>
+    <string name="SignUp">SIGN UP</string>
+    <string name="Login">Login</string>
+    <string name="UserPassword">Password</string>
     <string-array name="dialog_list">
         1
         2

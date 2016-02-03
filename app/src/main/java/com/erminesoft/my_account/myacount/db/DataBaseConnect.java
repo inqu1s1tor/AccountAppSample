@@ -13,7 +13,7 @@ public class DataBaseConnect {
 
         dbHelper = new DataBaseHelper(context);
         database = dbHelper.getWritableDatabase();
-        DbManager = new DbManager(database);
+        DbManager = new DbManager(context);
 
     }
     public DbManager getUsersRepository() {

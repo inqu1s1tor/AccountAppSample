@@ -1,5 +1,6 @@
 package com.erminesoft.my_account.myacount.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -8,7 +9,7 @@ import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.core.SharedHelper;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 
-public class SplashScreen extends GenericActivity {
+public class SplashScreenActivity extends GenericActivity {
 
     private final int WORK_TIME = 5000;
     private Handler myHandler;
@@ -16,7 +17,7 @@ public class SplashScreen extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen);
+        setContentView(R.layout.splash_screen_layout);
 
         myHandler = new Handler();
         myHandler.postDelayed(new Runnable() {
@@ -26,7 +27,7 @@ public class SplashScreen extends GenericActivity {
             }
         }, WORK_TIME);
 
-        application.getSharedHelper().
+        //application.getSharedHelper();
     }
 
     private void moveToNextScreen() {
@@ -36,6 +37,11 @@ public class SplashScreen extends GenericActivity {
         String password = sharedHelper.getUserPassword();
 
         if (TextUtils.isEmpty(login)) {
+            Intent intentRegForm = new Intent(this, AuthActivity.class);
+            startActivity(intentRegForm);
+            finish();
+
+
             //Move to registration activity
         } else {
             application.getNetBridge().doLogin(login, password, new NetListener());
@@ -46,6 +52,9 @@ public class SplashScreen extends GenericActivity {
     private final class NetListener extends SimpleMainCallback {
         @Override
         public void onSuccess() {
+           // Intent intentmainActivity = new Intent(SplashScreenActivity.this, AuthActivity.class);
+            //startActivity(intentmainActivity);
+            //finish();
             // dismiss progress dialog
             // move to next screen (main)
         }
