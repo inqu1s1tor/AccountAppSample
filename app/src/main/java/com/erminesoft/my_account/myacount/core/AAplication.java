@@ -17,7 +17,7 @@ public final class AAplication extends Application {
     public void onCreate() {
         super.onCreate();
         sharedHelper = new SharedHelper(this);
-        netBridge = new NetManagerFacade();
+        netBridge = new NetManagerFacade(this, sharedHelper);
     }
 
     public SharedHelper getSharedHelper() {
