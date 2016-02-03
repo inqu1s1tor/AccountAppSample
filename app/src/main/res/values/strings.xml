@@ -22,6 +22,14 @@
     <string name="SignUp">SIGN UP</string>
     <string name="Login">Login</string>
     <string name="UserPassword">Password</string>
+    <string name="TextButtonIncome">INCOME</string>
+    <string name="TextButtonDebts">DEBTS</string>
+    <string name="TextButtonPlanning">PLANNING</string>
+    <string name="TextButtonCategories">CATEGORIES</string>
+    <string name="TextButtonReports">REPORTS</string>
+    <string name="TextButtonSettings">SETTINGS</string>
+    <string name="TextButtonCurrency">CURRENCY</string>
+    <string name="TextButtonCosts">COSTS</string>
     <string-array name="dialog_list">
         1
         2

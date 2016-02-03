@@ -1,5 +1,6 @@
 package com.erminesoft.my_account.myacount.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,47 +20,44 @@ import com.erminesoft.my_account.myacount.ui.dialog.RegistrationDialog;
 public class AuthActivity extends GenericActivity {
 
     private static final String SAVED_CONDITION = "saved";
-    EditText password;
-    EditText userName;
-    CheckBox checkBox;
-    UsersData usersData;
-    DataBaseConnect dataBaseConnect;
-    RegistrationDialog registrationDialog;
+    private EditText password;
+    private EditText userName;
+    private UsersData usersData;
+    private DataBaseConnect dataBaseConnect;
+    private RegistrationDialog registrationDialog;
     private boolean saveCheckBox;
     final String LOG_TAG = "myLog";
-
     private String userNames;
     private String userPasswords;
-
     private SharedPreferences sPref;
 
+    public static void start(Activity activity) {
+        activity.startActivity(new Intent(activity, AuthActivity.class));
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authorizatoin_layout);
 
-        password = (EditText) findViewById(R.id.editText2);
-        userName = (EditText) findViewById(R.id.editText);
-
+        userName = (EditText) findViewById(R.id.editTextLogin);
+        password = (EditText) findViewById(R.id.editTextPassword);
 
         View.OnClickListener listener = new Clicker();
 
         findViewById(R.id.buttonSignIn).setOnClickListener(listener);
         findViewById(R.id.buttonSignUp).setOnClickListener(listener);
-
-
     }
 
     public void signIn() {
-        application.getNetBridge().doLogin(password.getText().toString(), userName.getText().toString(), new NetListener());
-
+        application.getNetBridge().doLogin(password.getText().toString(),
+                userName.getText().toString(), new NetListener());
     }
 
     public void signUp() {
-        application.getNetBridge().doRegistration(password.getText().toString(), userName.getText().toString(), new NetListener());
+        application.getNetBridge().doRegistration(password.getText().toString(),
+                userName.getText().toString(), new NetListener());
     }
-
 
     private final class Clicker implements View.OnClickListener {
         @Override
@@ -79,7 +77,6 @@ public class AuthActivity extends GenericActivity {
         @Override
         public void onSuccess() {
             Log.d("AA", "result success");
-
             MainActivity.start(AuthActivity.this);
             finish();
         }
