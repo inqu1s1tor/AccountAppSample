@@ -6,13 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.erminesoft.my_account.myacount.R;
-//import com.erminesoft.my_account.myacount.dialog.DialogNew;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
-import com.erminesoft.my_account.myacount.db.DataBaseConnect;
 import com.erminesoft.my_account.myacount.db.UsersData;
 import com.erminesoft.my_account.myacount.ui.dialog.RegistrationDialog;
 
@@ -23,7 +20,6 @@ public class AuthActivity extends GenericActivity {
     private EditText password;
     private EditText userName;
     private UsersData usersData;
-    private DataBaseConnect dataBaseConnect;
     private RegistrationDialog registrationDialog;
     private boolean saveCheckBox;
     final String LOG_TAG = "myLog";
@@ -102,21 +98,6 @@ public class AuthActivity extends GenericActivity {
         return false;
     }
 
-    /*public void Shared(boolean saveCheckBox) {
-        sPref = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor ed = sPref.edit();
-        ed.putBoolean(SAVED_CONDITION, saveCheckBox);
-        ed.commit();
-        // Toast.makeText(this, "Text saved", Toast.LENGTH_SHORT).show();
-    }
-
-    public boolean loadText() {
-        sPref = getPreferences(MODE_PRIVATE);
-        Boolean savedText = sPref.getBoolean(SAVED_CONDITION, saveCheckBox);
-        checkBox.setChecked(saveCheckBox);
-        // Toast.makeText(this, "Text loaded", Toast.LENGTH_SHORT).show();
-        return savedText;
-    }*/
 
    /* public void write(int numberButton) {
         if (usersNotInDBWrite(numberButton)) {
@@ -134,16 +115,5 @@ public class AuthActivity extends GenericActivity {
 
 
     }*/
-
- /*if (loadText()) {
-
-
-
-            Intent intent = new Intent(AuthActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-            return;
-        }*/
-
 
 }

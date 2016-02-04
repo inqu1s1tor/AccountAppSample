@@ -1,6 +1,5 @@
 package com.erminesoft.my_account.myacount.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
