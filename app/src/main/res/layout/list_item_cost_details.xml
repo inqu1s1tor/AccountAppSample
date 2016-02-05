@@ -3,18 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/categoryCost"
+        android:id="@+id/costCategoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categories"
+        android:text="@string/CostCategoryText"
         android:layout_gravity="top|center_horizontal"
         android:textSize="24sp">
     </TextView>
     <TextView
-        android:id="@+id/nameCost"
+        android:id="@+id/costNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@string/CostCategoryName"
         android:layout_gravity="top|center_horizontal"
         android:textSize="24sp">
     </TextView>

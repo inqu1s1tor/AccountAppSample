@@ -16,16 +16,16 @@ public class ListAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.list_layout, parent, false);
+        View customView = inflater.inflate(R.layout.list_adapter_layout, parent, false);
 
-        textView = (TextView) customView.findViewById(R.id.listText);
+        textView = (TextView) customView.findViewById(R.id.listViewText);
         textView.setText(list[position]);
         return customView;
 
     }
 
     public ListAdapter(Context context, String[] list) {
-        super(context, R.layout.list_layout, list);
+        super(context, R.layout.list_adapter_layout, list);
         this.list = list;
     }
 }

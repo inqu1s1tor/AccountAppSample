@@ -9,5 +9,6 @@ import com.erminesoft.my_account.myacount.db.UsersData;
  */
 public interface DBbridge {
     Cursor loadCosts();
+    Cursor loadIncome();
     void save(UsersData usersData);
 }

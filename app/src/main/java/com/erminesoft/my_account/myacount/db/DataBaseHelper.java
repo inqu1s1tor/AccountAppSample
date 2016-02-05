@@ -23,14 +23,14 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     //table income
     public static  final String TABLE_INCOME = "costs";
     public static final String INCOME_ID = "id";
-    public static final String INCOME_NAME = "costs name";
-    public static final String INCOME_CATEGORIES = "costs name";
+    public static final String INCOME_NAME = "income name";
+    public static final String INCOME_CATEGORIES = "income categories";
 
     //table costs
     public static  final String TABLE_COSTS = "costs";
     public static final String COSTS_ID = "id";
     public static final String COSTS_NAME = "costs name";
-    public static final String COSTS_CATEGORIES = "costs name";
+    public static final String COSTS_CATEGORIES = "costs categories";
 
     public StringBuilder builderUsers;
     public StringBuilder builderIncome;

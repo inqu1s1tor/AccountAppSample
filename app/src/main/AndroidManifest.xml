@@ -27,11 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" >
-
         </activity>
         <activity android:name=".ui.IncomeActivity" >
         </activity>
         <activity android:name=".ui.CostsActivity" >
+        </activity>
+        <activity android:name=".ui.ChoiceContentActivity" >
         </activity>
     </application>
 

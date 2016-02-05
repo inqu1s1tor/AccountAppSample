@@ -28,8 +28,7 @@ public final class SharedHelper {
         return preferences.getString(USER_LOGIN, "");
     }
 
-    public String getUserPassword(){
-        return preferences.getString(USER_PASSWORD, "");
+    public String getUserPassword(){return preferences.getString(USER_PASSWORD, "");
     }
 
 }

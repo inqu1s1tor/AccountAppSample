@@ -56,7 +56,12 @@ public final class DbManager implements DBbridge {
 
     @Override
     public Cursor loadCosts() {
-        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_USERS, null, null, null, null, null, null);
+        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_COSTS, null, null, null, null, null, null);
+    }
+
+    @Override
+    public Cursor loadIncome() {
+        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_INCOME, null, null, null, null, null, null);
     }
 }
 

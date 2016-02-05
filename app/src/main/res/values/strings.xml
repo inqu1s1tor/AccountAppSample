@@ -44,4 +44,12 @@
         R.mipmap.ic_launcher
         R.mipmap.ic_launcher
     </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="CategoryDeclaration">Category</string>
+    <string name="nameDeclaration">nameDeclaration</string>
+    <string name="ConfirmTextButton">OK</string>
+    <string name="CostCategoryText">Categories</string>
+    <string name="CostCategoryName">Name</string>
+    <string name="incomeTextCategory">Categories</string>
+    <string name="incomeNameText">Name</string>
 </resources>

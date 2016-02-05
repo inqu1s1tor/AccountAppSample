@@ -21,7 +21,6 @@ public class AuthActivity extends GenericActivity {
     private EditText userName;
     private UsersData usersData;
     private RegistrationDialog registrationDialog;
-    private boolean saveCheckBox;
     final String LOG_TAG = "myLog";
     private String userNames;
     private String userPasswords;
