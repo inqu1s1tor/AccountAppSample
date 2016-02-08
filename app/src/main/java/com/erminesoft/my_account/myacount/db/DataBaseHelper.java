@@ -21,7 +21,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String USER_PASSWORD = "password";
 
     //table income
-    public static  final String TABLE_INCOME = "costs";
+    public static  final String TABLE_INCOME = "income";
     public static final String INCOME_ID = "id";
     public static final String INCOME_NAME = "income name";
     public static final String INCOME_CATEGORIES = "income categories";
