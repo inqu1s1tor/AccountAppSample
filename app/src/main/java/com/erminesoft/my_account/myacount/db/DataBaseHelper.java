@@ -16,21 +16,21 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 2;
     //table users
     public static final String TABLE_USERS = "users";
-    public static final String USERS_ID = "id";
+    public static final String USERS_ID = "_id";
     public static final String USER_NAME = "username";
     public static final String USER_PASSWORD = "password";
 
     //table income
     public static  final String TABLE_INCOME = "income";
-    public static final String INCOME_ID = "id";
-    public static final String INCOME_NAME = "income name";
-    public static final String INCOME_CATEGORIES = "income categories";
+    public static final String INCOME_ID = "_id";
+    public static final String INCOME_NAME = "income_name";
+    public static final String INCOME_CATEGORIES = "income_categories";
 
     //table costs
     public static  final String TABLE_COSTS = "costs";
-    public static final String COSTS_ID = "id";
-    public static final String COSTS_NAME = "costs name";
-    public static final String COSTS_CATEGORIES = "costs categories";
+    public static final String COSTS_ID = "_id";
+    public static final String COSTS_NAME = "costs_name";
+    public static final String COSTS_CATEGORIES = "costs_categories";
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,10 +42,8 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
 
         Log.d(LOG_TAG, "OnCreate");
 
-        db.beginTransaction();
         db.execSQL(buildCosts());
         db.execSQL(buildIncoms());
-        db.endTransaction();
     }
 
     private String buildIncoms(){
