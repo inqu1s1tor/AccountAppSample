@@ -11,7 +11,6 @@ import com.erminesoft.my_account.myacount.net.NetManagerFacade;
 public final class AAplication extends Application {
 
     private SharedHelper sharedHelper;
-    private DbManager dbManager;
     private NetBridge netBridge;
     private DBbridge dBbridge;
 
@@ -28,8 +27,8 @@ public final class AAplication extends Application {
         return sharedHelper;
     }
 
-    public DbManager getDbManager() {
-        return dbManager;
+    public DBbridge getDbManager() {
+        return dBbridge;
     }
 
     public NetBridge getNetBridge() {

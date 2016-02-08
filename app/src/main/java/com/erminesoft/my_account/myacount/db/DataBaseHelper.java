@@ -45,12 +45,13 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "--- onCreate database ---");
 
-        builderUsers = new StringBuilder("create table if not exists ")
+        builderUsers = new StringBuilder("CREATE ")
                 .append(TABLE_USERS)
                 .append(" (")
                 .append(USERS_ID).append(" integer primary key autoincrement, ")
                 .append(USER_NAME).append(" text not null, ")
                 .append(USER_PASSWORD).append(" text not null);");
+
         Log.e(LOG_TAG, "Creating table Users " + builderUsers.toString());
 
         builderIncome = new StringBuilder("create table if not exists ")
@@ -59,6 +60,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 .append(INCOME_ID).append(" integer primary key autoincrement, ")
                 .append(INCOME_CATEGORIES).append(" text not null), ")
                 .append(INCOME_NAME).append(" text not null);");
+
         Log.e(LOG_TAG, "Creating table income " + builderIncome.toString());
 
 
@@ -69,9 +71,8 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 .append(COSTS_ID).append(" integer primary key autoincrement, ")
                 .append(COSTS_NAME).append(" text not null), ")
                 .append(COSTS_CATEGORIES).append(" text not null);");
+
         Log.e(LOG_TAG, "Creating table Costs " + builderCosts.toString());
-
-
 
         db.beginTransaction();
         db.execSQL(builderUsers.toString());

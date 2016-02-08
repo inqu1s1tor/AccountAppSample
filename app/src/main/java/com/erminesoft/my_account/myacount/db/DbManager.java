@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
-import com.erminesoft.my_account.myacount.ui.activities.ChoiceContentActivity;
 
 
 public final class DbManager implements DBbridge {
