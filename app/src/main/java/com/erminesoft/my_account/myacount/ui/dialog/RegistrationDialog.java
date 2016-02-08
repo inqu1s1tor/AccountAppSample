@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 
-import com.erminesoft.my_account.myacount.ui.AuthActivity;
+import com.erminesoft.my_account.myacount.ui.activities.AuthActivity;
 import com.erminesoft.my_account.myacount.R;
 
 public class RegistrationDialog extends DialogFragment{

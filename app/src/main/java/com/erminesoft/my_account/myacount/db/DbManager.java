@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
+import com.erminesoft.my_account.myacount.ui.activities.ChoiceContentActivity;
 
 
 public final class DbManager implements DBbridge {
@@ -19,14 +20,20 @@ public final class DbManager implements DBbridge {
     }
 
     @Override
-    public void save(UsersData usersData) {
+    public void save(String categoryText, String nameText) {
 
-        ContentValues cv = Mapper.convertUserData(usersData);
+        /*ContentValues cv = Mapper.convertUserData(usersData);
 
         long numcolumm = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_USERS, null, cv);
         Log.d(LOG_TAG, "row inserted, ID = " + numcolumm);
+        */
 
+        ContentValues cv = Mapper.convertUserData(categoryText, nameText);
+        long numcolumm = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_COSTS, null, cv);
     }
+
+
+
 
     public void delete(int id) {
         baseHelper.getReadableDatabase().delete(DataBaseHelper.TABLE_USERS, DataBaseHelper.USERS_ID + "=?",
