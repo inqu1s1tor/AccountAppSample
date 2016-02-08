@@ -21,7 +21,5 @@ final class Mapper {
         cv.put(DataBaseHelper.COSTS_CATEGORIES, categoryText);
         cv.put(DataBaseHelper.COSTS_NAME, nameText);
         return cv;
-
-
     }
 }

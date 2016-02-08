@@ -10,7 +10,7 @@ import android.widget.ListView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.adapters.CostsAdapter;
 
-public class CostsActivity extends GenericActivity implements View.OnClickListener {
+public class CostsActivity extends GenericActivity  {
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, CostsActivity.class));
@@ -27,7 +27,8 @@ public class CostsActivity extends GenericActivity implements View.OnClickListen
 
         loadStartData();
 
-        findViewById(R.id.fab).setOnClickListener(this);
+        Clicker listener  = new Clicker();
+        findViewById(R.id.fab).setOnClickListener(listener);
 
     }
     private void loadStartData(){
@@ -35,15 +36,22 @@ public class CostsActivity extends GenericActivity implements View.OnClickListen
         CostsAdapter costsAdapter = new CostsAdapter(this, cursor, true);
     }
 
-    @Override
-    public void onClick(View v) {
 
-        Intent intent = new Intent(this, ChoiceContentActivity.class);
-        startActivityForResult(intent, 1);
+    private final class Clicker implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.fab:
+                    Intent intent = new Intent(CostsActivity.this, ChoiceContentActivity.class);
+                    startActivityForResult(intent, 1);
+            }
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data == null) {return;}
+        String name = data.getStringExtra("name");
+        String category  = data.getStringExtra("category");
     }
 }

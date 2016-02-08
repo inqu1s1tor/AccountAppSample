@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import com.erminesoft.my_account.myacount.R;
 
-public class ChoiceContentActivity extends GenericActivity implements View.OnClickListener {
+public class ChoiceContentActivity extends GenericActivity  {
 
     private EditText editTextCategory;
     private EditText editTextName;
@@ -20,16 +20,23 @@ public class ChoiceContentActivity extends GenericActivity implements View.OnCli
         editTextCategory = (EditText)findViewById(R.id.EditTextCategory);
         editTextName = (EditText)findViewById(R.id.EditTextName);
 
-        findViewById(R.id.ButtonConfirmChoice).setOnClickListener(this);
+        Clicker listener = new Clicker();
+        findViewById(R.id.ButtonConfirmChoice).setOnClickListener(listener);
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
+    private final class Clicker implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ButtonConfirmChoice:
+                    Intent intent = new Intent();
+                    intent.putExtra("name", editTextName.getText().toString());
+                    intent.putExtra("category", editTextCategory.getText().toString());
+                    setResult(RESULT_OK, intent);
+                    finish();
+            }
+        }
     }
 
 

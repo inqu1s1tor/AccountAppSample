@@ -14,11 +14,6 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Account";
     public static final int DATABASE_VERSION = 1;
-    //table users
-    public static final String TABLE_USERS = "users";
-    public static final String USERS_ID = "id";
-    public static final String USER_NAME = "username";
-    public static final String USER_PASSWORD = "password";
 
     //table income
     public static  final String TABLE_INCOME = "income";
@@ -45,14 +40,6 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "--- onCreate database ---");
 
-        builderUsers = new StringBuilder("CREATE ")
-                .append(TABLE_USERS)
-                .append(" (")
-                .append(USERS_ID).append(" integer primary key autoincrement, ")
-                .append(USER_NAME).append(" text not null, ")
-                .append(USER_PASSWORD).append(" text not null);");
-
-        Log.e(LOG_TAG, "Creating table Users " + builderUsers.toString());
 
         builderIncome = new StringBuilder("create table if not exists ")
                 .append(TABLE_INCOME)

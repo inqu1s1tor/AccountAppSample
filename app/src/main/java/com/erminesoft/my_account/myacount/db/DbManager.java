@@ -21,12 +21,6 @@ public final class DbManager implements DBbridge {
     @Override
     public void save(String categoryText, String nameText) {
 
-        /*ContentValues cv = Mapper.convertUserData(usersData);
-
-        long numcolumm = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_USERS, null, cv);
-        Log.d(LOG_TAG, "row inserted, ID = " + numcolumm);
-        */
-
         ContentValues cv = Mapper.convertUserData(categoryText, nameText);
         long numcolumm = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_COSTS, null, cv);
     }
@@ -34,7 +28,7 @@ public final class DbManager implements DBbridge {
 
 
 
-    public void delete(int id) {
+    /*public void delete(int id) {
         baseHelper.getReadableDatabase().delete(DataBaseHelper.TABLE_USERS, DataBaseHelper.USERS_ID + "=?",
                 new String[]{String.valueOf(id)});
     }
@@ -59,7 +53,7 @@ public final class DbManager implements DBbridge {
             c.close();
         }
     }
-
+*/
     @Override
     public Cursor loadCosts() {
         return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_COSTS, null, null, null, null, null, null);
