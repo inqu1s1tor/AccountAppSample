@@ -51,7 +51,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 .append(USERS_ID).append(" integer primary key autoincrement, ")
                 .append(USER_NAME).append(" text not null, ")
                 .append(USER_PASSWORD).append(" text not null);");
-        db.execSQL(builderUsers.toString());
+        Log.e(LOG_TAG, "Creating table Users " + builderUsers.toString());
 
         builderIncome = new StringBuilder("create table if not exists ")
                 .append(TABLE_INCOME)
@@ -59,7 +59,9 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 .append(INCOME_ID).append(" integer primary key autoincrement, ")
                 .append(INCOME_CATEGORIES).append(" text not null), ")
                 .append(INCOME_NAME).append(" text not null);");
-        db.execSQL(builderIncome.toString());
+        Log.e(LOG_TAG, "Creating table income " + builderIncome.toString());
+
+
 
         builderCosts = new StringBuilder("create table if not exists ")
                 .append(TABLE_COSTS)
@@ -67,7 +69,15 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 .append(COSTS_ID).append(" integer primary key autoincrement, ")
                 .append(COSTS_NAME).append(" text not null), ")
                 .append(COSTS_CATEGORIES).append(" text not null);");
+        Log.e(LOG_TAG, "Creating table Costs " + builderCosts.toString());
+
+
+
+        db.beginTransaction();
+        db.execSQL(builderUsers.toString());
+        db.execSQL(builderIncome.toString());
         db.execSQL(builderCosts.toString());
+        db.endTransaction();
     }
 
     @Override
