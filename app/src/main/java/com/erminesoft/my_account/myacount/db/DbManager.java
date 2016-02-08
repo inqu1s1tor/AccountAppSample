@@ -15,6 +15,7 @@ public final class DbManager implements DBbridge {
     private final DataBaseHelper baseHelper;
 
     public DbManager(Context context) {
+        Log.d(LOG_TAG, "create db manager");
         baseHelper = new DataBaseHelper(context);
     }
 
