@@ -48,21 +48,18 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         db.endTransaction();
     }
 
-    private String buildIncoms() {
-        return new StringBuilder("create table if not exists ")
-                .append(TABLE_INCOME)
-                .append(" (")
-                .append(INCOME_ID).append(" integer primary key autoincrement, ")
-                .append(INCOME_CATEGORIES).append(" text not null), ")
-                .append(INCOME_NAME).append(" text not null);").toString();
+    private String buildIncoms(){
+        return "CREATE TABLE " + TABLE_INCOME + " ( "
+                + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + INCOME_NAME + " text, "
+                + INCOME_CATEGORIES + " text " + " )";
     }
+
     private String buildCosts(){
-        return new StringBuilder("create table if not exists ")
-                .append(TABLE_COSTS)
-                .append(" (")
-                .append(COSTS_ID).append(" integer primary key autoincrement, ")
-                .append(COSTS_NAME).append(" text not null), ")
-                .append(COSTS_CATEGORIES).append(" text not null);").toString();
+        return "CREATE TABLE " + TABLE_COSTS + " ( "
+                + COSTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COSTS_NAME + " text, "
+                + COSTS_CATEGORIES + " text " + " )";
     }
 
     @Override
