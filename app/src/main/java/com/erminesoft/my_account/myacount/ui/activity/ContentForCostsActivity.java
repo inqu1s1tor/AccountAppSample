@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import com.erminesoft.my_account.myacount.R;
 
-public class ChoiceContentActivity extends GenericActivity  {
+public class ContentForCostsActivity extends GenericActivity {
 
     private EditText editTextCategory;
     private EditText editTextName;
@@ -15,7 +15,7 @@ public class ChoiceContentActivity extends GenericActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.choice_content_layout);
+        setContentView(R.layout.content_for_costs_layout);
 
         editTextCategory = (EditText)findViewById(R.id.EditTextCategory);
         editTextName = (EditText)findViewById(R.id.EditTextName);
@@ -38,7 +38,5 @@ public class ChoiceContentActivity extends GenericActivity  {
             }
         }
     }
-
-
 
 }

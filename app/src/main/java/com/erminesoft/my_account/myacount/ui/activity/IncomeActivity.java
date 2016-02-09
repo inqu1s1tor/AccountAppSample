@@ -41,7 +41,7 @@ public class IncomeActivity extends GenericActivity {
         if (data == null) {return;}
         String name = data.getStringExtra("name");
         String category  = data.getStringExtra("category");
-        application.getdBbridge().save(name, category);
+        application.getdBbridge().saveIncomeToDb(name, category);
     }
 
 

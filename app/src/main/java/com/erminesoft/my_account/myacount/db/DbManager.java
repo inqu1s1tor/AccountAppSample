@@ -20,18 +20,16 @@ public final class DbManager implements DBbridge {
     }
 
     @Override
-    public void save(String categoryText, String nameText) {
-
-        ContentValues cv = Mapper.convertUserData(categoryText, nameText);
+     public void saveCostsToDb(String categoryText, String nameText) {
+        ContentValues cv = Mapper.convertCosts(categoryText, nameText);
         long numColummCosts = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_COSTS, null, cv);
-        Log.d(LOG_TAG, "row inserted, ID = " + numColummCosts);
-        long numColumnIncome = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_INCOME,null, cv);
-        Log.d(LOG_TAG, "row inserted, ID = " + numColumnIncome);
     }
 
-
-
-
+    @Override
+    public void saveIncomeToDb(String categoryText, String nameText) {
+        ContentValues cv = Mapper.convertIncome(categoryText, nameText);
+        long numColumnIncome = baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_INCOME,null, cv);
+    }
 
 
 
