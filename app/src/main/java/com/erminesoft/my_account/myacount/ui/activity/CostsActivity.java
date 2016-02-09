@@ -12,6 +12,11 @@ import com.erminesoft.my_account.myacount.db.DbManager;
 import com.erminesoft.my_account.myacount.ui.adapters.CostsAdapter;
 
 public class CostsActivity extends GenericActivity  {
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadStartData();
+    }
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, CostsActivity.class));
@@ -26,8 +31,6 @@ public class CostsActivity extends GenericActivity  {
 
         listViewCosts = (ListView) findViewById(R.id.listViewCosts);
 
-        loadStartData();
-
         Clicker listener  = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);
 
@@ -36,24 +39,15 @@ public class CostsActivity extends GenericActivity  {
     private void loadStartData(){
         Cursor cursor = application.getdBbridge().loadCosts();
         CostsAdapter costsAdapter = new CostsAdapter(this, cursor, true);
+        listViewCosts.setAdapter(costsAdapter);
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data == null) {return;}
-        String name = data.getStringExtra("name");
-        String category  = data.getStringExtra("category");
-        application.getdBbridge().saveCostsToDb(name, category);
-    }
-
 
     private final class Clicker implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.fab:
-                    Intent intent = new Intent(CostsActivity.this, ChoiceContentActivity.class);
-                    startActivityForResult(intent, 1);
+                    ContentForCostsActivity.start(CostsActivity.this);
             }
         }
     }

@@ -50,8 +50,7 @@ public class IncomeActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.fab:
-                    Intent intent = new Intent(IncomeActivity.this, ChoiceContentActivity.class);
-                    startActivityForResult(intent, 2);
+                    ContentForCostsActivity.start(IncomeActivity.this);
             }
         }
     }
