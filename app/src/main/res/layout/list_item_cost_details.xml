@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
     <TextView
         android:id="@+id/costCategoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/CostCategoryText"
-        android:layout_gravity="top|center_horizontal"
         android:textSize="24sp">
     </TextView>
+
     <TextView
         android:id="@+id/costNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/CostCategoryName"
-        android:layout_gravity="top|center_horizontal"
-        android:textSize="24sp">
+        android:textSize="24sp"
+        android:layout_weight="0.27">
     </TextView>
-
 
 
 </LinearLayout>

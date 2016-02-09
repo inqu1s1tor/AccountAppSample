@@ -20,6 +20,10 @@ final class Mapper {
 
         cv.put(DataBaseHelper.COSTS_CATEGORIES, categoryText);
         cv.put(DataBaseHelper.COSTS_NAME, nameText);
+
+        cv.put(DataBaseHelper.INCOME_CATEGORIES, categoryText);
+        cv.put(DataBaseHelper.INCOME_NAME, nameText);
+
         return cv;
     }
 }

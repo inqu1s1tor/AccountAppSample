@@ -33,11 +33,17 @@ public class CostsActivity extends GenericActivity  {
 
     }
 
-
-
     private void loadStartData(){
         Cursor cursor = application.getdBbridge().loadCosts();
         CostsAdapter costsAdapter = new CostsAdapter(this, cursor, true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data == null) {return;}
+        String name = data.getStringExtra("name");
+        String category  = data.getStringExtra("category");
+        application.getdBbridge().save(name, category);
     }
 
 
@@ -52,10 +58,5 @@ public class CostsActivity extends GenericActivity  {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data == null) {return;}
-        String name = data.getStringExtra("name");
-        String category  = data.getStringExtra("category");
-    }
 }
+

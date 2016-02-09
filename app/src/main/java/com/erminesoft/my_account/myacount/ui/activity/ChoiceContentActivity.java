@@ -15,7 +15,7 @@ public class ChoiceContentActivity extends GenericActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice_content);
+        setContentView(R.layout.choice_content_layout);
 
         editTextCategory = (EditText)findViewById(R.id.EditTextCategory);
         editTextName = (EditText)findViewById(R.id.EditTextName);
@@ -24,6 +24,7 @@ public class ChoiceContentActivity extends GenericActivity  {
         findViewById(R.id.ButtonConfirmChoice).setOnClickListener(listener);
 
     }
+
 
     private final class Clicker implements View.OnClickListener {
         @Override
