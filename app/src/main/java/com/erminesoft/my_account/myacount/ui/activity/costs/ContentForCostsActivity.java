@@ -1,4 +1,4 @@
-package com.erminesoft.my_account.myacount.ui.activity;
+package com.erminesoft.my_account.myacount.ui.activity.costs;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 
 public class ContentForCostsActivity extends GenericActivity {
 

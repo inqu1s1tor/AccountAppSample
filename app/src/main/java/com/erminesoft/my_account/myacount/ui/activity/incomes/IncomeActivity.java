@@ -1,4 +1,4 @@
-package com.erminesoft.my_account.myacount.ui.activity;
+package com.erminesoft.my_account.myacount.ui.activity.incomes;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.adapters.IncomeAdapter;
 
 public class IncomeActivity extends GenericActivity {
@@ -49,7 +50,8 @@ public class IncomeActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.fab:
-                    ContentForCostsActivity.start(IncomeActivity.this);
+                    ContentForIncomeActivity.start(IncomeActivity.this);
+                    break;
             }
         }
     }

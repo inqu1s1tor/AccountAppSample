@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.ui.activity.costs.CostsActivity;
+import com.erminesoft.my_account.myacount.ui.activity.incomes.IncomeActivity;
 
-/**
- * The class for choice functionality.
- */
+
 public class MainActivity extends GenericActivity {
 
     public static void start(Activity activity) {
@@ -24,9 +24,8 @@ public class MainActivity extends GenericActivity {
 
         findViewById(R.id.buttonIncome).setOnClickListener(listener);
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
-
-        Bundle bundle = getIntent().getExtras();
     }
+
 
     private final class Clicker implements View.OnClickListener {
         @Override

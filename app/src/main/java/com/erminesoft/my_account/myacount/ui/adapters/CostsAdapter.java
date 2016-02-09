@@ -44,9 +44,9 @@ public class CostsAdapter extends CursorAdapter {
 
     }
 
+
     private static final class CostsHolder {
         TextView categoryCosts;
         TextView nameCosts;
-
     }
 }
