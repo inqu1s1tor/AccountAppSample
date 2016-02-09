@@ -36,12 +36,16 @@ public class CostsAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         CostsHolder costHolder =  (CostsHolder)view.getTag();
-        costHolder.categoryCosts.setText(cursor.getColumnIndex(DataBaseHelper.COSTS_CATEGORIES));
-        costHolder.nameCosts.setText(cursor.getColumnIndex(DataBaseHelper.COSTS_NAME));
+
+        int categoriesIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_CATEGORIES);
+        int nameIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_NAME);
+
+        costHolder.categoryCosts.setText(cursor.getString(categoriesIndex));
+        costHolder.nameCosts.setText(cursor.getString(nameIndex));
 
     }
 
-    private static class CostsHolder {
+    private static final class CostsHolder {
         TextView categoryCosts;
         TextView nameCosts;
 
