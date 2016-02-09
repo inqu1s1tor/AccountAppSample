@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.erminesoft.my_account.myacount.R;
-import com.erminesoft.my_account.myacount.db.DbManager;
 import com.erminesoft.my_account.myacount.ui.adapters.CostsAdapter;
 
 public class CostsActivity extends GenericActivity  {
@@ -31,7 +30,7 @@ public class CostsActivity extends GenericActivity  {
 
         listViewCosts = (ListView) findViewById(R.id.listViewCosts);
 
-        Clicker listener  = new Clicker();
+        View.OnClickListener listener  = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);
 
     }

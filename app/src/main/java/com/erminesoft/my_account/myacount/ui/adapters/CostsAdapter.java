@@ -24,7 +24,6 @@ public class CostsAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup pViewGroup) {
-
         View view = mInflater.inflate(R.layout.list_item_cost_details, pViewGroup, false);
         CostsHolder costHolder = new CostsHolder();
         costHolder.categoryCosts = (TextView)view.findViewById(R.id.costCategoryTextView);
@@ -37,11 +36,11 @@ public class CostsAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         CostsHolder costHolder =  (CostsHolder)view.getTag();
 
-        int categoriesIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_CATEGORIES);
-        int nameIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_NAME);
+        int categoriesCostIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_CATEGORIES);
+        int nameCostIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_NAME);
 
-        costHolder.categoryCosts.setText(cursor.getString(categoriesIndex));
-        costHolder.nameCosts.setText(cursor.getString(nameIndex));
+        costHolder.categoryCosts.setText(cursor.getString(categoriesCostIndex));
+        costHolder.nameCosts.setText(cursor.getString(nameCostIndex));
 
     }
 

@@ -1,7 +1,5 @@
 package com.erminesoft.my_account.myacount.ui.activity;
-
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +24,7 @@ public class ContentForCostsActivity extends GenericActivity {
         editTextCategory = (EditText)findViewById(R.id.EditTextCategory);
         editTextName = (EditText)findViewById(R.id.EditTextName);
 
-        Clicker listener = new Clicker();
+        View.OnClickListener listener = new Clicker();
         findViewById(R.id.ButtonConfirmChoice).setOnClickListener(listener);
     }
 
@@ -37,11 +35,9 @@ public class ContentForCostsActivity extends GenericActivity {
             switch (v.getId()) {
                 case R.id.ButtonConfirmChoice:
                     String categoryCostsEntered = editTextCategory.getText().toString();
-                    String nameCostsEntered = editTextCategory.getText().toString();
+                    String nameCostsEntered = editTextName.getText().toString();
                     application.getdBbridge().saveCostsToDb(categoryCostsEntered, nameCostsEntered);
                     finish();
-
-
             }
         }
     }

@@ -27,21 +27,20 @@ public class IncomeActivity extends GenericActivity {
 
         loadStartData();
 
-        Clicker listener  = new Clicker();
+        View.OnClickListener listener  = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadStartData();
     }
 
     private void loadStartData(){
         Cursor cursor = application.getdBbridge().loadIncome();
-        IncomeAdapter adapter = new IncomeAdapter(this, cursor, true);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data == null) {return;}
-        String name = data.getStringExtra("name");
-        String category  = data.getStringExtra("category");
-        application.getdBbridge().saveIncomeToDb(name, category);
+        IncomeAdapter adapterIncome = new IncomeAdapter(this, cursor, true);
+        incomeList.setAdapter(adapterIncome);
     }
 
 

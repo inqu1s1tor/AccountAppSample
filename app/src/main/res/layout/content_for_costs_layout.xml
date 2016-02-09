@@ -5,11 +5,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.erminesoft.my_account.myacount.ui.activities.ChoiceContentActivity">
+    tools:context="com.erminesoft.my_account.myacount.ui.activities.ContentForCostsActivity">
 
     <EditText
         android:id="@+id/EditTextCategory"
-        android:text="@string/CategoryDeclaration"
+        android:hint="category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/EditTextName"
-        android:text="@string/nameDeclaration"
+        android:hint="name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/EditTextCategory"
