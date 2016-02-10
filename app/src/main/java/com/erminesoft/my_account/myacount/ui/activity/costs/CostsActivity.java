@@ -42,6 +42,7 @@ public class CostsActivity extends GenericActivity {
         listViewCosts.setAdapter(costsAdapter);
     }
 
+
     private final class Clicker implements View.OnClickListener {
         @Override
         public void onClick(View v) {

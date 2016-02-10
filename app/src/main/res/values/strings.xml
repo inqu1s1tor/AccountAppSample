@@ -52,4 +52,5 @@
     <string name="CostCategoryName">Name</string>
     <string name="incomeTextCategory">Categories</string>
     <string name="incomeNameText">Name</string>
+    <string name="AddingCategoryButton">ADD</string>
 </resources>

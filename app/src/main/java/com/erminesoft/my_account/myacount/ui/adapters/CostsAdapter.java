@@ -41,7 +41,6 @@ public class CostsAdapter extends CursorAdapter {
 
         costHolder.categoryCosts.setText(cursor.getString(categoriesCostIndex));
         costHolder.nameCosts.setText(cursor.getString(nameCostIndex));
-
     }
 
 

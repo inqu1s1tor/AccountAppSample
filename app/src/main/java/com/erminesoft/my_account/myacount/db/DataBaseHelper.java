@@ -9,16 +9,10 @@ import android.util.Log;
 
 public final class DataBaseHelper extends SQLiteOpenHelper {
 
-
     final String LOG_TAG = "myLog";
 
     public static final String DATABASE_NAME = "Account";
     public static final int DATABASE_VERSION = 2;
-    //table users
-    public static final String TABLE_USERS = "users";
-    public static final String USERS_ID = "_id";
-    public static final String USER_NAME = "username";
-    public static final String USER_PASSWORD = "password";
 
     //table income
     public static  final String TABLE_INCOME = "income";
@@ -32,6 +26,12 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COSTS_NAME = "costs_name";
     public static final String COSTS_CATEGORIES = "costs_categories";
 
+    //table categories
+    public static final String TABLE_CATEGORIES = "categories";
+    public static final String CATEGORIES_ID = "_id";
+    public static final String CATEGORIES_NAME = "categories_name";
+
+
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.d(LOG_TAG, "DB_START");
@@ -43,10 +43,11 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         Log.d(LOG_TAG, "OnCreate");
 
         db.execSQL(buildCosts());
-        db.execSQL(buildIncoms());
+        db.execSQL(buildIncomes());
+        db.execSQL(buildCategories());
     }
 
-    private String buildIncoms(){
+    private String buildIncomes(){
         return "CREATE TABLE " + TABLE_INCOME + " ( "
                 + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + INCOME_NAME + " text, "
@@ -58,6 +59,12 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 + COSTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COSTS_NAME + " text, "
                 + COSTS_CATEGORIES + " text " + " )";
+    }
+
+    private String buildCategories(){
+        return "CREATE TABLE " + TABLE_CATEGORIES + " ( "
+                + CATEGORIES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + CATEGORIES_NAME + " text " + " )";
     }
 
     @Override

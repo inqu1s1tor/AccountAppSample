@@ -3,7 +3,6 @@ package com.erminesoft.my_account.myacount.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
@@ -28,7 +27,13 @@ public final class DbManager implements DBbridge {
     @Override
     public void saveIncomeToDb(String categoryText, String nameText) {
         ContentValues cv = Mapper.convertIncome(categoryText, nameText);
-        baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_INCOME,null, cv);
+        baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_INCOME, null, cv);
+    }
+
+    @Override
+    public void saveCategoriesToDb(String categories) {
+        ContentValues cv = Mapper.convertCategories(categories);
+        baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
     }
 
     @Override
@@ -39,6 +44,12 @@ public final class DbManager implements DBbridge {
     @Override
     public Cursor loadIncome() {
         return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_INCOME, null, null, null, null, null, null);
+    }
+
+    @Override
+    public Cursor loadCategories() {
+        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_CATEGORIES, null, null, null, null, null, null);
+
     }
 }
 

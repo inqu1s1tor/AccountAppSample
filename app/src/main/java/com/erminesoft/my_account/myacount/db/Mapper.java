@@ -18,5 +18,11 @@ final class Mapper {
         cv.put(DataBaseHelper.INCOME_NAME, nameText);
         return cv;
     }
+
+    public static ContentValues convertCategories(String categoryGeneral) {
+        ContentValues cv = new ContentValues();
+        cv.put(DataBaseHelper.CATEGORIES_NAME, categoryGeneral);
+        return cv;
+    }
 }
 

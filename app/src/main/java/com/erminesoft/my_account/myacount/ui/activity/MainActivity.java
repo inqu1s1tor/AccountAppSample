@@ -24,6 +24,7 @@ public class MainActivity extends GenericActivity {
 
         findViewById(R.id.buttonIncome).setOnClickListener(listener);
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
+        findViewById(R.id.buttonCategories).setOnClickListener(listener);
     }
 
 
@@ -36,6 +37,9 @@ public class MainActivity extends GenericActivity {
                     break;
                 case R.id.buttonCosts:
                     CostsActivity.start(MainActivity.this);
+                    break;
+                case R.id.buttonCategories:
+                    CategoriesActivity.start(MainActivity.this);
                     break;
             }
         }
