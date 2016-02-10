@@ -41,6 +41,7 @@ public class ContentForIncomeActivity extends GenericActivity {
                     String nameIncomeEntered = editTextNameIncome.getText().toString();
                     application.getdBbridge().saveIncomeToDb(categoryIncomeEntered, nameIncomeEntered);
                     finish();
+                    break;
             }
         }
     }

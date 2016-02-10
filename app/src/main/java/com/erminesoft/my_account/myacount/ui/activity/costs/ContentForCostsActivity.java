@@ -39,6 +39,7 @@ public class ContentForCostsActivity extends GenericActivity {
                     String nameCostsEntered = editTextName.getText().toString();
                     application.getdBbridge().saveCostsToDb(categoryCostsEntered, nameCostsEntered);
                     finish();
+                    break;
             }
         }
     }
