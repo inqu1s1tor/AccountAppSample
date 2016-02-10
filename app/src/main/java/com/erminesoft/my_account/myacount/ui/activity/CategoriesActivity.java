@@ -32,6 +32,8 @@ public class CategoriesActivity extends GenericActivity {
         View.OnClickListener listener = new Clicker();
         findViewById(R.id.buttonAddingCategory).setOnClickListener(listener);
 
+        categoriesAdapter = new CategoriesAdapter(this, application.getdBbridge().loadCategories(), true) ;
+        listViewCategories.setAdapter(categoriesAdapter);
     }
 
     @Override
@@ -41,9 +43,7 @@ public class CategoriesActivity extends GenericActivity {
     }
 
     private void loadStartdata() {
-        Cursor cursor = application.getdBbridge().loadCategories();
-        categoriesAdapter = new CategoriesAdapter(this, cursor, true) ;
-        listViewCategories.setAdapter(categoriesAdapter);
+        categoriesAdapter.swapCursor(application.getdBbridge().loadCategories());
     }
 
 
@@ -54,6 +54,8 @@ public class CategoriesActivity extends GenericActivity {
                 case R.id.buttonAddingCategory:
                     String categoryEntered = eddingCategory.getText().toString();
                     application.getdBbridge().saveCategoriesToDb(categoryEntered);
+                    loadStartdata();
+                    break;
             }
 
         }
