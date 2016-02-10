@@ -43,7 +43,7 @@ public class IncomeAdapter extends CursorAdapter {
 
     }
 
-    private static class IncomeHolder {
+    private static final class IncomeHolder {
         TextView categoryIncome;
         TextView nameIncome;
 
