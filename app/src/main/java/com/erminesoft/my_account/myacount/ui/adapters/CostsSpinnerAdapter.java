@@ -40,6 +40,7 @@ public class CostsSpinnerAdapter extends CursorAdapter {
 
     }
 
+
     private static final class SpinnerCostsHolder {
         TextView spinnerItem;
     }

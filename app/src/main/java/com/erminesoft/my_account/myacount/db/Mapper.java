@@ -5,7 +5,7 @@ import android.content.ContentValues;
 
 final class Mapper {
 
-    public static ContentValues convertCosts(String categoryText, String nameText) {
+    public static ContentValues convertCosts(String nameText, String categoryText) {
         ContentValues cv = new ContentValues();
         cv.put(DataBaseHelper.COSTS_CATEGORIES, categoryText);
         cv.put(DataBaseHelper.COSTS_NAME, nameText);

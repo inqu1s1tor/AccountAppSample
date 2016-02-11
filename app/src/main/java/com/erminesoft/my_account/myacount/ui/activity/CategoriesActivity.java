@@ -54,6 +54,7 @@ public class CategoriesActivity extends GenericActivity {
                     String categoryEntered = eddingCategory.getText().toString();
                     application.getdBbridge().saveCategoriesToDb(categoryEntered);
                     loadStartdata();
+                    eddingCategory.setText("");
                     break;
             }
 

@@ -19,7 +19,6 @@ public class ContentForCostsActivity extends GenericActivity {
         activity.startActivity(new Intent (activity, ContentForCostsActivity.class));
     }
 
-    private EditText editTextCategory;
     private EditText editTextName;
 
     @Override
@@ -27,7 +26,6 @@ public class ContentForCostsActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_for_costs_layout);
 
-        editTextCategory = (EditText)findViewById(R.id.EditTextCategory);
         editTextName = (EditText)findViewById(R.id.EditTextNameCosts);
 
 
@@ -47,7 +45,7 @@ public class ContentForCostsActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ButtonConfirmChoice:
-                    String categoryCostsEntered = editTextCategory.getText().toString();
+                    String categoryCostsEntered = spinnerCosts.getSelectedItem().toString();
                     String nameCostsEntered = editTextName.getText().toString();
                     application.getdBbridge().saveCostsToDb(categoryCostsEntered, nameCostsEntered);
                     finish();
