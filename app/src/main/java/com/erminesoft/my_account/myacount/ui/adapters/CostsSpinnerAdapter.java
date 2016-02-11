@@ -14,7 +14,7 @@ import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 
 public class CostsSpinnerAdapter extends CursorAdapter {
 
-    private LayoutInflater mInflater;
+    private final LayoutInflater mInflater;
 
     public CostsSpinnerAdapter(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);

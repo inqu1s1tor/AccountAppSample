@@ -1,37 +1,42 @@
 package com.erminesoft.my_account.myacount.ui.activity.costs;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 import com.erminesoft.my_account.myacount.ui.activity.CategoriesActivity;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.adapters.CostsSpinnerAdapter;
 
+import java.util.Currency;
+
 public class ContentForCostsActivity extends GenericActivity {
 
     private Spinner spinnerCosts;
+    private EditText editTextName;
+    private CostsSpinnerAdapter costsSpinnerAdapter;
 
     public static void start(Activity activity) {
-        activity.startActivity(new Intent (activity, ContentForCostsActivity.class));
+        activity.startActivity(new Intent(activity, ContentForCostsActivity.class));
     }
 
-    private EditText editTextName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_for_costs_layout);
 
-        editTextName = (EditText)findViewById(R.id.EditTextNameCosts);
+        editTextName = (EditText) findViewById(R.id.EditTextNameCosts);
 
+        spinnerCosts = (Spinner) findViewById(R.id.spinner);
 
-        spinnerCosts = (Spinner)findViewById(R.id.spinner);
-
-        CostsSpinnerAdapter costsSpinnerAdapter = new CostsSpinnerAdapter(this, application.getdBbridge().loadCategories(), true);
+        costsSpinnerAdapter = new CostsSpinnerAdapter(this, application.getdBbridge().loadCategories(), true);
         spinnerCosts.setAdapter(costsSpinnerAdapter);
 
         View.OnClickListener listener = new Clicker();
@@ -39,17 +44,30 @@ public class ContentForCostsActivity extends GenericActivity {
         findViewById(R.id.transferToCategory).setOnClickListener(listener);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        costsSpinnerAdapter.swapCursor(application.getdBbridge().loadCategories());
+    }
+
+    private void extractCategory(Cursor cursor) {
+        String nameCostsEntered = editTextName.getText().toString();
+
+        int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_ID);
+        int categoryId = cursor.getInt(categoryIdIndex);
+
+        //application.getdBbridge().saveCostsToDb(categoryCostsEntered, nameCostsEntered);
+    }
 
     private final class Clicker implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ButtonConfirmChoice:
-                    String categoryCostsEntered = spinnerCosts.getSelectedItem().toString();
-                    String nameCostsEntered = editTextName.getText().toString();
-                    application.getdBbridge().saveCostsToDb(categoryCostsEntered, nameCostsEntered);
+                    extractCategory((Cursor) spinnerCosts.getSelectedItem());
                     finish();
                     break;
+
                 case R.id.transferToCategory:
                     CategoriesActivity.start(ContentForCostsActivity.this);
                     break;

@@ -38,23 +38,27 @@ public class CategoriesActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        loadStartdata();
+        loadStartData();
     }
 
-    private void loadStartdata() {
+    private void loadStartData() {
         categoriesAdapter.swapCursor(application.getdBbridge().loadCategories());
     }
 
+    private void saveCategory(){
+        String categoryEntered = eddingCategory.getText().toString();
+        application.getdBbridge().saveCategoriesToDb(categoryEntered);
+        eddingCategory.setText("");
+
+        loadStartData();
+    }
 
     private final class Clicker implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonAddingCategory:
-                    String categoryEntered = eddingCategory.getText().toString();
-                    application.getdBbridge().saveCategoriesToDb(categoryEntered);
-                    loadStartdata();
-                    eddingCategory.setText("");
+                    saveCategory();
                     break;
             }
 

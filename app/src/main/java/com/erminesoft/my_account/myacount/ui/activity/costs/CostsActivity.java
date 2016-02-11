@@ -12,17 +12,13 @@ import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.adapters.CostsAdapter;
 
 public class CostsActivity extends GenericActivity {
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loadStartData();
-    }
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, CostsActivity.class));
     }
 
     private ListView listViewCosts;
+    private CostsAdapter costsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +27,22 @@ public class CostsActivity extends GenericActivity {
 
         listViewCosts = (ListView) findViewById(R.id.listViewCosts);
 
-        View.OnClickListener listener  = new Clicker();
+        View.OnClickListener listener = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);
+
+        costsAdapter = new CostsAdapter(this, application.getdBbridge().loadCosts(), true);
+        listViewCosts.setAdapter(costsAdapter);
 
     }
 
-    private void loadStartData(){
-        Cursor cursor = application.getdBbridge().loadCosts();
-        CostsAdapter costsAdapter = new CostsAdapter(this, cursor, true);
-        listViewCosts.setAdapter(costsAdapter);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadStartData();
+    }
+
+    private void loadStartData() {
+        costsAdapter.swapCursor(application.getdBbridge().loadCosts());
     }
 
 
