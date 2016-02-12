@@ -23,7 +23,7 @@ public class CategoriesAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = mInflater.inflate(R.layout.list_item_categories_details, parent, false);
+        View view = mInflater.inflate(R.layout.list_item_categories_details_layout, parent, false);
         CategoriesHolder categoriesHolder = new CategoriesHolder();
         categoriesHolder.categoriesGeneral = (TextView)view.findViewById(R.id.categoryGeneralTextView);
         view.setTag(categoriesHolder);

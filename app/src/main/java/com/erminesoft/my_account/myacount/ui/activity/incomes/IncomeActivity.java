@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
@@ -13,11 +14,14 @@ import com.erminesoft.my_account.myacount.ui.adapters.IncomeAdapter;
 
 public class IncomeActivity extends GenericActivity {
 
-    private ListView incomeList;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, IncomeActivity.class));
     }
+
+    private ListView incomeList;
+    private IncomeAdapter adapterIncome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +30,11 @@ public class IncomeActivity extends GenericActivity {
 
         incomeList = (ListView)findViewById(R.id.listViewIncome);
 
-        loadStartData();
-
         View.OnClickListener listener  = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);
+
+        adapterIncome = new IncomeAdapter(this, application.getdBbridge().loadIncome(), true);
+        incomeList.setAdapter(adapterIncome);
     }
 
     @Override
@@ -39,9 +44,7 @@ public class IncomeActivity extends GenericActivity {
     }
 
     private void loadStartData(){
-        Cursor cursor = application.getdBbridge().loadIncome();
-        IncomeAdapter adapterIncome = new IncomeAdapter(this, cursor, true);
-        incomeList.setAdapter(adapterIncome);
+        adapterIncome.swapCursor(application.getdBbridge().loadIncome());
     }
 
 

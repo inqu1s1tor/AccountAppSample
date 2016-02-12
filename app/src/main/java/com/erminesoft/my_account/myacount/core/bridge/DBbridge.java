@@ -7,8 +7,8 @@ public interface DBbridge {
     Cursor loadCosts();
     Cursor loadIncome();
     Cursor loadCategories();
-    void saveCostsToDb(String fieldcategoryCosts,String fieldNameCosts);
-    void saveIncomeToDb(String fieldCategoryIncome, String fieldNameIncome);
+    void saveCostsToDb(int Categoiries,String fieldNameCosts);
+    void saveIncomeToDb(String Categories, String fieldNameIncome);
     void saveCategoriesToDb(String categories);
 
 }

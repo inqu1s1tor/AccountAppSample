@@ -14,7 +14,7 @@ import com.erminesoft.my_account.myacount.ui.activity.CategoriesActivity;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.adapters.CostsSpinnerAdapter;
 
-import java.util.Currency;
+
 
 public class ContentForCostsActivity extends GenericActivity {
 
@@ -33,7 +33,6 @@ public class ContentForCostsActivity extends GenericActivity {
         setContentView(R.layout.content_for_costs_layout);
 
         editTextName = (EditText) findViewById(R.id.EditTextNameCosts);
-
         spinnerCosts = (Spinner) findViewById(R.id.spinner);
 
         costsSpinnerAdapter = new CostsSpinnerAdapter(this, application.getdBbridge().loadCategories(), true);
@@ -56,8 +55,9 @@ public class ContentForCostsActivity extends GenericActivity {
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
-        //application.getdBbridge().saveCostsToDb(categoryCostsEntered, nameCostsEntered);
+        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered);
     }
+
 
     private final class Clicker implements View.OnClickListener {
         @Override

@@ -5,17 +5,17 @@ import android.content.ContentValues;
 
 final class Mapper {
 
-    public static ContentValues convertCosts(String nameText, String categoryText) {
+    public static ContentValues convertCosts(String nameText, int category) {
         ContentValues cv = new ContentValues();
-        cv.put(DataBaseHelper.COSTS_CATEGORIES, categoryText);
+        cv.put(DataBaseHelper.COSTS_CATEGORIES, category);
         cv.put(DataBaseHelper.COSTS_NAME, nameText);
         return cv;
     }
 
-    public static ContentValues convertIncome(String categoryText, String nameText) {
+    public static ContentValues convertIncome(String categoryText, String category) {
         ContentValues cv = new ContentValues();
         cv.put(DataBaseHelper.INCOME_CATEGORIES, categoryText);
-        cv.put(DataBaseHelper.INCOME_NAME, nameText);
+        cv.put(DataBaseHelper.INCOME_NAME, category);
         return cv;
     }
 

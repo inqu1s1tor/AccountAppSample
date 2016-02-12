@@ -24,7 +24,7 @@
         <Button
             android:id="@+id/buttonAddingCategory"
             android:text="@string/AddingCategoryButton"
-            android:layout_width="wrap_content"
+            android:layout_width="68dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

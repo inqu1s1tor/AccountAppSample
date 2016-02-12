@@ -34,7 +34,6 @@ public class CostsActivity extends GenericActivity {
         listViewCosts.setAdapter(costsAdapter);
 
     }
-
     @Override
     protected void onStart() {
         super.onStart();

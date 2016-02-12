@@ -24,7 +24,7 @@ public class CostsAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup pViewGroup) {
-        View view = mInflater.inflate(R.layout.list_item_cost_details, pViewGroup, false);
+        View view = mInflater.inflate(R.layout.list_item_cost_details_layout, pViewGroup, false);
         CostsHolder costHolder = new CostsHolder();
         costHolder.categoryCosts = (TextView)view.findViewById(R.id.costCategoryTextView);
         costHolder.nameCosts = (TextView)view.findViewById(R.id.costNameTextView);

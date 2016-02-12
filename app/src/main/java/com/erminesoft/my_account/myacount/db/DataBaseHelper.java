@@ -51,7 +51,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_INCOME + " ( "
                 + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + INCOME_NAME + " text, "
-                + INCOME_CATEGORIES + " text " + " )";
+                + INCOME_CATEGORIES + " INTEGER " + " )";
     }
 
     private String buildCosts(){
