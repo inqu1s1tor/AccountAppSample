@@ -38,7 +38,7 @@ public final class DbManager implements DBbridge {
 
     @Override
     public Cursor loadCosts() {
-        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_COSTS, null, null, null, null, null, null);
+        return baseHelper.getReadableDatabase().rawQuery(RequestsFactory.SELECT_COSTS_WITH_CATEGORIES, new String[0]);
     }
 
     @Override
