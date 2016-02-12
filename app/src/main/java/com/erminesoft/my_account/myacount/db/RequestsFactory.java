@@ -14,6 +14,16 @@ public final class RequestsFactory {
                     + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID;
 //                    + " AND "
 //                    + DataBaseHelper.TABLE_COSTS + "." + DataBaseHelper.COSTS_CATEGORIES + "=?";
+        public static final String SELECT_INCOMES_WITH_CATEGORIES =
+        "SELECT "
+                + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_NAME + " , "
+                + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_CATEGORIES + " , "
+                + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_NAME  + " , "
+                + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID
+                + " FROM " + DataBaseHelper.TABLE_CATEGORIES + "," + DataBaseHelper.TABLE_INCOME
+                + " WHERE "
+                + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_CATEGORIES + " = "
+                + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID;
 
 
 }

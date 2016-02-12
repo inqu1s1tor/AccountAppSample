@@ -25,7 +25,7 @@ public final class DbManager implements DBbridge {
     }
 
     @Override
-    public void saveIncomeToDb(String category, String nameText) {
+    public void saveIncomeToDb(int category, String nameText) {
         ContentValues cv = Mapper.convertIncome(nameText, category);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_INCOME, null, cv);
     }
@@ -43,7 +43,7 @@ public final class DbManager implements DBbridge {
 
     @Override
     public Cursor loadIncome() {
-        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_INCOME, null, null, null, null, null, null);
+        return baseHelper.getReadableDatabase().rawQuery(RequestsFactory.SELECT_INCOMES_WITH_CATEGORIES, new String[0]);
     }
 
     @Override

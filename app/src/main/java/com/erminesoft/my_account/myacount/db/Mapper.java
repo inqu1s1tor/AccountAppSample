@@ -12,10 +12,10 @@ final class Mapper {
         return cv;
     }
 
-    public static ContentValues convertIncome(String categoryText, String category) {
+    public static ContentValues convertIncome(String nameText, int category) {
         ContentValues cv = new ContentValues();
-        cv.put(DataBaseHelper.INCOME_CATEGORIES, categoryText);
-        cv.put(DataBaseHelper.INCOME_NAME, category);
+        cv.put(DataBaseHelper.INCOME_CATEGORIES, category);
+        cv.put(DataBaseHelper.INCOME_NAME, nameText);
         return cv;
     }
 

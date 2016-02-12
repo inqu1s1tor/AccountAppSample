@@ -6,78 +6,39 @@
 
 
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:text="@string/TextButtonIncome"
-            android:id="@+id/buttonIncome"
-            android:layout_weight="0.49"
-            android:layout_row="0"
-            android:layout_column="0" />
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:text="@string/TextButtonCosts"
+        android:layout_marginRight="10dp"
+        android:id="@+id/buttonCosts" />
 
     <Button
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:text="@string/TextButtonDebts"
-            android:id="@+id/buttonDebts"
-            android:layout_weight="0.39"
-        android:layout_row="1"
-        android:layout_column="0" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:text="@string/TextButtonPlanning"
-            android:id="@+id/buttonPlanning"
-            android:layout_weight="0.40"
-        android:layout_row="1"
-        android:layout_column="5" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:text="@string/TextButtonCategories"
-            android:id="@+id/buttonCategories"
-            android:layout_weight="0.29"
-        android:layout_row="3"
-        android:layout_column="0" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:text="@string/TextButtonReports"
-            android:id="@+id/buttonReports"
-            android:layout_weight="0.33"
-            android:layout_gravity="center_vertical"
-        android:layout_row="3"
-        android:layout_column="5" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="157dp"
-            android:text="@string/TextButtonSettings"
-            android:id="@+id/buttonSettings"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="0.33"
-        android:layout_row="5"
-        android:layout_column="0" />
-
-        <Button
-        android:layout_width="wrap_content"
-        android:layout_height="130dp"
-        android:text="@string/TextButtonCurrency"
-        android:id="@+id/buttonCurrency"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="0.31"
-        android:layout_row="5"
-        android:layout_column="5" />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:text="@string/TextButtonCosts"
-            android:id="@+id/buttonCosts"
-            android:layout_weight="0.45"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:text="@string/TextButtonIncome"
+        android:id="@+id/buttonIncome"
+        android:layout_marginLeft="10dp"
         android:layout_row="0"
-        android:layout_column="5" />
+        android:layout_column="10" />
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:text="@string/TextButtonCategories"
+        android:id="@+id/buttonCategories"
+        android:layout_marginRight="10dp"
+        android:layout_row="2"
+        android:layout_column="0" />
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:text="@string/TextButtonSettings"
+        android:id="@+id/buttonSettings"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_row="2"
+        android:layout_column="10" />
+
 
 </GridLayout>
