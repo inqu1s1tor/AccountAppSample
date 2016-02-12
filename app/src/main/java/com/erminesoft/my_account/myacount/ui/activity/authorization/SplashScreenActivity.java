@@ -11,7 +11,7 @@ import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 
 public class SplashScreenActivity extends GenericActivity {
 
-    private final int workTime = 5000;
+    private static final int WORK_TIME = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class SplashScreenActivity extends GenericActivity {
             public void run() {
                 moveToNextScreen();
             }
-        }, workTime);
+        }, WORK_TIME);
     }
 
     private void moveToNextScreen() {
@@ -46,7 +46,6 @@ public class SplashScreenActivity extends GenericActivity {
             AuthActivity.start(SplashScreenActivity.this);
             finish();
             dismissProgressDialog();
-            // move to next screen (main)
         }
 
         @Override

@@ -49,7 +49,6 @@ public class AuthActivity extends GenericActivity {
     private final class NetListener extends SimpleMainCallback {
         @Override
         public void onSuccess() {
-            Log.d("AA", "result success");
             MainActivity.start(AuthActivity.this);
             finish();
         }

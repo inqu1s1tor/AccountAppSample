@@ -1,13 +1,10 @@
 package com.erminesoft.my_account.myacount.core;
 
 import android.app.Application;
-import android.content.Context;
-import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.core.bridge.NetBridge;
 import com.erminesoft.my_account.myacount.db.DbManager;
-import com.erminesoft.my_account.myacount.db.RequestsFactory;
 import com.erminesoft.my_account.myacount.net.NetManagerFacade;
 
 public final class AAplication extends Application {
@@ -37,7 +34,9 @@ public final class AAplication extends Application {
         return netBridge;
     }
 
-    public DBbridge getdBbridge() {return dBbridge;}
+    public DBbridge getdBbridge() {
+        return dBbridge;
+    }
 }
 
 
