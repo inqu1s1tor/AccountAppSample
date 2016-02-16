@@ -30,6 +30,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_CATEGORIES = "categories";
     public static final String CATEGORIES_ID = "_id";
     public static final String CATEGORIES_NAME = "categories_name";
+    public static final String CATEGORIES_NAME_INCOME = "categories_name_income";
 
 
     public DataBaseHelper(Context context) {
@@ -39,7 +40,6 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         Log.d(LOG_TAG, "OnCreate");
 
         db.execSQL(buildCosts());
@@ -64,6 +64,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     private String buildCategories(){
         return "CREATE TABLE " + TABLE_CATEGORIES + " ( "
                 + CATEGORIES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + CATEGORIES_NAME_INCOME + " text, "
                 + CATEGORIES_NAME + " text " + " )";
     }
 

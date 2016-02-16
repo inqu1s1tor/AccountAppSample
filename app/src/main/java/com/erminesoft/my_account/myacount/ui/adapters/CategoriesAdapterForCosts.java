@@ -12,11 +12,11 @@ import android.widget.TextView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 
-public class CategoriesAdapter extends CursorAdapter {
+public class CategoriesAdapterForCosts extends CursorAdapter {
 
     private final LayoutInflater mInflater;
 
-    public CategoriesAdapter(Context context, Cursor c, boolean autoRequery) {
+    public CategoriesAdapterForCosts(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
         mInflater = LayoutInflater.from(context);
     }

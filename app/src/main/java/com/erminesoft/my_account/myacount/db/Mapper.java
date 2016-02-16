@@ -19,9 +19,15 @@ final class Mapper {
         return cv;
     }
 
-    public static ContentValues convertCategories(String categoryGeneral) {
+    public static ContentValues convertCategoriesCosts(String categoriesCosts) {
         ContentValues cv = new ContentValues();
-        cv.put(DataBaseHelper.CATEGORIES_NAME, categoryGeneral);
+        cv.put(DataBaseHelper.CATEGORIES_NAME, categoriesCosts);
+        return cv;
+    }
+
+    public static ContentValues convertCategoriesIncome(String categoriesIncome) {
+        ContentValues cv = new ContentValues();
+        cv.put(DataBaseHelper.CATEGORIES_NAME_INCOME, categoriesIncome);
         return cv;
     }
 }

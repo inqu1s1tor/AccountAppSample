@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 
 import com.erminesoft.my_account.myacount.R;
-import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapter;
+import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapterForCosts;
+import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapterForIncome;
 
 public class CategoriesActivity extends GenericActivity {
 
     private EditText eddingCategory;
     private ListView listViewCategories;
-    private CategoriesAdapter categoriesAdapter;
+    private CategoriesAdapterForCosts categoriesAdapter;
+    private CategoriesAdapterForIncome categoriesAdapterForIncome;
+    private RadioButton CostsCategoryRadioButton;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, CategoriesActivity.class));
@@ -31,26 +35,55 @@ public class CategoriesActivity extends GenericActivity {
         View.OnClickListener listener = new Clicker();
         findViewById(R.id.buttonAddingCategory).setOnClickListener(listener);
 
-        categoriesAdapter = new CategoriesAdapter(this, application.getdBbridge().loadCategories(), true) ;
-        listViewCategories.setAdapter(categoriesAdapter);
+        CostsCategoryRadioButton = (RadioButton)findViewById(R.id.CostsCategoryRadioButton);
+        CostsCategoryRadioButton.setOnClickListener(listener);
+
+        findViewById(R.id.IncomeCategoryRadioButton).setOnClickListener(listener);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        categoriesAdapter = new CategoriesAdapterForCosts(this, application.getdBbridge().loadCategories(), true);
+        categoriesAdapterForIncome = new CategoriesAdapterForIncome(this, application.getdBbridge().loadCategories(),true);
+
         loadStartData();
     }
 
+    private void startCategoryAdapterForCosts() {
+        listViewCategories.setAdapter(categoriesAdapter);
+    }
+
+    private void startCategoryAdapterForIncome() {
+        listViewCategories.setAdapter(categoriesAdapterForIncome);
+    }
+
     private void loadStartData() {
-        categoriesAdapter.swapCursor(application.getdBbridge().loadCategories());
+            categoriesAdapter.swapCursor(application.getdBbridge().loadCategories());
     }
 
     private void saveCategory(){
         String categoryEntered = eddingCategory.getText().toString();
-        application.getdBbridge().saveCategoriesToDb(categoryEntered);
+        application.getdBbridge().saveCategoriesCostsToDb(categoryEntered);
         eddingCategory.setText("");
 
         loadStartData();
+    }
+
+    private void saveCategoryIncome() {
+        String categoryIncomeEntered = eddingCategory.getText().toString();
+        application.getdBbridge().saveCategoriesIncomeToDb(categoryIncomeEntered);
+        eddingCategory.setText("");
+
+        loadStartData();
+    }
+
+    private void switchRadioButtonCondition() {
+        if (CostsCategoryRadioButton.isChecked() == true) {
+            saveCategory();
+        }else {
+            saveCategoryIncome();
+        }
     }
 
     private final class Clicker implements View.OnClickListener {
@@ -58,7 +91,15 @@ public class CategoriesActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonAddingCategory:
-                    saveCategory();
+                    switchRadioButtonCondition();
+                    break;
+
+                case R.id.CostsCategoryRadioButton:
+                     startCategoryAdapterForCosts();
+                    break;
+
+                case R.id.IncomeCategoryRadioButton:
+                    startCategoryAdapterForIncome();
                     break;
             }
 

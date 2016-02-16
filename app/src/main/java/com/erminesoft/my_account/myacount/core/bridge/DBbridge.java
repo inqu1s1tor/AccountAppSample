@@ -9,6 +9,7 @@ public interface DBbridge {
     Cursor loadCategories();
     void saveCostsToDb(int Categoiries,String fieldNameCosts);
     void saveIncomeToDb(int Categories, String fieldNameIncome);
-    void saveCategoriesToDb(String categories);
+    void saveCategoriesCostsToDb(String categories);
+    void saveCategoriesIncomeToDb(String categoriesIncome);
 
 }
