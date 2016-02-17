@@ -11,5 +11,4 @@ public interface DBbridge {
     void saveIncomeToDb(int Categories, String fieldNameIncome);
     void saveCategoriesCostsToDb(String categories);
     void saveCategoriesIncomeToDb(String categoriesIncome);
-
 }

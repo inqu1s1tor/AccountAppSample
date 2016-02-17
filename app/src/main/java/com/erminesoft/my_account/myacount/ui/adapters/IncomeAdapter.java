@@ -35,7 +35,7 @@ public class IncomeAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         IncomeHolder incomeHolder = (IncomeHolder)view.getTag();
 
-        int categoriesIncomeIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME);
+        int categoriesIncomeIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME_INCOME);
         int nameIncomeIndex = cursor.getColumnIndex(DataBaseHelper.INCOME_NAME);
 
         incomeHolder.categoryIncome.setText(cursor.getString(categoriesIncomeIndex));

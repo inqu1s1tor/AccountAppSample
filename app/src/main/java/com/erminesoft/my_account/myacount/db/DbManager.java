@@ -55,7 +55,6 @@ public final class DbManager implements DBbridge {
     @Override
     public Cursor loadCategories() {
         return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_CATEGORIES, null, null, null, null, null, null);
-
     }
 }
 

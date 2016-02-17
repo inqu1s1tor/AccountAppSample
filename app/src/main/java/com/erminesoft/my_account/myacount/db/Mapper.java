@@ -21,7 +21,7 @@ final class Mapper {
 
     public static ContentValues convertCategoriesCosts(String categoriesCosts) {
         ContentValues cv = new ContentValues();
-        cv.put(DataBaseHelper.CATEGORIES_NAME, categoriesCosts);
+        cv.put(DataBaseHelper.CATEGORIES_NAME_COST, categoriesCosts);
         return cv;
     }
 

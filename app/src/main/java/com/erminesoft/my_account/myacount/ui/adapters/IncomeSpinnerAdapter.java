@@ -37,7 +37,7 @@ public class IncomeSpinnerAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         SpinnerIncomeHolder spinnerIncomeHolder = (SpinnerIncomeHolder)view.getTag();
 
-        int spinnerNameIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME);
+        int spinnerNameIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME_INCOME);
         spinnerIncomeHolder.spinnerItemIncome.setText(cursor.getString(spinnerNameIndex));
 
     }

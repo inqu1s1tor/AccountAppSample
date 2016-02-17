@@ -29,7 +29,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     //table categories
     public static final String TABLE_CATEGORIES = "categories";
     public static final String CATEGORIES_ID = "_id";
-    public static final String CATEGORIES_NAME = "categories_name";
+    public static final String CATEGORIES_NAME_COST = "categories_name";
     public static final String CATEGORIES_NAME_INCOME = "categories_name_income";
 
 
@@ -65,7 +65,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_CATEGORIES + " ( "
                 + CATEGORIES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CATEGORIES_NAME_INCOME + " text, "
-                + CATEGORIES_NAME + " text " + " )";
+                + CATEGORIES_NAME_COST + " text " + " )";
     }
 
     @Override

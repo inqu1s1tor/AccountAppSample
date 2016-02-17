@@ -39,6 +39,7 @@ public class CategoriesActivity extends GenericActivity {
         CostsCategoryRadioButton.setOnClickListener(listener);
 
         findViewById(R.id.IncomeCategoryRadioButton).setOnClickListener(listener);
+
     }
 
     @Override
@@ -62,7 +63,7 @@ public class CategoriesActivity extends GenericActivity {
             categoriesAdapter.swapCursor(application.getdBbridge().loadCategories());
     }
 
-    private void saveCategory(){
+    private void saveCategoryCost(){
         String categoryEntered = eddingCategory.getText().toString();
         application.getdBbridge().saveCategoriesCostsToDb(categoryEntered);
         eddingCategory.setText("");
@@ -79,8 +80,8 @@ public class CategoriesActivity extends GenericActivity {
     }
 
     private void switchRadioButtonCondition() {
-        if (CostsCategoryRadioButton.isChecked() == true) {
-            saveCategory();
+        if (CostsCategoryRadioButton.isChecked()) {
+            saveCategoryCost();
         }else {
             saveCategoryIncome();
         }

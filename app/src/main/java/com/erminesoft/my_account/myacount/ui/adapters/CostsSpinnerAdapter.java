@@ -35,7 +35,7 @@ public class CostsSpinnerAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         SpinnerCostsHolder spinnerCostsHolder = (SpinnerCostsHolder)view.getTag();
 
-        int spinnerCategoryIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME);
+        int spinnerCategoryIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME_COST);
         spinnerCostsHolder.spinnerItem.setText(cursor.getString(spinnerCategoryIndex));
     }
 
