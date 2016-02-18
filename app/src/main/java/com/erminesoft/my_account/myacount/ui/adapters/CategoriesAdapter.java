@@ -12,10 +12,10 @@ import android.widget.TextView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 
-public class CategoriesAdapterForIncome extends CursorAdapter {
+public class CategoriesAdapter extends CursorAdapter {
 
     private final LayoutInflater mInflater;
-    public CategoriesAdapterForIncome(Context context, Cursor c, boolean autoRequery) {
+    public CategoriesAdapter(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
 
         mInflater = LayoutInflater.from(context);
@@ -34,7 +34,7 @@ public class CategoriesAdapterForIncome extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         CategoriesHolder categoriesHolder = (CategoriesHolder)view.getTag();
 
-        int categoriesIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME_INCOME);
+        int categoriesIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         categoriesHolder.categoriesGeneral.setText(cursor.getString(categoriesIndex));
     }
 

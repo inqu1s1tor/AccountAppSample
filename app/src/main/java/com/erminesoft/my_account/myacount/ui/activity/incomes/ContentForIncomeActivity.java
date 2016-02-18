@@ -13,7 +13,7 @@ import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 import com.erminesoft.my_account.myacount.ui.activity.CategoriesActivity;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
-import com.erminesoft.my_account.myacount.ui.adapters.IncomeSpinnerAdapter;
+import com.erminesoft.my_account.myacount.ui.adapters.CategorySpinnerAdapter;
 
 public class ContentForIncomeActivity extends GenericActivity {
 
@@ -21,7 +21,7 @@ public class ContentForIncomeActivity extends GenericActivity {
 
     private EditText editTextNameIncome;
     private Spinner spinnerIncome;
-    private IncomeSpinnerAdapter incomeSpinnerAdapter;
+    private CategorySpinnerAdapter incomeSpinnerAdapter;
 
 
     public static void start(Activity activity) {
@@ -36,7 +36,7 @@ public class ContentForIncomeActivity extends GenericActivity {
         editTextNameIncome = (EditText)findViewById(R.id.EditTextNameIncome);
         spinnerIncome = (Spinner)findViewById(R.id.spinnerIncome);
 
-        incomeSpinnerAdapter = new IncomeSpinnerAdapter(this, application.getdBbridge().loadCategories(), true);
+        incomeSpinnerAdapter = new CategorySpinnerAdapter(this, application.getdBbridge().loadIncomeCategories(), true);
         spinnerIncome.setAdapter(incomeSpinnerAdapter);
 
         View.OnClickListener listener = new Clicker();
@@ -47,14 +47,14 @@ public class ContentForIncomeActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        incomeSpinnerAdapter.swapCursor(application.getdBbridge().loadCategories());
+        incomeSpinnerAdapter.swapCursor(application.getdBbridge().loadIncomeCategories());
 
     }
 
     private void extractCategory (Cursor cursor) {
         String categoryEnteredIncome = editTextNameIncome.getText().toString();
 
-        int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_ID);
+        int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
         application.getdBbridge().saveIncomeToDb(categoryId, categoryEnteredIncome);

@@ -10,6 +10,9 @@ import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 
 public final class DbManager implements DBbridge {
 
+    private static final int COST_CATEGORIES_TYPE = 0;
+    private static final int INCOME_CATEGORIES_TYPE = 1;
+
     private final String LOG_TAG = "myLog";
     private final DataBaseHelper baseHelper;
 
@@ -20,7 +23,7 @@ public final class DbManager implements DBbridge {
 
     @Override
      public void saveCostsToDb(int category, String nameText) {
-        ContentValues cv = Mapper.convertCosts(nameText,category);
+        ContentValues cv = Mapper.convertCosts(nameText, category);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_COSTS, null, cv);
     }
 
@@ -31,14 +34,14 @@ public final class DbManager implements DBbridge {
     }
 
     @Override
-    public void saveCategoriesCostsToDb(String categories) {
-        ContentValues cv = Mapper.convertCategoriesCosts(categories);
+    public void saveCategoriesCostsToDb(String categoryName) {
+        ContentValues cv = Mapper.convertCategory(categoryName, COST_CATEGORIES_TYPE);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
     }
 
     @Override
-    public void saveCategoriesIncomeToDb(String categoriesIncome) {
-        ContentValues cv = Mapper.convertCategoriesIncome(categoriesIncome);
+    public void saveCategoriesIncomeToDb(String categoryName) {
+        ContentValues cv = Mapper.convertCategory(categoryName, INCOME_CATEGORIES_TYPE);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
     }
 
@@ -53,8 +56,17 @@ public final class DbManager implements DBbridge {
     }
 
     @Override
-    public Cursor loadCategories() {
-        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_CATEGORIES, null, null, null, null, null, null);
+    public Cursor loadCostsCategories() {
+        String selection = new StringBuilder(DataBaseHelper.CATEGORY_TYPE).append("= ?").toString();
+        String[] args = new String[]{String.valueOf(COST_CATEGORIES_TYPE)};
+        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_CATEGORIES, null, selection, args, null, null, null);
+    }
+
+    @Override
+    public Cursor loadIncomeCategories() {
+        String selection = new StringBuilder(DataBaseHelper.CATEGORY_TYPE).append("= ?").toString();
+        String[] args = new String[]{String.valueOf(INCOME_CATEGORIES_TYPE)};
+        return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_CATEGORIES, null, selection, args, null, null, null);
     }
 }
 

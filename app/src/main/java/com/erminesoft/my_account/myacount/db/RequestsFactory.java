@@ -6,21 +6,21 @@ final class RequestsFactory {
             "SELECT "
                     + DataBaseHelper.TABLE_COSTS + "." + DataBaseHelper.COSTS_NAME + " , "
                     + DataBaseHelper.TABLE_COSTS + "." + DataBaseHelper.COSTS_CATEGORIES + " , "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_NAME_COST + " , "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_TYPE + " , "
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_ID
                     + " FROM " + DataBaseHelper.TABLE_CATEGORIES + "," + DataBaseHelper.TABLE_COSTS
                     + " WHERE "
                     + DataBaseHelper.TABLE_COSTS + "." + DataBaseHelper.COSTS_CATEGORIES + " = "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID;
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_ID;
 
     static final String SELECT_INCOMES_WITH_CATEGORIES =
             "SELECT "
                     + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_NAME + " , "
                     + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_CATEGORIES + " , "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_NAME_INCOME + " , "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_NAME + " , "
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_ID
                     + " FROM " + DataBaseHelper.TABLE_CATEGORIES + "," + DataBaseHelper.TABLE_INCOME
                     + " WHERE "
                     + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_CATEGORIES + " = "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORIES_ID;
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_ID;
 }

@@ -36,7 +36,7 @@ public class CostsAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         CostsHolder costHolder =  (CostsHolder)view.getTag();
 
-        int categoriesCostIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_NAME_COST);
+        int categoriesCostIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_TYPE);
         int nameCostIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_NAME);
 
         costHolder.categoryCosts.setText(cursor.getString(categoriesCostIndex));

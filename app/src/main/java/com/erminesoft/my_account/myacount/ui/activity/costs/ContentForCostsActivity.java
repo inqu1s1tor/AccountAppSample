@@ -12,7 +12,7 @@ import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 import com.erminesoft.my_account.myacount.ui.activity.CategoriesActivity;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
-import com.erminesoft.my_account.myacount.ui.adapters.CostsSpinnerAdapter;
+import com.erminesoft.my_account.myacount.ui.adapters.CategorySpinnerAdapter;
 
 
 
@@ -20,7 +20,7 @@ public class ContentForCostsActivity extends GenericActivity {
 
     private Spinner spinnerCosts;
     private EditText editTextName;
-    private CostsSpinnerAdapter costsSpinnerAdapter;
+    private CategorySpinnerAdapter categorySpinnerAdapter;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, ContentForCostsActivity.class));
@@ -35,8 +35,8 @@ public class ContentForCostsActivity extends GenericActivity {
         editTextName = (EditText) findViewById(R.id.EditTextNameCosts);
         spinnerCosts = (Spinner) findViewById(R.id.spinner);
 
-        costsSpinnerAdapter = new CostsSpinnerAdapter(this, application.getdBbridge().loadCategories(), true);
-        spinnerCosts.setAdapter(costsSpinnerAdapter);
+        categorySpinnerAdapter = new CategorySpinnerAdapter(this, application.getdBbridge().loadCostsCategories(), true);
+        spinnerCosts.setAdapter(categorySpinnerAdapter);
 
         View.OnClickListener listener = new Clicker();
         findViewById(R.id.ButtonConfirmChoice).setOnClickListener(listener);
@@ -46,13 +46,13 @@ public class ContentForCostsActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        costsSpinnerAdapter.swapCursor(application.getdBbridge().loadCategories());
+        categorySpinnerAdapter.swapCursor(application.getdBbridge().loadCostsCategories());
     }
 
     private void extractCategory(Cursor cursor) {
         String nameCostsEntered = editTextName.getText().toString();
 
-        int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORIES_ID);
+        int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
         application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered);

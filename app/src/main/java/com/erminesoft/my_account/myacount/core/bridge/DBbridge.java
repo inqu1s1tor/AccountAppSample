@@ -6,9 +6,13 @@ import android.database.Cursor;
 public interface DBbridge {
     Cursor loadCosts();
     Cursor loadIncome();
-    Cursor loadCategories();
+
+    Cursor loadCostsCategories();
+    Cursor loadIncomeCategories();
+
     void saveCostsToDb(int Categoiries,String fieldNameCosts);
     void saveIncomeToDb(int Categories, String fieldNameIncome);
-    void saveCategoriesCostsToDb(String categories);
-    void saveCategoriesIncomeToDb(String categoriesIncome);
+
+    void saveCategoriesCostsToDb(String categoryName);
+    void saveCategoriesIncomeToDb(String categoryName);
 }

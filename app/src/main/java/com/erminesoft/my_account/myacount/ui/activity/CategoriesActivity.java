@@ -6,19 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.erminesoft.my_account.myacount.R;
-import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapterForCosts;
-import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapterForIncome;
+import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapter;
 
 public class CategoriesActivity extends GenericActivity {
 
     private EditText eddingCategory;
     private ListView listViewCategories;
-    private CategoriesAdapterForCosts categoriesAdapter;
-    private CategoriesAdapterForIncome categoriesAdapterForIncome;
-    private RadioButton CostsCategoryRadioButton;
+    private CategoriesAdapter categoriesAdapter;
+    private RadioGroup radioGroup;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, CategoriesActivity.class));
@@ -29,61 +27,68 @@ public class CategoriesActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_layout);
 
-        eddingCategory = (EditText)findViewById(R.id.editTextCategoryAdding);
-        listViewCategories = (ListView)findViewById(R.id.listViewCategories);
+        eddingCategory = (EditText) findViewById(R.id.editTextCategoryAdding);
+        listViewCategories = (ListView) findViewById(R.id.listViewCategories);
 
         View.OnClickListener listener = new Clicker();
         findViewById(R.id.buttonAddingCategory).setOnClickListener(listener);
 
-        CostsCategoryRadioButton = (RadioButton)findViewById(R.id.CostsCategoryRadioButton);
-        CostsCategoryRadioButton.setOnClickListener(listener);
+        radioGroup = (RadioGroup) findViewById(R.id.CategoryRadioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioListener());
 
-        findViewById(R.id.IncomeCategoryRadioButton).setOnClickListener(listener);
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        categoriesAdapter = new CategoriesAdapterForCosts(this, application.getdBbridge().loadCategories(), true);
-        categoriesAdapterForIncome = new CategoriesAdapterForIncome(this, application.getdBbridge().loadCategories(),true);
-
-        loadStartData();
-    }
-
-    private void startCategoryAdapterForCosts() {
+        categoriesAdapter = new CategoriesAdapter(this, application.getdBbridge().loadCostsCategories(), true);
         listViewCategories.setAdapter(categoriesAdapter);
+
+        radioGroup.check(R.id.CostsCategoryRadioButton);
     }
 
-    private void startCategoryAdapterForIncome() {
-        listViewCategories.setAdapter(categoriesAdapterForIncome);
+    private void fillCategoryAdapterForCosts() {
+        categoriesAdapter.swapCursor(application.getdBbridge().loadCostsCategories());
     }
 
-    private void loadStartData() {
-            categoriesAdapter.swapCursor(application.getdBbridge().loadCategories());
+    private void fillCategoryAdapterForIncome() {
+        categoriesAdapter.swapCursor(application.getdBbridge().loadIncomeCategories());
     }
 
-    private void saveCategoryCost(){
+    private void saveCategoryCost() {
         String categoryEntered = eddingCategory.getText().toString();
         application.getdBbridge().saveCategoriesCostsToDb(categoryEntered);
         eddingCategory.setText("");
-
-        loadStartData();
+        fillCategoryAdapterForCosts();
     }
 
     private void saveCategoryIncome() {
         String categoryIncomeEntered = eddingCategory.getText().toString();
         application.getdBbridge().saveCategoriesIncomeToDb(categoryIncomeEntered);
         eddingCategory.setText("");
-
-        loadStartData();
+        fillCategoryAdapterForIncome();
     }
 
-    private void switchRadioButtonCondition() {
-        if (CostsCategoryRadioButton.isChecked()) {
-            saveCategoryCost();
-        }else {
-            saveCategoryIncome();
+    private void saveNewCategory() {
+        switch (radioGroup.getCheckedRadioButtonId()) {
+            case R.id.CostsCategoryRadioButton:
+                saveCategoryCost();
+                break;
+
+            case R.id.IncomeCategoryRadioButton:
+                saveCategoryIncome();
+                break;
+        }
+    }
+
+    private final class RadioListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            switch (checkedId) {
+                case R.id.CostsCategoryRadioButton:
+                    fillCategoryAdapterForCosts();
+                    break;
+
+                case R.id.IncomeCategoryRadioButton:
+                    fillCategoryAdapterForIncome();
+                    break;
+            }
         }
     }
 
@@ -92,16 +97,9 @@ public class CategoriesActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonAddingCategory:
-                    switchRadioButtonCondition();
+                    saveNewCategory();
                     break;
 
-                case R.id.CostsCategoryRadioButton:
-                     startCategoryAdapterForCosts();
-                    break;
-
-                case R.id.IncomeCategoryRadioButton:
-                    startCategoryAdapterForIncome();
-                    break;
             }
 
         }
