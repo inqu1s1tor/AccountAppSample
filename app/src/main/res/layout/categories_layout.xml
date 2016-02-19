@@ -16,18 +16,19 @@
         <RadioGroup
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/radioGroup">
 
 
             <RadioButton
                 android:id="@+id/CostsCategoryRadioButton"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"/>
+                android:layout_weight="1" />
+
             <RadioButton
                 android:id="@+id/IncomeCategoryRadioButton"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
         </RadioGroup>
@@ -45,13 +46,16 @@
             android:hint="Enter a category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"/>
 
         <Button
             android:id="@+id/buttonAddingCategory"
             android:text="@string/AddingCategoryButton"
             android:layout_width="68dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"/>
+        />
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/listViewCategories"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="100dp" />
     </LinearLayout>
 
 </LinearLayout>

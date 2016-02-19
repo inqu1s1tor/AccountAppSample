@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerIncome"
-            android:layout_weight="0.5">
+            android:layout_weight="0.5"
+            android:spinnerMode="dropdown">
         </Spinner>
 
         <Button
@@ -34,7 +35,7 @@
     <EditText
         android:id="@+id/EditTextNameIncome"
         android:hint="name"
-        android:layout_width="258dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp" />
 
