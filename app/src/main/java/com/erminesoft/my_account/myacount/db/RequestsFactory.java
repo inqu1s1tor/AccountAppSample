@@ -29,8 +29,8 @@ final class RequestsFactory {
 
         static final String SELECT_GENERAL_COSTS_SUM =
                 "SELECT "
-                        + "sum(" + DataBaseHelper.COSTS_SUM + ") "
-                        + "FROM " + DataBaseHelper.TABLE_COSTS;
+                        + "SUM(" + DataBaseHelper.COSTS_SUM + ") AS " + DataBaseHelper.COSTS_SUM
+                        + " FROM " + DataBaseHelper.TABLE_COSTS;
 
         static final String SELECT_GENERAL_INCOME_SUM =
                 "SELECT "
