@@ -29,13 +29,23 @@
     </LinearLayout>
 
 
+
     <EditText
         android:id="@+id/EditTextNameCosts"
         android:hint="name"
-        android:layout_width="258dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
-         />
+        />
+
+    <EditText
+        android:id="@+id/EditTextSumCosts"
+        android:hint="Sum"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        />
 
     <Button
         android:id="@+id/ButtonConfirmChoice"

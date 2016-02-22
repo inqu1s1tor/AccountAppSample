@@ -18,6 +18,12 @@
         android:layout_height="wrap_content"
         android:textSize="24sp">
     </TextView>
+    <TextView
+        android:id="@+id/incomeSumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp">
+    </TextView>
 
 
 </LinearLayout>

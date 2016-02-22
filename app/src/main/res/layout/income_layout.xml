@@ -15,6 +15,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/listViewIncome" />
 
+    <TextView
+        android:id="@+id/empty_list_item_income"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Empty List"
+        android:visibility="gone" />
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

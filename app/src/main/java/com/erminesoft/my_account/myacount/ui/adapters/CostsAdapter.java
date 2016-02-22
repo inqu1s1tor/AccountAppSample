@@ -28,6 +28,7 @@ public class CostsAdapter extends CursorAdapter {
         CostsHolder costHolder = new CostsHolder();
         costHolder.categoryCosts = (TextView)view.findViewById(R.id.costCategoryTextView);
         costHolder.nameCosts = (TextView)view.findViewById(R.id.costNameTextView);
+        //costHolder.sumCost = (TextView)view.findViewById(R.id.costSumTextView);
         view.setTag(costHolder);
         return view ;
     }
@@ -36,16 +37,21 @@ public class CostsAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         CostsHolder costHolder =  (CostsHolder)view.getTag();
 
-        int categoriesCostIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_TYPE);
+        int categoriesCostIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         int nameCostIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_NAME);
+        //nt sumCostIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_SUM);
 
         costHolder.categoryCosts.setText(cursor.getString(categoriesCostIndex));
         costHolder.nameCosts.setText(cursor.getString(nameCostIndex));
+        //double d = cursor.getDouble(sumCostIndex);
+        //String ss = new Double(d).toString();
+        //costHolder.sumCost.setText(ss);
     }
 
 
     private static final class CostsHolder {
         TextView categoryCosts;
         TextView nameCosts;
+        //TextView sumCost;
     }
 }

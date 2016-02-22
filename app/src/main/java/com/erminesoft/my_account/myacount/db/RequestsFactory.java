@@ -6,7 +6,7 @@ final class RequestsFactory {
             "SELECT "
                     + DataBaseHelper.TABLE_COSTS + "." + DataBaseHelper.COSTS_NAME + " , "
                     + DataBaseHelper.TABLE_COSTS + "." + DataBaseHelper.COSTS_CATEGORIES + " , "
-                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_TYPE + " , "
+                    + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_NAME + " , "
                     + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_ID
                     + " FROM " + DataBaseHelper.TABLE_CATEGORIES + "," + DataBaseHelper.TABLE_COSTS
                     + " WHERE "

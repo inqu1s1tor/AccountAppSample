@@ -29,6 +29,7 @@ public class IncomeActivity extends GenericActivity {
         setContentView(R.layout.income_layout);
 
         incomeList = (ListView)findViewById(R.id.listViewIncome);
+        incomeList.setEmptyView(findViewById(R.id.empty_list_item_income));
 
         View.OnClickListener listener  = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);

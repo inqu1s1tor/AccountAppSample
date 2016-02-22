@@ -19,12 +19,15 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String INCOME_ID = "_id";
     public static final String INCOME_NAME = "income_name";
     public static final String INCOME_CATEGORIES = "income_categories";
+    public static final String INCOME_SUM = "income_sum";
+
 
     //table costs
     public static  final String TABLE_COSTS = "costs";
     public static final String COSTS_ID = "_id";
     public static final String COSTS_NAME = "costs_name";
     public static final String COSTS_CATEGORIES = "costs_categories";
+    public static final String COSTS_SUM = "costs_sum";
 
     //table categories
     public static final String TABLE_CATEGORIES = "categories";
@@ -51,6 +54,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_INCOME + " ( "
                 + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + INCOME_NAME + " text, "
+                + INCOME_SUM + " REAL, "
                 + INCOME_CATEGORIES + " INTEGER " + " )";
     }
 
@@ -58,7 +62,8 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_COSTS + " ( "
                 + COSTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COSTS_NAME + " text, "
-                + COSTS_CATEGORIES + " text " + " )";
+                + COSTS_SUM + " REAL, "
+                + COSTS_CATEGORIES + " INTEGER " + " )";
     }
 
     private String buildCategories(){
