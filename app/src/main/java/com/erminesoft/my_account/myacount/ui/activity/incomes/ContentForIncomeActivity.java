@@ -20,6 +20,7 @@ public class ContentForIncomeActivity extends GenericActivity {
 
 
     private EditText editTextNameIncome;
+    private EditText editTextSumIncome;
     private Spinner spinnerIncome;
     private CategorySpinnerAdapter incomeSpinnerAdapter;
 
@@ -35,6 +36,8 @@ public class ContentForIncomeActivity extends GenericActivity {
 
         editTextNameIncome = (EditText)findViewById(R.id.EditTextNameIncome);
         spinnerIncome = (Spinner)findViewById(R.id.spinnerIncome);
+        editTextSumIncome = (EditText)findViewById(R.id.EditTextSumIncome);
+
 
         incomeSpinnerAdapter = new CategorySpinnerAdapter(this, application.getdBbridge().loadIncomeCategories(), true);
         spinnerIncome.setAdapter(incomeSpinnerAdapter);
@@ -53,11 +56,13 @@ public class ContentForIncomeActivity extends GenericActivity {
 
     private void extractCategory (Cursor cursor) {
         String categoryEnteredIncome = editTextNameIncome.getText().toString();
+        Double sumIncomeEntered = Double.parseDouble(editTextSumIncome.getText().toString());
+
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
-        application.getdBbridge().saveIncomeToDb(categoryId, categoryEnteredIncome);
+        application.getdBbridge().saveIncomeToDb(categoryId, categoryEnteredIncome, sumIncomeEntered);
     }
 
 

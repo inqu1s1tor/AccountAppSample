@@ -26,6 +26,7 @@ public class CostsActivity extends GenericActivity {
         setContentView(R.layout.costs_layout);
 
         listViewCosts = (ListView) findViewById(R.id.listViewCosts);
+        listViewCosts.setEmptyView(findViewById(R.id.empty_list_item_costs));
 
         View.OnClickListener listener = new Clicker();
         findViewById(R.id.fab).setOnClickListener(listener);

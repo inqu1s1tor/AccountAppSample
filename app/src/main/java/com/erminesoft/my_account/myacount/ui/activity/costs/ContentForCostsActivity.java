@@ -20,6 +20,7 @@ public class ContentForCostsActivity extends GenericActivity {
 
     private Spinner spinnerCosts;
     private EditText editTextName;
+    private EditText sumCost;
     private CategorySpinnerAdapter categorySpinnerAdapter;
 
     public static void start(Activity activity) {
@@ -34,6 +35,7 @@ public class ContentForCostsActivity extends GenericActivity {
 
         editTextName = (EditText) findViewById(R.id.EditTextNameCosts);
         spinnerCosts = (Spinner) findViewById(R.id.spinner);
+        sumCost = (EditText) findViewById(R.id.EditTextSumCosts);
 
         categorySpinnerAdapter = new CategorySpinnerAdapter(this, application.getdBbridge().loadCostsCategories(), true);
         spinnerCosts.setAdapter(categorySpinnerAdapter);
@@ -51,11 +53,12 @@ public class ContentForCostsActivity extends GenericActivity {
 
     private void extractCategory(Cursor cursor) {
         String nameCostsEntered = editTextName.getText().toString();
+        Double sumCostsEntered = Double.parseDouble(sumCost.getText().toString());
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
-        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered);
+        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered, sumCostsEntered);
     }
 
 
