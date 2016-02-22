@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.activity.costs.CostsActivity;
@@ -11,6 +12,9 @@ import com.erminesoft.my_account.myacount.ui.activity.incomes.IncomeActivity;
 
 
 public class MainActivity extends GenericActivity {
+
+    private TextView generalCostScore;
+    private TextView generalIncomeScore;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, MainActivity.class));
@@ -20,8 +24,10 @@ public class MainActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_layout);
 
-         View.OnClickListener listener = new Clicker();
+        generalCostScore = (TextView)findViewById(R.id.generalSumCostTextView);
+        generalIncomeScore = (TextView)findViewById(R.id.genralSumIncomeTextView);
 
+         View.OnClickListener listener = new Clicker();
         findViewById(R.id.buttonIncome).setOnClickListener(listener);
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
         findViewById(R.id.buttonCategories).setOnClickListener(listener);
