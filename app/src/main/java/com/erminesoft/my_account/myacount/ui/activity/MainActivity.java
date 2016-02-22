@@ -42,12 +42,20 @@ public class MainActivity extends GenericActivity {
         super.onStart();
 
         Cursor cursor = application.getdBbridge().calculateSumCosts();
-        int sum = 0;
+        int sumCost = 0;
         if (cursor.moveToFirst()) {
             int sumIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_SUM);
-            sum = cursor.getInt(sumIndex);
+            sumCost = cursor.getInt(sumIndex);
         }
-        generalCostScore.setText(String.valueOf(sum));
+        generalCostScore.setText(String.valueOf(sumCost));
+
+        Cursor cursorIncome = application.getdBbridge().calulateSumIncome();
+        int sumInc = 0;
+        if (cursorIncome.moveToFirst()) {
+            int sumincomeIndex = cursorIncome.getColumnIndex(DataBaseHelper.INCOME_SUM);
+            sumInc = cursorIncome.getInt(sumincomeIndex);
+        }
+        generalIncomeScore.setText(String.valueOf(sumInc));
     }
 
     private final class Clicker implements View.OnClickListener {

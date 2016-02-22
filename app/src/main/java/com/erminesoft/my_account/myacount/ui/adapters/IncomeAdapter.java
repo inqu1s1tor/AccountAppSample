@@ -27,6 +27,7 @@ public class IncomeAdapter extends CursorAdapter {
         IncomeHolder incomeHolder = new IncomeHolder();
         incomeHolder.nameIncome = (TextView) view.findViewById(R.id.incomeNameTextView);
         incomeHolder.categoryIncome = (TextView)view.findViewById(R.id.incomeCategoryTextView);
+        incomeHolder.sumIncome = (TextView)view.findViewById(R.id.incomeSumTextView);
         view.setTag(incomeHolder);
         return view;
     }
@@ -37,15 +38,17 @@ public class IncomeAdapter extends CursorAdapter {
 
         int categoriesIncomeIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         int nameIncomeIndex = cursor.getColumnIndex(DataBaseHelper.INCOME_NAME);
+        int sumCostIndex = cursor.getColumnIndex(DataBaseHelper.INCOME_SUM);
 
         incomeHolder.categoryIncome.setText(cursor.getString(categoriesIncomeIndex));
         incomeHolder.nameIncome.setText(cursor.getString(nameIncomeIndex));
-
+        incomeHolder.sumIncome.setText(String.valueOf(cursor.getInt(sumCostIndex)));
     }
 
     private static final class IncomeHolder {
         TextView categoryIncome;
         TextView nameIncome;
+        TextView sumIncome;
 
     }
 

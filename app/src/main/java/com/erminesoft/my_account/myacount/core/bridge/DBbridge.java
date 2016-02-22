@@ -7,6 +7,7 @@ public interface DBbridge {
     Cursor loadCosts();
     Cursor loadIncome();
     Cursor calculateSumCosts();
+    Cursor calulateSumIncome();
 
     Cursor loadCostsCategories();
     Cursor loadIncomeCategories();

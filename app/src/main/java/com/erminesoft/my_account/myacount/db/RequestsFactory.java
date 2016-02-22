@@ -34,7 +34,7 @@ final class RequestsFactory {
 
         static final String SELECT_GENERAL_INCOME_SUM =
                 "SELECT "
-                        + "sum(" + DataBaseHelper.INCOME_SUM + ") "
-                        + "FROM " + DataBaseHelper.TABLE_INCOME;
+                        + "SUM(" + DataBaseHelper.INCOME_SUM + ") AS " + DataBaseHelper.INCOME_SUM
+                        + " FROM " + DataBaseHelper.TABLE_INCOME;
 
 }
