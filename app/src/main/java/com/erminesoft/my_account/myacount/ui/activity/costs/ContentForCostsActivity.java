@@ -53,7 +53,7 @@ public class ContentForCostsActivity extends GenericActivity {
 
     private void extractCategory(Cursor cursor) {
         String nameCostsEntered = editTextName.getText().toString();
-        Double sumCostsEntered = Double.parseDouble(sumCost.getText().toString());
+        int sumCostsEntered = Integer.parseInt(sumCost.getText().toString());
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);

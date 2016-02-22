@@ -5,7 +5,7 @@ import android.content.ContentValues;
 
 final class Mapper {
 
-    public static ContentValues convertCosts(String nameText, int category, double sumCost) {
+    public static ContentValues convertCosts(String nameText, int category, int sumCost) {
         ContentValues cv = new ContentValues();
         cv.put(DataBaseHelper.COSTS_CATEGORIES, category);
         cv.put(DataBaseHelper.COSTS_NAME, nameText);
@@ -13,7 +13,7 @@ final class Mapper {
         return cv;
     }
 
-    public static ContentValues convertIncome(String nameText, int category, double sumIncome) {
+    public static ContentValues convertIncome(String nameText, int category, int sumIncome) {
         ContentValues cv = new ContentValues();
         cv.put(DataBaseHelper.INCOME_CATEGORIES, category);
         cv.put(DataBaseHelper.INCOME_NAME, nameText);

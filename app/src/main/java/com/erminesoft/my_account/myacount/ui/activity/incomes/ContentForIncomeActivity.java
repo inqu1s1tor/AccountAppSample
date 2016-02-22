@@ -56,7 +56,7 @@ public class ContentForIncomeActivity extends GenericActivity {
 
     private void extractCategory (Cursor cursor) {
         String categoryEnteredIncome = editTextNameIncome.getText().toString();
-        Double sumIncomeEntered = Double.parseDouble(editTextSumIncome.getText().toString());
+        int sumIncomeEntered = Integer.parseInt(editTextSumIncome.getText().toString());
 
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);

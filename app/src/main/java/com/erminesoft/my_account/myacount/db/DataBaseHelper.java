@@ -54,7 +54,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_INCOME + " ( "
                 + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + INCOME_NAME + " text, "
-                + INCOME_SUM + " REAL, "
+                + INCOME_SUM + " INTEGER, "
                 + INCOME_CATEGORIES + " INTEGER " + " )";
     }
 
@@ -62,7 +62,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_COSTS + " ( "
                 + COSTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COSTS_NAME + " text, "
-                + COSTS_SUM + " REAL, "
+                + COSTS_SUM + " INTEGER, "
                 + COSTS_CATEGORIES + " INTEGER " + " )";
     }
 
