@@ -68,6 +68,12 @@ public final class DbManager implements DBbridge {
         String[] args = new String[]{String.valueOf(INCOME_CATEGORIES_TYPE)};
         return baseHelper.getReadableDatabase().query(DataBaseHelper.TABLE_CATEGORIES, null, selection, args, null, null, null);
     }
+
+    public Cursor calculateSumCosts () {
+        return baseHelper.getReadableDatabase().rawQuery(RequestsFactory.SELECT_GENERAL_COSTS_SUM, new String[0]);
+    }
+
+
 }
 
 

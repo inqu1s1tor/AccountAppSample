@@ -6,6 +6,7 @@ import android.database.Cursor;
 public interface DBbridge {
     Cursor loadCosts();
     Cursor loadIncome();
+    Cursor calculateSumCosts();
 
     Cursor loadCostsCategories();
     Cursor loadIncomeCategories();

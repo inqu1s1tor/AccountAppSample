@@ -18,6 +18,7 @@ final class RequestsFactory {
                 "SELECT "
                         + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_NAME + " , "
                         + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_CATEGORIES + " , "
+                        + DataBaseHelper.TABLE_INCOME + "." + DataBaseHelper.INCOME_SUM + " , "
                         + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_NAME + " , "
                         + DataBaseHelper.TABLE_CATEGORIES + "." + DataBaseHelper.CATEGORY_ID
                         + " FROM " + DataBaseHelper.TABLE_CATEGORIES + "," + DataBaseHelper.TABLE_INCOME
