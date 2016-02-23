@@ -11,9 +11,7 @@ import android.widget.TextView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 
-
-
-public class CostsAdapter extends CursorAdapter {
+public final class CostsAdapter extends CursorAdapter {
 
     private final LayoutInflater mInflater;
 
@@ -26,16 +24,17 @@ public class CostsAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup pViewGroup) {
         View view = mInflater.inflate(R.layout.list_item_cost_details_layout, pViewGroup, false);
         CostsHolder costHolder = new CostsHolder();
-        costHolder.categoryCosts = (TextView)view.findViewById(R.id.costCategoryTextView);
-        costHolder.nameCosts = (TextView)view.findViewById(R.id.costNameTextView);
-        costHolder.sumCost = (TextView)view.findViewById(R.id.costSumTextView);
+
+        costHolder.categoryCosts = (TextView) view.findViewById(R.id.costCategoryTextView);
+        costHolder.nameCosts = (TextView) view.findViewById(R.id.costNameTextView);
+        costHolder.sumCost = (TextView) view.findViewById(R.id.costSumTextView);
         view.setTag(costHolder);
-        return view ;
+        return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        CostsHolder costHolder =  (CostsHolder)view.getTag();
+        CostsHolder costHolder = (CostsHolder) view.getTag();
 
         int categoriesCostIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         int nameCostIndex = cursor.getColumnIndex(DataBaseHelper.COSTS_NAME);
@@ -45,7 +44,6 @@ public class CostsAdapter extends CursorAdapter {
         costHolder.nameCosts.setText(cursor.getString(nameCostIndex));
         costHolder.sumCost.setText(String.valueOf(cursor.getInt(sumCostIndex)));
     }
-
 
     private static final class CostsHolder {
         TextView categoryCosts;

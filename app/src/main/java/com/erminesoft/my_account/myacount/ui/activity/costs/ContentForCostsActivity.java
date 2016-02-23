@@ -16,7 +16,7 @@ import com.erminesoft.my_account.myacount.ui.adapters.CategorySpinnerAdapter;
 
 
 
-public class ContentForCostsActivity extends GenericActivity {
+public final class ContentForCostsActivity extends GenericActivity {
 
     private Spinner spinnerCosts;
     private EditText editTextName;
@@ -34,9 +34,9 @@ public class ContentForCostsActivity extends GenericActivity {
         setContentView(R.layout.content_for_costs_layout);
 
         editTextName = (EditText) findViewById(R.id.EditTextNameCosts);
-        spinnerCosts = (Spinner) findViewById(R.id.spinner);
         sumCost = (EditText) findViewById(R.id.EditTextSumCosts);
 
+        spinnerCosts = (Spinner) findViewById(R.id.spinner);
         categorySpinnerAdapter = new CategorySpinnerAdapter(this, application.getdBbridge().loadCostsCategories(), true);
         spinnerCosts.setAdapter(categorySpinnerAdapter);
 

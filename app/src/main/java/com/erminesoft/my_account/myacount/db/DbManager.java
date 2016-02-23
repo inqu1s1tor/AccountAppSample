@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 
-
 public final class DbManager implements DBbridge {
 
     private static final int COST_CATEGORIES_TYPE = 0;
@@ -22,7 +21,7 @@ public final class DbManager implements DBbridge {
     }
 
     @Override
-     public void saveCostsToDb(int category, String nameText, int sumCost) {
+    public void saveCostsToDb(int category, String nameText, int sumCost) {
         ContentValues cv = Mapper.convertCosts(nameText, category, sumCost);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_COSTS, null, cv);
     }

@@ -21,7 +21,7 @@ public final class NetManagerFacade implements NetBridge {
 
     @Override
     public void doRegistration(String login, String password, MainCallback callback) {
-        debugNetManager.doLogin(login,  password, callback);
+        debugNetManager.doLogin(login, password, callback);
     }
 
     @Override

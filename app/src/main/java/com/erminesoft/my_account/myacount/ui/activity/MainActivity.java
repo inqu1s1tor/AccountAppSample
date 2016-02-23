@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,7 +13,7 @@ import com.erminesoft.my_account.myacount.ui.activity.costs.CostsActivity;
 import com.erminesoft.my_account.myacount.ui.activity.incomes.IncomeActivity;
 
 
-public class MainActivity extends GenericActivity {
+public  final class MainActivity extends GenericActivity {
 
     private TextView generalCostScore;
     private TextView generalIncomeScore;
@@ -40,7 +39,15 @@ public class MainActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        fillStartData();
+    }
 
+    private void fillStartData() {
+        fillCost();
+        fillIncome();
+    }
+
+    private void fillCost() {
         Cursor cursor = application.getdBbridge().calculateSumCosts();
         int sumCost = 0;
         if (cursor.moveToFirst()) {
@@ -48,12 +55,14 @@ public class MainActivity extends GenericActivity {
             sumCost = cursor.getInt(sumIndex);
         }
         generalCostScore.setText(String.valueOf(sumCost));
+    }
 
+    private void fillIncome() {
         Cursor cursorIncome = application.getdBbridge().calulateSumIncome();
         int sumInc = 0;
         if (cursorIncome.moveToFirst()) {
-            int sumincomeIndex = cursorIncome.getColumnIndex(DataBaseHelper.INCOME_SUM);
-            sumInc = cursorIncome.getInt(sumincomeIndex);
+            int sumIndex = cursorIncome.getColumnIndex(DataBaseHelper.INCOME_SUM);
+            sumInc = cursorIncome.getInt(sumIndex);
         }
         generalIncomeScore.setText(String.valueOf(sumInc));
     }

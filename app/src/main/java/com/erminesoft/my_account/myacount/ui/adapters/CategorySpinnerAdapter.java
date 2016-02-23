@@ -12,7 +12,7 @@ import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 
 
-public class CategorySpinnerAdapter extends CursorAdapter {
+public final class CategorySpinnerAdapter extends CursorAdapter {
 
     private final LayoutInflater mInflater;
 
@@ -26,14 +26,14 @@ public class CategorySpinnerAdapter extends CursorAdapter {
         View view = mInflater.inflate(R.layout.spinner_costs_adapter_layout, parent, false);
 
         SpinnerCostsHolder spinnerCostsHolder = new SpinnerCostsHolder();
-        spinnerCostsHolder.spinnerItem = (TextView)view.findViewById(R.id.spinnerCostsItem);
+        spinnerCostsHolder.spinnerItem = (TextView) view.findViewById(R.id.spinnerCostsItem);
         view.setTag(spinnerCostsHolder);
         return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        SpinnerCostsHolder spinnerCostsHolder = (SpinnerCostsHolder)view.getTag();
+        SpinnerCostsHolder spinnerCostsHolder = (SpinnerCostsHolder) view.getTag();
 
         int spinnerCategoryIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         spinnerCostsHolder.spinnerItem.setText(cursor.getString(spinnerCategoryIndex));

@@ -7,14 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 
+public final class IncomeAdapter extends CursorAdapter {
 
-
-public class IncomeAdapter extends CursorAdapter {
-
-    private final LayoutInflater nLayoutInflater ;
+    private final LayoutInflater nLayoutInflater;
 
     public IncomeAdapter(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
@@ -26,15 +25,15 @@ public class IncomeAdapter extends CursorAdapter {
         View view = nLayoutInflater.inflate(R.layout.list_item_income_details_layout, pViewGroup, false);
         IncomeHolder incomeHolder = new IncomeHolder();
         incomeHolder.nameIncome = (TextView) view.findViewById(R.id.incomeNameTextView);
-        incomeHolder.categoryIncome = (TextView)view.findViewById(R.id.incomeCategoryTextView);
-        incomeHolder.sumIncome = (TextView)view.findViewById(R.id.incomeSumTextView);
+        incomeHolder.categoryIncome = (TextView) view.findViewById(R.id.incomeCategoryTextView);
+        incomeHolder.sumIncome = (TextView) view.findViewById(R.id.incomeSumTextView);
         view.setTag(incomeHolder);
         return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        IncomeHolder incomeHolder = (IncomeHolder)view.getTag();
+        IncomeHolder incomeHolder = (IncomeHolder) view.getTag();
 
         int categoriesIncomeIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         int nameIncomeIndex = cursor.getColumnIndex(DataBaseHelper.INCOME_NAME);
@@ -49,10 +48,7 @@ public class IncomeAdapter extends CursorAdapter {
         TextView categoryIncome;
         TextView nameIncome;
         TextView sumIncome;
-
     }
-
-
 }
 
 

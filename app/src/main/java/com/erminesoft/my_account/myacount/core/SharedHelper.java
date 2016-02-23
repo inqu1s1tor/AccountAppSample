@@ -16,19 +16,20 @@ public final class SharedHelper {
         preferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
     }
 
-    public void setLogin(String login){
+    public void setLogin(String login) {
         preferences.edit().putString(USER_LOGIN, login).apply();
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         preferences.edit().putString(USER_PASSWORD, password).apply();
     }
 
-    public String getLogin(){
+    public String getLogin() {
         return preferences.getString(USER_LOGIN, "");
     }
 
-    public String getUserPassword(){return preferences.getString(USER_PASSWORD, "");
+    public String getUserPassword() {
+        return preferences.getString(USER_PASSWORD, "");
     }
 
 }

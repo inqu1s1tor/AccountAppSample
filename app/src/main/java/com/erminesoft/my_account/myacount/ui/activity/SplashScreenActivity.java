@@ -1,4 +1,4 @@
-package com.erminesoft.my_account.myacount.ui.activity.authorization;
+package com.erminesoft.my_account.myacount.ui.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,9 +7,9 @@ import android.text.TextUtils;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.core.SharedHelper;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
-import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
+import com.erminesoft.my_account.myacount.ui.activity.authorization.AuthActivity;
 
-public class SplashScreenActivity extends GenericActivity {
+public final class SplashScreenActivity extends GenericActivity {
 
     private static final int WORK_TIME = 5000;
 
@@ -31,7 +31,7 @@ public class SplashScreenActivity extends GenericActivity {
         String login = sharedHelper.getLogin();
 
         if (TextUtils.isEmpty(login)) {
-            AuthActivity.start(SplashScreenActivity.this);
+            AuthActivity.start(this);
             finish();
         } else {
             String password = sharedHelper.getUserPassword();
@@ -43,7 +43,7 @@ public class SplashScreenActivity extends GenericActivity {
     private final class NetListener extends SimpleMainCallback {
         @Override
         public void onSuccess() {
-            AuthActivity.start(SplashScreenActivity.this);
+            MainActivity.start(SplashScreenActivity.this);
             finish();
             dismissProgressDialog();
         }
@@ -51,7 +51,7 @@ public class SplashScreenActivity extends GenericActivity {
         @Override
         public void onError(String error) {
             dismissProgressDialog();
-            showSrotToast(error);
+            showShortToast(error);
         }
     }
 }

@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapter;
 
-public class CategoriesActivity extends GenericActivity {
+public final class CategoriesActivity extends GenericActivity {
 
     private EditText eddingCategory;
     private ListView listViewCategories;

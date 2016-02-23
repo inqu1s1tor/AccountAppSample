@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-
 public final class DataBaseHelper extends SQLiteOpenHelper {
 
     final String LOG_TAG = "myLog";
@@ -15,7 +14,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 2;
 
     //table income
-    public static  final String TABLE_INCOME = "income";
+    public static final String TABLE_INCOME = "income";
     public static final String INCOME_ID = "_id";
     public static final String INCOME_NAME = "income_name";
     public static final String INCOME_CATEGORIES = "income_categories";
@@ -23,7 +22,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
 
 
     //table costs
-    public static  final String TABLE_COSTS = "costs";
+    public static final String TABLE_COSTS = "costs";
     public static final String COSTS_ID = "_id";
     public static final String COSTS_NAME = "costs_name";
     public static final String COSTS_CATEGORIES = "costs_categories";
@@ -50,7 +49,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(buildCategories());
     }
 
-    private String buildIncomes(){
+    private String buildIncomes() {
         return "CREATE TABLE " + TABLE_INCOME + " ( "
                 + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + INCOME_NAME + " text, "
@@ -58,7 +57,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 + INCOME_CATEGORIES + " INTEGER " + " )";
     }
 
-    private String buildCosts(){
+    private String buildCosts() {
         return "CREATE TABLE " + TABLE_COSTS + " ( "
                 + COSTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COSTS_NAME + " text, "
@@ -66,7 +65,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 + COSTS_CATEGORIES + " INTEGER " + " )";
     }
 
-    private String buildCategories(){
+    private String buildCategories() {
         return "CREATE TABLE " + TABLE_CATEGORIES + " ( "
                 + CATEGORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CATEGORY_NAME + " text, "

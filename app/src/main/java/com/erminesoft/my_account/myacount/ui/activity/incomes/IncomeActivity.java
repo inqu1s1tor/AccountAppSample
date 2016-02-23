@@ -2,17 +2,15 @@ package com.erminesoft.my_account.myacount.ui.activity.incomes;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.adapters.IncomeAdapter;
 
-public class IncomeActivity extends GenericActivity {
+public final class IncomeActivity extends GenericActivity {
 
 
     public static void start(Activity activity) {

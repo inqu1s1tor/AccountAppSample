@@ -3,7 +3,6 @@ package com.erminesoft.my_account.myacount.ui.activity.authorization;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,8 +11,7 @@ import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.activity.MainActivity;
 
-
-public class AuthActivity extends GenericActivity {
+public final class AuthActivity extends GenericActivity {
 
     private EditText password;
     private EditText userName;
@@ -37,11 +35,13 @@ public class AuthActivity extends GenericActivity {
     }
 
     public void signIn() {
+        //TODO Need validation
         application.getNetBridge().doLogin(password.getText().toString(),
                 userName.getText().toString(), new NetListener());
     }
 
     public void signUp() {
+        //TODO Need validation
         application.getNetBridge().doRegistration(password.getText().toString(),
                 userName.getText().toString(), new NetListener());
     }
@@ -72,7 +72,6 @@ public class AuthActivity extends GenericActivity {
             }
         }
     }
-
 
 
 }

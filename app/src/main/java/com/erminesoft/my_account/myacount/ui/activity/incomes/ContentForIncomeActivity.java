@@ -15,15 +15,12 @@ import com.erminesoft.my_account.myacount.ui.activity.CategoriesActivity;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.adapters.CategorySpinnerAdapter;
 
-public class ContentForIncomeActivity extends GenericActivity {
-
-
+public final class ContentForIncomeActivity extends GenericActivity {
 
     private EditText editTextNameIncome;
     private EditText editTextSumIncome;
     private Spinner spinnerIncome;
     private CategorySpinnerAdapter incomeSpinnerAdapter;
-
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, ContentForIncomeActivity.class));
@@ -34,11 +31,10 @@ public class ContentForIncomeActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_for_income_layout);
 
-        editTextNameIncome = (EditText)findViewById(R.id.EditTextNameIncome);
-        spinnerIncome = (Spinner)findViewById(R.id.spinnerIncome);
-        editTextSumIncome = (EditText)findViewById(R.id.EditTextSumIncome);
+        editTextNameIncome = (EditText) findViewById(R.id.EditTextNameIncome);
+        editTextSumIncome = (EditText) findViewById(R.id.EditTextSumIncome);
 
-
+        spinnerIncome = (Spinner) findViewById(R.id.spinnerIncome);
         incomeSpinnerAdapter = new CategorySpinnerAdapter(this, application.getdBbridge().loadIncomeCategories(), true);
         spinnerIncome.setAdapter(incomeSpinnerAdapter);
 
@@ -51,13 +47,11 @@ public class ContentForIncomeActivity extends GenericActivity {
     protected void onStart() {
         super.onStart();
         incomeSpinnerAdapter.swapCursor(application.getdBbridge().loadIncomeCategories());
-
     }
 
-    private void extractCategory (Cursor cursor) {
+    private void extractCategory(Cursor cursor) {
         String categoryEnteredIncome = editTextNameIncome.getText().toString();
         int sumIncomeEntered = Integer.parseInt(editTextSumIncome.getText().toString());
-
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
@@ -71,9 +65,10 @@ public class ContentForIncomeActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.ButtonConfirmChoiceIncome:
-                    extractCategory((Cursor)spinnerIncome.getSelectedItem());
+                    extractCategory((Cursor) spinnerIncome.getSelectedItem());
                     finish();
                     break;
+
                 case R.id.transferToCategoryFromIncome:
                     CategoriesActivity.start(ContentForIncomeActivity.this);
                     break;
