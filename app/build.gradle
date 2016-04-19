@@ -15,6 +15,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BACKENDLESS_APP_ID", "\"AD26B8BF-457A-1C54-FFC3-3875D8D82900\""
+            buildConfigField "String", "BACKENDLESS_KEY", "\"AF2DDD64-3345-80C5-FFF4-F119D766B400\""
+        }
+
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+
+            minifyEnabled false
+            debuggable true
+
+            buildConfigField "String", "BACKENDLESS_APP_ID", "\"AD26B8BF-457A-1C54-FFC3-3875D8D82900\""
+            buildConfigField "String", "BACKENDLESS_KEY", "\"AF2DDD64-3345-80C5-FFF4-F119D766B400\""
         }
     }
 }
@@ -24,4 +38,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile 'com.backendless:backendless:3.0.11'
 }

@@ -3,20 +3,30 @@ package com.erminesoft.my_account.myacount.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.core.AAplication;
+import com.erminesoft.my_account.myacount.core.bridge.ActivityBridge;
+import com.erminesoft.my_account.myacount.ui.FragmentLauncher;
 import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapter;
+import com.erminesoft.my_account.myacount.ui.fragments.CategoryCostsFragment;
+import com.erminesoft.my_account.myacount.ui.fragments.CategoryIncomesFragment;
+import com.erminesoft.my_account.myacount.ui.fragments.GenericFragment;
 
-public final class CategoriesActivity extends GenericActivity {
+public class CategoriesActivity extends GenericActivity implements ActivityBridge  {
+    private TabLayout mTabLayout;
+    private FragmentLauncher fragmentLauncher;
+    private AAplication application;
 
-    private EditText eddingCategory;
-    private ListView listViewCategories;
-    private CategoriesAdapter categoriesAdapter;
-    private RadioGroup radioGroup;
+    public static final String COSTS_CATEGORY = "Costs";
+    public static final String INCOMES_CATEGORY = "Incomes";
+
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, CategoriesActivity.class));
@@ -27,81 +37,82 @@ public final class CategoriesActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_layout);
 
-        eddingCategory = (EditText) findViewById(R.id.editTextCategoryAdding);
-        listViewCategories = (ListView) findViewById(R.id.listViewCategories);
+        fragmentLauncher = new FragmentLauncher(getSupportFragmentManager());
 
-        View.OnClickListener listener = new Clicker();
-        findViewById(R.id.buttonAddingCategory).setOnClickListener(listener);
+        application = (AAplication)getApplication();
 
-        radioGroup = (RadioGroup) findViewById(R.id.CategoryRadioGroup);
-        radioGroup.setOnCheckedChangeListener(new RadioListener());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        categoriesAdapter = new CategoriesAdapter(this, application.getdBbridge().loadCostsCategories(), true);
-        listViewCategories.setAdapter(categoriesAdapter);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_container);
+        initTabs();
 
-        radioGroup.check(R.id.CostsCategoryRadioButton);
+        mTabLayout.setOnTabSelectedListener(new OnTabSelectedListener());
+
     }
 
-    private void fillCategoryAdapterForCosts() {
-        categoriesAdapter.swapCursor(application.getdBbridge().loadCostsCategories());
-    }
 
-    private void fillCategoryAdapterForIncome() {
-        categoriesAdapter.swapCursor(application.getdBbridge().loadIncomeCategories());
-    }
+    private void initTabs() {
+        String[] tab_names = getResources().getStringArray(R.array.tabs_name);
 
-    private void saveCategoryCost() {
-        String categoryEntered = eddingCategory.getText().toString();
-        application.getdBbridge().saveCategoriesCostsToDb(categoryEntered);
-        eddingCategory.setText("");
-        fillCategoryAdapterForCosts();
-    }
+        TabLayout.Tab tab;
+        for (String name : tab_names) {
+            tab = mTabLayout.newTab();
 
-    private void saveCategoryIncome() {
-        String categoryIncomeEntered = eddingCategory.getText().toString();
-        application.getdBbridge().saveCategoriesIncomeToDb(categoryIncomeEntered);
-        eddingCategory.setText("");
-        fillCategoryAdapterForIncome();
-    }
+            tab.setText(name);
+            boolean setSelected = false;
 
-    private void saveNewCategory() {
-        switch (radioGroup.getCheckedRadioButtonId()) {
-            case R.id.CostsCategoryRadioButton:
-                saveCategoryCost();
-                break;
-
-            case R.id.IncomeCategoryRadioButton:
-                saveCategoryIncome();
-                break;
-        }
-    }
-
-    private final class RadioListener implements RadioGroup.OnCheckedChangeListener {
-
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId) {
-                case R.id.CostsCategoryRadioButton:
-                    fillCategoryAdapterForCosts();
-                    break;
-
-                case R.id.IncomeCategoryRadioButton:
-                    fillCategoryAdapterForIncome();
-                    break;
+            if (name.equals("Costs")) {
+                setSelected = true;
+                fragmentLauncher.launchCategoryCostsFragment();
             }
+
+            mTabLayout.addTab(tab, setSelected);
         }
     }
 
-    private final class Clicker implements View.OnClickListener {
+    @Override
+    public AAplication getUApplication() {
+        return application;
+    }
+
+    @Override
+    public FragmentLauncher getFragmentLauncher() {
+        return fragmentLauncher;
+    }
+
+
+    private final class OnTabSelectedListener implements TabLayout.OnTabSelectedListener {
+
         @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.buttonAddingCategory:
-                    saveNewCategory();
+        public void onTabSelected(TabLayout.Tab tab) {
+            Log.d("Mylog", "position " + tab.getText());
+
+            switch (tab.getText().toString()) {
+                case COSTS_CATEGORY:
+                    fragmentLauncher.launchCategoryCostsFragment();
+                    break;
+
+                case INCOMES_CATEGORY:
+                    fragmentLauncher.launchCategoryIncomesFragment();
                     break;
 
             }
 
         }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
+
+        }
+
+
     }
+
 }
+

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RegistrationForm</string>
+    <string name="app_name">MyAccount</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -43,6 +43,12 @@
         R.mipmap.ic_launcher
         R.mipmap.ic_launcher
         R.mipmap.ic_launcher
+    </string-array>
+
+    <string-array name="tabs_name">
+        <item>Costs</item>
+        <item>Incomes</item>
+
     </string-array>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="CategoryDeclaration">Category</string>

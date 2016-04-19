@@ -3,11 +3,14 @@ package com.erminesoft.my_account.myacount.ui.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.erminesoft.my_account.myacount.core.AAplication;
+import com.erminesoft.my_account.myacount.core.bridge.ActivityBridge;
 
-public abstract class GenericActivity extends Activity {
+public abstract class GenericActivity extends AppCompatActivity {
 
     protected AAplication application;
     private ProgressDialog progressDialog;
@@ -36,11 +39,11 @@ public abstract class GenericActivity extends Activity {
         }
     }
 
-    protected void showShortToast(int resId) {
-        showShortToast(getString(resId));
+    protected void showSrotToast(int resId) {
+        showSrotToast(getString(resId));
     }
 
-    protected void showShortToast(String contentString) {
+    protected void showSrotToast(String contentString) {
         Toast.makeText(this, contentString, Toast.LENGTH_SHORT).show();
     }
 }
