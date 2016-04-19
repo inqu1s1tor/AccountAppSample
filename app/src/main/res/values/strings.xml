@@ -54,4 +54,5 @@
     <string name="incomeNameText">Name</string>
     <string name="AddingCategoryButton">ADD</string>
     <string name="spinner_title">SpinnerCostsTitle</string>
+    <string name="enter_category_name">Enter category name</string>
 </resources>
