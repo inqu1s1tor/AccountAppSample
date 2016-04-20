@@ -61,4 +61,8 @@
     <string name="AddingCategoryButton">ADD</string>
     <string name="spinner_title">SpinnerCostsTitle</string>
     <string name="enter_category_name">Enter category name</string>
+    <string name="reg_password">Password</string>
+    <string name="reg_login">Login</string>
+    <string name="sign_login_hint">Login</string>
+    <string name="sign_in_password_hint">Password</string>
 </resources>

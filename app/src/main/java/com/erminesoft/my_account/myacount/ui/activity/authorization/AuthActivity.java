@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -31,37 +30,27 @@ public class AuthActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authorizatoin_layout);
 
-        userName = (EditText) findViewById(R.id.editTextLogin);
-        password = (EditText) findViewById(R.id.editTextPassword);
+        userName = (EditText) findViewById(R.id.sign_in_login_et);
+        password = (EditText) findViewById(R.id.sign_in_password_et);
 
-        mLoginWrap = (TextInputLayout) findViewById(R.id.login_wrap);
-        mPasswordWrap = (TextInputLayout) findViewById(R.id.password_wrap);
+        mLoginWrap = (TextInputLayout) findViewById(R.id.sign_in_login_wrap);
+        mPasswordWrap = (TextInputLayout) findViewById(R.id.sign_in_password_wrap);
 
         View.OnClickListener listener = new Clicker();
 
         findViewById(R.id.buttonSignIn).setOnClickListener(listener);
-        findViewById(R.id.buttonSignUp).setOnClickListener(listener);
+        findViewById(R.id.buttonTransferSignUp).setOnClickListener(listener);
     }
 
     public void signIn() {
         String userLoginEntered = String.valueOf(userName.getText());
         String userPasswordEntered = String.valueOf(password.getText());
         if(Validator.validationFiels(userLoginEntered, userPasswordEntered, mLoginWrap, mPasswordWrap)){
-            application.getNetBridge().doLogin(userLoginEntered,
-                    userPasswordEntered, new NetListener());
+
         }
 
     }
 
-    public void signUp() {
-        String userLoginEntered = String.valueOf(userName.getText());
-        String userPasswordEntered = String.valueOf(password.getText());
-        if (Validator.validationFiels(userLoginEntered, userPasswordEntered,mLoginWrap, mPasswordWrap)){
-            application.getNetBridge().doRegistration(userLoginEntered,
-                    userPasswordEntered, new NetListener());
-        }
-
-    }
 
     private final class NetListener extends SimpleMainCallback {
         @Override
@@ -83,8 +72,8 @@ public class AuthActivity extends GenericActivity {
                 case R.id.buttonSignIn:
                     signIn();
                     break;
-                case R.id.buttonSignUp:
-                    signUp();
+                case R.id.buttonTransferSignUp:
+                    RegistrationActivity.start(AuthActivity.this);
                     break;
             }
         }

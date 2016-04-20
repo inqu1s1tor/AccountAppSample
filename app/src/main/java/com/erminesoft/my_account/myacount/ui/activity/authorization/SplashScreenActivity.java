@@ -35,7 +35,7 @@ public class SplashScreenActivity extends GenericActivity {
             finish();
         } else {
             String password = sharedHelper.getUserPassword();
-            application.getNetBridge().doLogin(login, password, new NetListener());
+            application.getNetBridge().logInUser(login, password, new NetListener());
             showProgressDialog();
         }
     }
