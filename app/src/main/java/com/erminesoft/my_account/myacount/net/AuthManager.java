@@ -44,6 +44,7 @@ final class AuthManager {
             public void handleResponse(BackendlessUser registeredUser) {
                 sharedHelper.setLogin(registeredUser.getProperty("name").toString());
                 sharedHelper.setPassword(password);
+                callback.onSuccess();
             }
 
             public void handleFault(BackendlessFault fault) {

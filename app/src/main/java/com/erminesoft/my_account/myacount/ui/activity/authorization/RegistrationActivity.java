@@ -53,8 +53,8 @@ public class RegistrationActivity extends GenericActivity {
         String userLoginEntered = String.valueOf(userName.getText());
         String userPasswordEntered = String.valueOf(password.getText());
         if (Validator.validationFiels(userLoginEntered, userPasswordEntered,mLoginWrap, mPasswordWrap)){
+            showProgressDialog();
             application.getNetBridge().registrationUser(buildUser(userLoginEntered, userPasswordEntered), new NetListener());
-            MainActivity.start(RegistrationActivity.this);
         }
 
     }
@@ -63,8 +63,8 @@ public class RegistrationActivity extends GenericActivity {
         @Override
         public void onSuccess() {
             Log.d("MyLog", "Success registration");
-            finish();
-
+//            showProgressDialog();
+            MainActivity.start(RegistrationActivity.this);
         }
 
         @Override
