@@ -26,6 +26,7 @@ final class AuthManager {
 
         Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
             public void handleResponse(BackendlessUser registeredUser) {
+
                 String login = registeredUser.getProperty("name").toString();
                 String password = registeredUser.getPassword();
                 logInUser(login, password, mainCallback);
@@ -42,6 +43,7 @@ final class AuthManager {
 
         Backendless.UserService.login(login, password, new AsyncCallback<BackendlessUser>() {
             public void handleResponse(BackendlessUser registeredUser) {
+
                 sharedHelper.setLogin(registeredUser.getProperty("name").toString());
                 sharedHelper.setPassword(password);
                 callback.onSuccess();

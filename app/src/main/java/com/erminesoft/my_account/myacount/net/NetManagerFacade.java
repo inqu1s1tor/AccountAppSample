@@ -37,7 +37,8 @@ public final class NetManagerFacade implements NetBridge {
 
 
     @Override
-    public void registrationUser(BackendlessUser user, MainCallback mainCallback) {
+    public void registrationUser(String login, String password, MainCallback mainCallback) {
+        BackendlessUser user = buildUser(login, password);
         authManager.registrationUser(user, mainCallback);
     }
 
@@ -50,5 +51,12 @@ public final class NetManagerFacade implements NetBridge {
     @Override
     public void updateCost(int cost, MainCallback mainCallback) {
 
+    }
+
+    private BackendlessUser buildUser(String login, String password) {
+        BackendlessUser user = new BackendlessUser();
+        user.setProperty("name", login);
+        user.setPassword(password);
+        return user;
     }
 }

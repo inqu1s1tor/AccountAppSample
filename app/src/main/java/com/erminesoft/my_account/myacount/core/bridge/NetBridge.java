@@ -8,7 +8,7 @@ public interface NetBridge {
    /* void doLogin(String login, String password, MainCallback callback);
     void doRegistration(String login, String password, MainCallback callback);*/
 
-    void registrationUser(BackendlessUser user, MainCallback mainCallback);
+    void registrationUser(String login, String password, MainCallback mainCallback);
     void logInUser(String login, String password, MainCallback mainCallback);
     void updateCost(int cost, MainCallback mainCallback);
 }
