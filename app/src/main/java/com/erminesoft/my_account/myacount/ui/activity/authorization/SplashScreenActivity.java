@@ -38,19 +38,28 @@ public class SplashScreenActivity extends GenericActivity {
         if (TextUtils.isEmpty(login)) {
             AuthActivity.start(SplashScreenActivity.this);
             finish();
-        } else {
-            String password = sharedHelper.getUserPassword();
+            return;
+        }
+
+
+        String password = sharedHelper.getUserPassword();
+        if (SystemUtil.isNetworkConnected(this)) {
             application.getNetBridge().logInUser(login, password, new NetListener());
             showProgressDialog();
+        } else {
+            AuthActivity.start(SplashScreenActivity.this);
+            finish();
         }
+
     }
 
     private final class NetListener extends SimpleMainCallback {
         @Override
         public void onSuccess() {
+            dismissProgressDialog();
             MainActivity.start(SplashScreenActivity.this);
             finish();
-            dismissProgressDialog();
+
         }
 
         @Override
