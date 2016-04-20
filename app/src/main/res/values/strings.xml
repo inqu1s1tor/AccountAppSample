@@ -65,4 +65,6 @@
     <string name="reg_login">Login</string>
     <string name="sign_login_hint">Login</string>
     <string name="sign_in_password_hint">Password</string>
+    <string name="registration_failed_error">Registration failed</string>
+    <string name="invalid_data">Invalid data</string>
 </resources>

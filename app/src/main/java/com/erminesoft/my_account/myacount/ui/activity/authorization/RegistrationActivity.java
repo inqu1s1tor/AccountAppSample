@@ -44,6 +44,8 @@ public class RegistrationActivity extends GenericActivity {
         if (Validator.validationFiels(userLoginEntered, userPasswordEntered, mLoginWrap, mPasswordWrap)) {
             showProgressDialog();
             application.getNetBridge().registrationUser(userLoginEntered, userPasswordEntered, new NetListener());
+        }else {
+            showSrotToast("Invalid data");
         }
 
     }
@@ -52,12 +54,16 @@ public class RegistrationActivity extends GenericActivity {
         @Override
         public void onSuccess() {
             Log.d("MyLog", "Success registration");
-//            showProgressDialog();
+            dismissProgressDialog();
             MainActivity.start(RegistrationActivity.this);
+            finish();
         }
 
         @Override
         public void onError(String error) {
+            Log.d("Mylog", "error registration");
+            dismissProgressDialog();
+            showSrotToast(getString(R.string.registration_failed_error));
         }
     }
 

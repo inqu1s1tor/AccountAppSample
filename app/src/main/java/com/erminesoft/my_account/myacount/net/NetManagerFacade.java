@@ -12,12 +12,10 @@ import com.erminesoft.my_account.myacount.core.callback.MainCallback;
 
 public final class NetManagerFacade implements NetBridge {
 
-    private final DebugNetManager debugNetManager;
     private final AuthManager authManager;
 
     public NetManagerFacade(Context context, SharedHelper sharedHelper, DBbridge dBbridge) {
         initBackendLess(context);
-        debugNetManager = new DebugNetManager(sharedHelper);
         authManager = new AuthManager(sharedHelper, dBbridge);
     }
 
@@ -45,7 +43,11 @@ public final class NetManagerFacade implements NetBridge {
     @Override
     public void logInUser(String login, String password, MainCallback mainCallback) {
         authManager.logInUser(login, password, mainCallback);
+    }
 
+    @Override
+    public void autoLogin(MainCallback mainCallback) {
+        authManager.autoLogin(mainCallback);
     }
 
     @Override

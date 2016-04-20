@@ -1,12 +1,8 @@
 package com.erminesoft.my_account.myacount.util;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
 import android.text.TextUtils;
 
-import com.erminesoft.my_account.myacount.R;
 
 
 public final class Validator {

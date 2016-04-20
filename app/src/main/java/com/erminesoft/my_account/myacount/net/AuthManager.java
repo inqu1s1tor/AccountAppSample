@@ -1,5 +1,6 @@
 package com.erminesoft.my_account.myacount.net;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.backendless.Backendless;
@@ -54,5 +55,17 @@ final class AuthManager {
                 Log.d("logInUser", "fault = " + fault.toString());
             }
         });
+    }
+
+    void autoLogin(MainCallback callback){
+        String login = sharedHelper.getLogin();
+        String password = sharedHelper.getUserPassword();
+
+        if(TextUtils.isEmpty(login) || TextUtils.isEmpty(password)){
+            callback.onError("Empty Login and/or passwd ");
+            return;
+        }
+
+        logInUser(login, password, callback);
     }
 }

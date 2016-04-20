@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.erminesoft.my_account.myacount.R;
+import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 import com.erminesoft.my_account.myacount.ui.activity.costs.CostsActivity;
 import com.erminesoft.my_account.myacount.ui.activity.incomes.IncomeActivity;
+
+import java.util.List;
 
 
 public  final class MainActivity extends GenericActivity {
@@ -34,6 +38,8 @@ public  final class MainActivity extends GenericActivity {
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
         findViewById(R.id.buttonCategories).setOnClickListener(listener);
 
+        application.getNetBridge().autoLogin(new NetCallback());
+
     }
 
     @Override
@@ -46,6 +52,7 @@ public  final class MainActivity extends GenericActivity {
         fillCost();
         fillIncome();
     }
+
 
     private void fillCost() {
         Cursor cursor = application.getdBbridge().calculateSumCosts();
@@ -66,6 +73,20 @@ public  final class MainActivity extends GenericActivity {
         }
         generalIncomeScore.setText(String.valueOf(sumInc));
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
+    private final class NetCallback extends SimpleMainCallback {
+        @Override
+        public void onSuccess() {
+            Log.d("MyLog", "autoLogin success");
+            super.onSuccess();
+        }
+    }
+
+
 
     private final class Clicker implements View.OnClickListener {
         @Override

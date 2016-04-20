@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -42,11 +43,14 @@ public class AuthActivity extends GenericActivity {
         findViewById(R.id.buttonTransferSignUp).setOnClickListener(listener);
     }
 
-    public void signIn() {
+    public void buttonSignInPressed() {
         String userLoginEntered = String.valueOf(userName.getText());
         String userPasswordEntered = String.valueOf(password.getText());
         if(Validator.validationFiels(userLoginEntered, userPasswordEntered, mLoginWrap, mPasswordWrap)){
-
+            showProgressDialog();
+            application.getNetBridge().logInUser(userLoginEntered, userPasswordEntered, new NetListener());
+        }else {
+            showSrotToast(getString(R.string.invalid_data));
         }
 
     }
@@ -55,12 +59,16 @@ public class AuthActivity extends GenericActivity {
     private final class NetListener extends SimpleMainCallback {
         @Override
         public void onSuccess() {
+            Log.d("MyLog", "success login");
             MainActivity.start(AuthActivity.this);
             finish();
+            dismissProgressDialog();
         }
 
         @Override
         public void onError(String error) {
+            Log.d("MyLog", "error login");
+            dismissProgressDialog();
         }
     }
 
@@ -70,7 +78,7 @@ public class AuthActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonSignIn:
-                    signIn();
+                    buttonSignInPressed();
                     break;
                 case R.id.buttonTransferSignUp:
                     RegistrationActivity.start(AuthActivity.this);
