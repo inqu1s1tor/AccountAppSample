@@ -1,7 +1,5 @@
 package com.erminesoft.my_account.myacount.net;
 
-import android.util.Log;
-
 import com.backendless.Backendless;
 import com.backendless.DataPermission;
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
@@ -18,19 +16,12 @@ final class BoltsManager {
         this.dbBridge = dbBridge;
     }
 
-    Category addNewCategory(Category category) {
-        try {
-            category = Backendless.Persistence.save(category);
-            if (category != null) {
-                DataPermission.FIND.grantForAllRoles(category);
-//                dbBridge.saveEvent(category);
-                return category;
-            } else {
-                return null;
-            }
-        } catch (RuntimeException e) {
-            Log.d("addNewCategory", "!RuntimeException = " + e.getMessage());
-            return null;
+    void addNewCategory(Category category) {
+        category = Backendless.Persistence.save(category);
+
+        if (category != null) {
+            DataPermission.FIND.grantForAllRoles(category);
+            dbBridge.saveCategoryToDb(category);
         }
     }
 }

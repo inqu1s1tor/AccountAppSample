@@ -2,6 +2,8 @@ package com.erminesoft.my_account.myacount.db;
 
 import android.content.ContentValues;
 
+import com.erminesoft.my_account.myacount.model.Category;
+
 
 final class Mapper {
 
@@ -25,6 +27,13 @@ final class Mapper {
         ContentValues cv = new ContentValues();
         cv.put(DataBaseHelper.CATEGORY_NAME, categoryName);
         cv.put(DataBaseHelper.CATEGORY_TYPE, categoryType);
+        return cv;
+    }
+
+    public static ContentValues convertCategory(Category category) {
+        ContentValues cv = new ContentValues();
+        cv.put(DataBaseHelper.CATEGORY_NAME, category.getCategoryName());
+        cv.put(DataBaseHelper.CATEGORY_TYPE, category.getCategoryType());
         return cv;
     }
 }

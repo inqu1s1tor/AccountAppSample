@@ -32,7 +32,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String CATEGORY_ID = "_id";
     public static final String CATEGORY_TYPE = "categories_name";
     public static final String CATEGORY_NAME = "categories_name_income";
-
+    public static final String CATEGORY_IS_SYNC = "is_sync";
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -68,6 +68,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_CATEGORIES + " ( "
                 + CATEGORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CATEGORY_NAME + " text, "
+                + CATEGORY_IS_SYNC + " INTEGER "
                 + CATEGORY_TYPE + " INTEGER " + " )";
     }
 
