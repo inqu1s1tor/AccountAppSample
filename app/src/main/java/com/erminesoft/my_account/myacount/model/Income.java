@@ -4,6 +4,7 @@ package com.erminesoft.my_account.myacount.model;
  * Created by Aleks on 21.04.2016.
  */
 public class Income {
+    private String ownerId;
     private int incomeId;
     private int sumIncomeId;
     private String incomeName;
@@ -39,6 +40,14 @@ public class Income {
 
     public void setIncomeCategory(String incomeCategory) {
         this.incomeCategory = incomeCategory;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
 

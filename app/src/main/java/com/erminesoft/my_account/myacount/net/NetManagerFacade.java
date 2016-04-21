@@ -9,29 +9,22 @@ import com.erminesoft.my_account.myacount.core.SharedHelper;
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.core.bridge.NetBridge;
 import com.erminesoft.my_account.myacount.core.callback.MainCallback;
+import com.erminesoft.my_account.myacount.model.Category;
 
 public final class NetManagerFacade implements NetBridge {
 
     private final AuthManager authManager;
+    private BoltsManager boltsManager;
 
     public NetManagerFacade(Context context, SharedHelper sharedHelper, DBbridge dBbridge) {
         initBackendLess(context);
         authManager = new AuthManager(sharedHelper, dBbridge);
+        boltsManager = new BoltsManager(dBbridge);
     }
 
     private void initBackendLess(Context context) {
         Backendless.initApp(context, BuildConfig.BACKENDLESS_APP_ID, BuildConfig.BACKENDLESS_KEY, "v1");
     }
-
-  /*  @Override
-    public void doLogin(String login, String password, MainCallback callback) {
-        debugNetManager.doLogin(login, password, callback);
-    }
-
-    @Override
-    public void doRegistration(String login, String password, MainCallback callback) {
-        debugNetManager.doLogin(login, password, callback);
-    }*/
 
 
     @Override
@@ -48,6 +41,11 @@ public final class NetManagerFacade implements NetBridge {
     @Override
     public void autoLogin(MainCallback mainCallback) {
         authManager.autoLogin(mainCallback);
+    }
+
+    @Override
+    public Category addNewCategory(Category category) {
+        return null;
     }
 
     @Override

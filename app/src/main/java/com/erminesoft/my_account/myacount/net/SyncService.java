@@ -3,11 +3,16 @@ package com.erminesoft.my_account.myacount.net;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.AAplication;
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.core.bridge.NetBridge;
+import com.erminesoft.my_account.myacount.model.Category;
+import com.erminesoft.my_account.myacount.util.CategoryMapper;
+
+import java.util.List;
 
 public final class SyncService extends IntentService {
 
@@ -27,12 +32,6 @@ public final class SyncService extends IntentService {
         context.startService(intent);
     }
 
-    private void initModules() {
-        AAplication application = (AAplication) getApplicationContext();
-        dbBridge = application.getDbManager();
-        netBridge = application.getNetBridge();
-    }
-
     @Override
     protected void onHandleIntent(Intent intent) {
 
@@ -44,5 +43,21 @@ public final class SyncService extends IntentService {
 
         isWork = true;
         initModules();
+    }
+
+    private void initModules() {
+        AAplication application = (AAplication) getApplicationContext();
+        dbBridge = application.getDbManager();
+        netBridge = application.getNetBridge();
+    }
+
+    private void repackModels(){
+        Cursor cursor = dbBridge.loadCostsCategories();
+        List<Category> categories = CategoryMapper.cursorToCategories(cursor);
+
+        sendToServer(categories);
+    }
+
+    private void sendToServer(List<Category> categories){
     }
 }

@@ -4,6 +4,7 @@ package com.erminesoft.my_account.myacount.model;
  * Created by Aleks on 21.04.2016.
  */
 public class Cost {
+    private String ownerId;
     private int costId;
     private int sumCostId;
     private String costName;
@@ -40,4 +41,12 @@ public class Cost {
     public void setCostCategory(String costCategory) {
         this.costCategory = costCategory;
     }
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
 }
