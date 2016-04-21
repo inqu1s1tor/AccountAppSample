@@ -20,7 +20,6 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String INCOME_CATEGORIES = "income_categories";
     public static final String INCOME_SUM = "income_sum";
 
-
     //table costs
     public static final String TABLE_COSTS = "costs";
     public static final String COSTS_ID = "_id";

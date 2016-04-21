@@ -14,7 +14,6 @@ import com.erminesoft.my_account.myacount.util.SystemUtil;
 public class SplashScreenActivity extends GenericActivity {
 
     private static final int WORK_TIME = 5000;
-//    private boolean isInetConnected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

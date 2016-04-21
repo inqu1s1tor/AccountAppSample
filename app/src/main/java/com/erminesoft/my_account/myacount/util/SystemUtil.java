@@ -14,32 +14,12 @@ public final class SystemUtil {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) pContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        if(activeNetwork !=null) {
-            Toast.makeText(pContext, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+        if(activeNetwork != null) {
             return true;
         }else {
             return false;
         }
 
-        /*NetworkInfo wifi = connectivityManager.getActiveNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo mobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-
-        if (wifi == null && mobile == null && bluetooth == null
-                && wimax == null) {
-            return false;
-        }
-
-        if (wifi != null && wifi.isConnected()) {
-            return true;
-        }
-
-        if (mobile != null && mobile.isConnected()) {
-            return true;
-        }
-*/
-
-//        return false;
     }
 
 }
