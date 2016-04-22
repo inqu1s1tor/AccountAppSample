@@ -10,9 +10,10 @@ import com.erminesoft.my_account.myacount.core.AAplication;
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.core.bridge.NetBridge;
 import com.erminesoft.my_account.myacount.model.Category;
-import com.erminesoft.my_account.myacount.util.CategoryMapper;
+import com.erminesoft.my_account.myacount.model.Cost;
+import com.erminesoft.my_account.myacount.model.Income;
+import com.erminesoft.my_account.myacount.util.ModelsMapper;
 
-import java.util.List;
 import java.util.Queue;
 
 public final class SyncService extends IntentService {
@@ -21,7 +22,12 @@ public final class SyncService extends IntentService {
     private boolean isWork;
     private DBbridge dbBridge;
     private NetBridge netBridge;
-    private Queue<Category> categories;
+
+    private Queue<Category> categoriesCostQueue;
+    private Queue<Category> categoriesIncomeQueue;
+    private Queue<Cost> modelCostQueue;
+    private Queue<Income> modelIncomeQueue;
+
 
 
     public SyncService() {
@@ -46,7 +52,10 @@ public final class SyncService extends IntentService {
         isWork = true;
         initModules();
         repackModels();
-        sendToServer();
+        sendToServerCostCategory();
+        sendToServerIncomeCategory();
+        sendToServerModelCost();
+        sendToServerModelIncome();
 
     }
 
@@ -58,24 +67,74 @@ public final class SyncService extends IntentService {
 
 
     private void repackModels(){
-        Cursor cursor = dbBridge.loadCostsCategories();
-        categories = CategoryMapper.cursorToCategories(cursor);
+        Cursor cursorCostsCategories = dbBridge.loadCostsCategories();
+        categoriesCostQueue = ModelsMapper.cursorToCategories(cursorCostsCategories);
 
-//        sendToServer(categories);
+        Cursor cursorIncomesCategories = dbBridge.loadIncomeCategories();
+        categoriesIncomeQueue = ModelsMapper.cursorToCategories(cursorIncomesCategories);
+
+        Cursor modelCost = dbBridge.loadCosts();
+        modelCostQueue = ModelsMapper.cursorToCosts(modelCost);
+
+        Cursor modelIncome = dbBridge.loadIncome();
+        modelIncomeQueue = ModelsMapper.cursorToIncomes(modelIncome);
     }
 
-    private void sendToServer(){
-        Category category = categories.poll();
+    private void sendToServerCostCategory(){
+        Category categoryCost = categoriesCostQueue.poll();
 
-        if (category == null) {
+        if (categoryCost == null) {
             return;
         }
 
-         category = netBridge.addNewCategory(category);
-        if(category != null) {
-            sendToServer();
+        categoryCost = netBridge.addNewCategory(categoryCost);
+        if(categoryCost != null) {
+            sendToServerCostCategory();
         }
 
-//        sendToServer();
     }
+
+    private void sendToServerIncomeCategory(){
+        Category categoryIncome = categoriesIncomeQueue.poll();
+
+        if (categoryIncome == null) {
+            return;
+        }
+
+        categoryIncome = netBridge.addNewCategory(categoryIncome);
+        if(categoryIncome != null) {
+            sendToServerIncomeCategory();
+        }
+
+    }
+
+    private void sendToServerModelCost(){
+        Cost cost = modelCostQueue.poll();
+
+        if (cost == null) {
+            return;
+        }
+
+        cost = netBridge.addNewCost(cost);
+        if(cost != null) {
+            sendToServerModelCost();
+        }
+
+    }
+
+    private void sendToServerModelIncome(){
+        Income income = modelIncomeQueue.poll();
+
+        if (income == null) {
+            return;
+        }
+
+        income = netBridge.addNewIncome(income);
+        if(income != null) {
+            sendToServerModelIncome();
+        }
+
+    }
+
+
 }

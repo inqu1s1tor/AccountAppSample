@@ -10,6 +10,8 @@ import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.core.bridge.NetBridge;
 import com.erminesoft.my_account.myacount.core.callback.MainCallback;
 import com.erminesoft.my_account.myacount.model.Category;
+import com.erminesoft.my_account.myacount.model.Cost;
+import com.erminesoft.my_account.myacount.model.Income;
 
 public final class NetManagerFacade implements NetBridge {
 
@@ -46,6 +48,16 @@ public final class NetManagerFacade implements NetBridge {
     @Override
     public Category addNewCategory(Category category) {
         return boltsManager.addNewCategory(category);
+    }
+
+    @Override
+    public Cost addNewCost(Cost cost) {
+        return boltsManager.addNewCost(cost);
+    }
+
+    @Override
+    public Income addNewIncome(Income income) {
+        return boltsManager.addNewIncome(income);
     }
 
     @Override

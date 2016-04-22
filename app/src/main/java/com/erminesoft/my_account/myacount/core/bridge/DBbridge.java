@@ -29,5 +29,6 @@ public interface DBbridge {
     void saveCategoriesIncomeToDb(String categoryName);
 
     void saveCategoriesToDb(List<Category> categories);
+
     void saveCategoryToDb(Category category);
 }
