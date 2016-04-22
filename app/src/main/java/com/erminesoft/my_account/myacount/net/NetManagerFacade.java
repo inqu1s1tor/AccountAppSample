@@ -45,7 +45,7 @@ public final class NetManagerFacade implements NetBridge {
 
     @Override
     public Category addNewCategory(Category category) {
-        return null;
+        return boltsManager.addNewCategory(category);
     }
 
     @Override

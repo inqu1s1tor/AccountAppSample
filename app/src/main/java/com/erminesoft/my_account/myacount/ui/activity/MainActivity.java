@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
+import com.erminesoft.my_account.myacount.net.SyncService;
 import com.erminesoft.my_account.myacount.ui.activity.costs.CostsActivity;
 import com.erminesoft.my_account.myacount.ui.activity.incomes.IncomeActivity;
 
@@ -37,6 +38,7 @@ public  final class MainActivity extends GenericActivity {
         findViewById(R.id.buttonIncome).setOnClickListener(listener);
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
         findViewById(R.id.buttonCategories).setOnClickListener(listener);
+        findViewById(R.id.button_sync).setOnClickListener(listener);
 
         application.getNetBridge().autoLogin(new NetCallback());
 
@@ -101,6 +103,8 @@ public  final class MainActivity extends GenericActivity {
                 case R.id.buttonCategories:
                     CategoriesActivity.start(MainActivity.this);
                     break;
+                case R.id.button_sync:
+                    SyncService.start(MainActivity.this);
             }
         }
     }

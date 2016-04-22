@@ -16,12 +16,14 @@ final class BoltsManager {
         this.dbBridge = dbBridge;
     }
 
-    void addNewCategory(Category category) {
+    Category addNewCategory(Category category) {
         category = Backendless.Persistence.save(category);
 
         if (category != null) {
             DataPermission.FIND.grantForAllRoles(category);
-            dbBridge.saveCategoryToDb(category);
-        }
+//            dbBridge.saveCategoryToDb(category);
+            return category;
+        }else{
+            return null;}
     }
 }

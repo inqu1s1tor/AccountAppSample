@@ -13,6 +13,7 @@ import com.erminesoft.my_account.myacount.model.Category;
 import com.erminesoft.my_account.myacount.util.CategoryMapper;
 
 import java.util.List;
+import java.util.Queue;
 
 public final class SyncService extends IntentService {
 
@@ -20,6 +21,7 @@ public final class SyncService extends IntentService {
     private boolean isWork;
     private DBbridge dbBridge;
     private NetBridge netBridge;
+    private Queue<Category> categories;
 
 
     public SyncService() {
@@ -43,6 +45,9 @@ public final class SyncService extends IntentService {
 
         isWork = true;
         initModules();
+        repackModels();
+        sendToServer();
+
     }
 
     private void initModules() {
@@ -51,13 +56,26 @@ public final class SyncService extends IntentService {
         netBridge = application.getNetBridge();
     }
 
+
     private void repackModels(){
         Cursor cursor = dbBridge.loadCostsCategories();
-        List<Category> categories = CategoryMapper.cursorToCategories(cursor);
+        categories = CategoryMapper.cursorToCategories(cursor);
 
-        sendToServer(categories);
+//        sendToServer(categories);
     }
 
-    private void sendToServer(List<Category> categories){
+    private void sendToServer(){
+        Category category = categories.poll();
+
+        if (category == null) {
+            return;
+        }
+
+         category = netBridge.addNewCategory(category);
+        if(category != null) {
+            sendToServer();
+        }
+
+//        sendToServer();
     }
 }

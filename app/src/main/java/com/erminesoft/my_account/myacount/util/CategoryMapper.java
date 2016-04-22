@@ -5,13 +5,15 @@ import android.database.Cursor;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 import com.erminesoft.my_account.myacount.model.Category;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class CategoryMapper {
 
-    public static List<Category> cursorToCategories(Cursor cursor) {
-        List<Category> categories = new ArrayList<>(cursor.getCount());
+    public static Queue<Category> cursorToCategories(Cursor cursor) {
+        Queue<Category> categories = new ArrayDeque<>(cursor.getCount());
 
         if (!cursor.moveToFirst()) {
             return categories;
