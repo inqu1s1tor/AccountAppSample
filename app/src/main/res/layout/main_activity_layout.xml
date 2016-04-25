@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_screen_container_background"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -13,7 +14,6 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/actionBar"
-            style="@style/AccountantAppStyle"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize" />
 
@@ -24,11 +24,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/main_screen_buttons_wrapper_padding">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/main_screen_header_margin_right"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -36,25 +38,32 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_screen_header_text_margin"
                 android:src="@drawable/ic_income" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="General income" />
+                android:layout_marginBottom="@dimen/main_screen_header_text_margin"
+                android:text="@string/main_screen_income_header" />
 
             <TextView
-
                 android:id="@+id/genralSumIncomeTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="general" />
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:paddingBottom="@dimen/main_screen_header_income_padding"
+                android:paddingTop="@dimen/main_screen_header_income_padding"
+                android:text="54 000"
+                android:textSize="@dimen/main_screen_head_text_size" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/main_screen_header_margin_left"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -62,18 +71,25 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_screen_header_text_margin"
                 android:src="@drawable/ic_costs" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="General cost" />
+                android:layout_marginBottom="@dimen/main_screen_header_text_margin"
+                android:text="@string/main_screen_costs_header" />
 
             <TextView
                 android:id="@+id/generalSumCostTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="general" />
+                android:background="@color/colorOrangeAccent"
+                android:gravity="center"
+                android:paddingBottom="@dimen/main_screen_header_income_padding"
+                android:paddingTop="@dimen/main_screen_header_income_padding"
+                android:text="54 000"
+                android:textSize="@dimen/main_screen_head_text_size" />
 
         </LinearLayout>
 
@@ -82,15 +98,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/main_screen_buttons_margin_top"
         android:orientation="vertical"
-        android:padding="@dimen/main_screen_buttons_wrapper_padding">
+        android:paddingBottom="@dimen/main_screen_buttons_wrapper_padding"
+        android:paddingLeft="@dimen/main_screen_buttons_wrapper_padding"
+        android:paddingRight="@dimen/main_screen_buttons_wrapper_padding">
 
         <LinearLayout
             android:id="@+id/buttonIncome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
             android:orientation="horizontal">
 
             <View
@@ -112,7 +130,8 @@
                 android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
                 android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
                 android:paddingTop="@dimen/main_screen_button_text_padding_top"
-                android:text="@string/TextButtonIncome" />
+                android:text="@string/TextButtonIncome"
+                android:textColor="@color/main_screen_buttons_text_color" />
 
         </LinearLayout>
 
@@ -121,10 +140,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
             android:orientation="horizontal">
 
             <View
-                android:layout_width="10dp"
+                android:layout_width="@dimen/main_screen_left_stripe_width"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent" />
 
@@ -142,7 +162,8 @@
                 android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
                 android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
                 android:paddingTop="@dimen/main_screen_button_text_padding_top"
-                android:text="@string/TextButtonCosts" />
+                android:text="@string/TextButtonCosts"
+                android:textColor="@color/main_screen_buttons_text_color" />
 
         </LinearLayout>
 
@@ -151,10 +172,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
             android:orientation="horizontal">
 
             <View
-                android:layout_width="10dp"
+                android:layout_width="@dimen/main_screen_left_stripe_width"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent" />
 
@@ -172,7 +194,8 @@
                 android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
                 android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
                 android:paddingTop="@dimen/main_screen_button_text_padding_top"
-                android:text="@string/TextButtonCategories" />
+                android:text="@string/TextButtonCategories"
+                android:textColor="@color/main_screen_buttons_text_color" />
 
         </LinearLayout>
 
@@ -181,10 +204,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
             android:orientation="horizontal">
 
             <View
-                android:layout_width="10dp"
+                android:layout_width="@dimen/main_screen_left_stripe_width"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent" />
 
@@ -202,7 +226,8 @@
                 android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
                 android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
                 android:paddingTop="@dimen/main_screen_button_text_padding_top"
-                android:text="@string/TextButtonSettings" />
+                android:text="@string/TextButtonSettings"
+                android:textColor="@color/main_screen_buttons_text_color" />
         </LinearLayout>
 
     </LinearLayout>
