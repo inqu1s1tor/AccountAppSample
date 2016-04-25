@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RegistrationForm</string>
+    <string name="app_name">My Account</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -54,4 +54,6 @@
     <string name="incomeNameText">Name</string>
     <string name="AddingCategoryButton">ADD</string>
     <string name="spinner_title">SpinnerCostsTitle</string>
+    <string name="login">LOGIN</string>
+    <string name="password">PASSWORD</string>
 </resources>

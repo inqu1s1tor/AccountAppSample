@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,6 +27,10 @@ public  final class MainActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_layout);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.actionBar);
+        toolbar.setTitle(getString(R.string.app_name));
+        setSupportActionBar(toolbar);
+
         generalCostScore = (TextView) findViewById(R.id.generalSumCostTextView);
         generalIncomeScore = (TextView) findViewById(R.id.genralSumIncomeTextView);
 
@@ -33,7 +38,6 @@ public  final class MainActivity extends GenericActivity {
         findViewById(R.id.buttonIncome).setOnClickListener(listener);
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
         findViewById(R.id.buttonCategories).setOnClickListener(listener);
-
     }
 
     @Override
@@ -83,5 +87,4 @@ public  final class MainActivity extends GenericActivity {
             }
         }
     }
-
 }

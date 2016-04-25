@@ -1,6 +1,25 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- Common dimensions -->
+
+    <!-- Dimensions for Authorization -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!-- Dimensions for main page -->
+    <dimen name="main_screen_buttons_margin_top">20dp</dimen>
+    <dimen name="main_screen_button_margin_bottom">8dp</dimen>
+    <dimen name="main_screen_left_stripe_width">10dp</dimen>
+    <dimen name="main_screen_button_text_padding_top">24dp</dimen>
+    <dimen name="main_screen_button_text_padding_bottom">24dp</dimen>
+    <dimen name="main_screen_button_text_margin_left">35dp</dimen>
+    <dimen name="main_screen_buttons_wrapper_padding">16dp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="splash_screen_logo_margin_top">148dp</dimen>
+
+
+
 </resources>
