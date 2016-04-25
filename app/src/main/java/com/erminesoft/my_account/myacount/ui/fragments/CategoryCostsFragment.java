@@ -11,6 +11,9 @@ import android.widget.ListView;
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapter;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * Created by Aleks on 18.04.2016.
  */
@@ -18,6 +21,7 @@ public class CategoryCostsFragment extends GenericFragment {
     private EditText addingCategoryCosts;
     private ListView categoryCostsLv;
     private CategoriesAdapter costsCategoriesAdapter;
+    private Observer observer;
 
     @Nullable
     @Override
@@ -38,6 +42,21 @@ public class CategoryCostsFragment extends GenericFragment {
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        observer = new DbObserver();
+        mActivityBridge.getUApplication().getdBbridge().addNewObserver(observer);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mActivityBridge.getUApplication().getdBbridge().removeObserver(observer);
+        observer = null;
+    }
+
     private void saveCategoryCost() {
         String categoryEntered = addingCategoryCosts.getText().toString();
         mActivityBridge.getUApplication().getdBbridge().saveCategoriesCostsToDb(categoryEntered);
@@ -47,6 +66,14 @@ public class CategoryCostsFragment extends GenericFragment {
 
     private void fillCategoryAdapterForCosts() {
         costsCategoriesAdapter.swapCursor(mActivityBridge.getUApplication().getdBbridge().loadCostsCategories());
+    }
+
+    private final class DbObserver implements Observer {
+
+        @Override
+        public void update(Observable observable, Object data) {
+
+        }
     }
 
     private final class Clicker implements View.OnClickListener {

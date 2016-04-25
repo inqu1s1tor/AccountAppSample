@@ -101,6 +101,8 @@ public final class SyncService extends IntentService {
             return;
         }
 
+        categoryIncome.setSent(true);
+
         categoryIncome = netBridge.addNewCategory(categoryIncome);
         if(categoryIncome != null) {
             sendToServerIncomeCategory();
@@ -115,6 +117,8 @@ public final class SyncService extends IntentService {
             return;
         }
 
+        cost.setSent(true);
+
         cost = netBridge.addNewCost(cost);
         if(cost != null) {
             sendToServerModelCost();
@@ -128,6 +132,8 @@ public final class SyncService extends IntentService {
         if (income == null) {
             return;
         }
+
+        income.setSent(true);
 
         income = netBridge.addNewIncome(income);
         if(income != null) {

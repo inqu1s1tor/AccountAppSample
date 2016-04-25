@@ -36,6 +36,7 @@ public class ModelsMapper {
         Category category = new Category();
         category.setCategoryName(cursor.getString(nameIndex));
         category.setCategoryType(cursor.getInt(typeIndex));
+        category.setSent(false);
 
         return category;
     }

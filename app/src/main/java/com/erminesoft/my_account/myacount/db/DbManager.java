@@ -11,8 +11,10 @@ import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.model.Category;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public final class DbManager implements DBbridge {
+public final class DbManager extends Observable implements DBbridge {
 
     private static final int COST_CATEGORIES_TYPE = 0;
     private static final int INCOME_CATEGORIES_TYPE = 1;
@@ -41,12 +43,14 @@ public final class DbManager implements DBbridge {
     public void saveCategoriesCostsToDb(String categoryName) {
         ContentValues cv = Mapper.convertCategory(categoryName, COST_CATEGORIES_TYPE);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
+        notifyObserversProcedure();
     }
 
     @Override
     public void saveCategoriesIncomeToDb(String categoryName) {
         ContentValues cv = Mapper.convertCategory(categoryName, INCOME_CATEGORIES_TYPE);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
+        notifyObserversProcedure();
     }
 
     @Override
@@ -61,6 +65,23 @@ public final class DbManager implements DBbridge {
         ContentValues contentValues = Mapper.convertCategory(category);
         baseHelper.getWritableDatabase()
                 .insertWithOnConflict(DataBaseHelper.TABLE_CATEGORIES,null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    @Override
+    public void addNewObserver(Observer observer) {
+        super.addObserver(observer);
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        super.deleteObserver(observer);
+
+    }
+
+    private void notifyObserversProcedure() {
+        setChanged();
+        notifyObservers();
     }
 
     @Override

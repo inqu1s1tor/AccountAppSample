@@ -5,6 +5,7 @@ import android.database.Cursor;
 import com.erminesoft.my_account.myacount.model.Category;
 
 import java.util.List;
+import java.util.Observer;
 
 
 public interface DBbridge {
@@ -31,4 +32,12 @@ public interface DBbridge {
     void saveCategoriesToDb(List<Category> categories);
 
     void saveCategoryToDb(Category category);
+
+    void addNewObserver(Observer observer);
+
+    void removeObserver(Observer observer);
+
+
+
+
 }

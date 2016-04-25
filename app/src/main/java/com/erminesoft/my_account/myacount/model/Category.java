@@ -6,21 +6,15 @@ import java.util.UUID;
  * Created by Aleks on 21.04.2016.
  */
 public class Category {
-    private int categoryId;
     private String categoryName;
     private int categoryType;
     private String uuid;
+    private boolean isSent;
+    private String objectId;
+
 
     public Category() {
         uuid = UUID.randomUUID().toString();
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getCategoryName() {
@@ -46,5 +40,21 @@ public class Category {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public boolean isSent() {
+        return isSent;
+    }
+
+    public void setSent(boolean sent) {
+        isSent = sent;
+    }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 }

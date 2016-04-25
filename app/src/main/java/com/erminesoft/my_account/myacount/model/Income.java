@@ -5,18 +5,11 @@ package com.erminesoft.my_account.myacount.model;
  */
 public class Income {
     private String ownerId;
-    private int incomeId;
     private int sumIncomeId;
     private String incomeName;
     private String incomeCategory;
+    private boolean isSent;
 
-    public int getIncomeId() {
-        return incomeId;
-    }
-
-    public void setIncomeId(int incomeId) {
-        this.incomeId = incomeId;
-    }
 
     public int getSumIncomeId() {
         return sumIncomeId;
@@ -50,5 +43,11 @@ public class Income {
         this.ownerId = ownerId;
     }
 
+    public boolean isSent() {
+        return isSent;
+    }
 
+    public void setSent(boolean sent) {
+        isSent = sent;
+    }
 }
