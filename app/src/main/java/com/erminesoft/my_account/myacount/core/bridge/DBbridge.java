@@ -29,6 +29,8 @@ public interface DBbridge {
 
     void saveCategoriesIncomeToDb(String categoryName, boolean isSent);
 
+    Cursor getUnsentCategories();
+
     void saveCategoriesToDb(List<Category> categories);
 
     void saveCategoryToDb(Category category);

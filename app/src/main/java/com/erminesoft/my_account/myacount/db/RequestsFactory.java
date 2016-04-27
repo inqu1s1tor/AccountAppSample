@@ -37,4 +37,11 @@ final class RequestsFactory {
                     + "SUM(" + DataBaseHelper.INCOME_SUM + ") AS " + DataBaseHelper.INCOME_SUM
                     + " FROM " + DataBaseHelper.TABLE_INCOME;
 
+    static final String SELECT_UNSENT_CATEGORIES =
+            "SELECT * "
+                    + "FROM " + DataBaseHelper.TABLE_CATEGORIES
+                    + " WHERE "
+                    + DataBaseHelper.CATEGORY_IS_SYNC + " = 0";
+
+
 }

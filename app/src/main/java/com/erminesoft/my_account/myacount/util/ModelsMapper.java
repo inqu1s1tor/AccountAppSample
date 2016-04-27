@@ -17,14 +17,8 @@ public class ModelsMapper {
     public static Queue<Category> cursorToCategories(Cursor cursor) {
         Queue<Category> categories = new ArrayDeque<>(cursor.getCount());
 
-        if (!cursor.moveToFirst()) {
-            return categories;
-        }
-
         while (cursor.moveToNext()) {
-            if(cursorToCategory(cursor).isSent() == false){
                 categories.add(cursorToCategory(cursor));
-            }
         }
 
         return categories;
@@ -47,10 +41,6 @@ public class ModelsMapper {
 
     public static Queue<Cost> cursorToCosts(Cursor cursor) {
         Queue<Cost> costs = new ArrayDeque<>(cursor.getCount());
-
-        if (!cursor.moveToFirst()) {
-            return costs;
-        }
 
         while (cursor.moveToNext()) {
             costs.add(cursorToCost(cursor));
@@ -75,10 +65,6 @@ public class ModelsMapper {
 
     public static Queue<Income> cursorToIncomes(Cursor cursor) {
         Queue<Income> incomes = new ArrayDeque<>(cursor.getCount());
-
-        if (!cursor.moveToFirst()) {
-            return incomes;
-        }
 
         while (cursor.moveToNext()) {
             incomes.add(cursorToIncome(cursor));

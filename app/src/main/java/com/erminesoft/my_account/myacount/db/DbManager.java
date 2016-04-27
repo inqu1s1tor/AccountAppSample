@@ -54,6 +54,11 @@ public final class DbManager extends Observable implements DBbridge {
     }
 
     @Override
+    public Cursor getUnsentCategories() {
+        return baseHelper.getReadableDatabase().rawQuery(RequestsFactory.SELECT_UNSENT_CATEGORIES, new String[0]);
+    }
+
+    @Override
     public void saveCategoriesToDb(List<Category> categories) {
         for (int i = 0; i < categories.size(); i++) {
             saveCategoryToDb(categories.get(i));
@@ -70,13 +75,11 @@ public final class DbManager extends Observable implements DBbridge {
     @Override
     public void addNewObserver(Observer observer) {
         super.addObserver(observer);
-
     }
 
     @Override
     public void removeObserver(Observer observer) {
         super.deleteObserver(observer);
-
     }
 
     private void notifyObserversProcedure() {
