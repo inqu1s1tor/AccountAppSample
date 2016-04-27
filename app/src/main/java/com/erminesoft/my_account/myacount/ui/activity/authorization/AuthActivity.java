@@ -50,7 +50,7 @@ public class AuthActivity extends GenericActivity {
             showProgressDialog();
             application.getNetBridge().logInUser(userLoginEntered, userPasswordEntered, new NetListener());
         }else {
-            showSrotToast(getString(R.string.invalid_data));
+            showShortToast(getString(R.string.invalid_data));
         }
 
     }

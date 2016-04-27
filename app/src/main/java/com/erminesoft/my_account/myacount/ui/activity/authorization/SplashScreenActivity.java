@@ -64,7 +64,7 @@ public class SplashScreenActivity extends GenericActivity {
         @Override
         public void onError(String error) {
             dismissProgressDialog();
-            showSrotToast(error);
+            showShortToast(error);
         }
     }
 }

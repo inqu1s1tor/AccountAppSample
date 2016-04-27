@@ -45,7 +45,7 @@ public class RegistrationActivity extends GenericActivity {
             showProgressDialog();
             application.getNetBridge().registrationUser(userLoginEntered, userPasswordEntered, new NetListener());
         }else {
-            showSrotToast("Invalid data");
+            showShortToast("Invalid data");
         }
 
     }
@@ -63,7 +63,7 @@ public class RegistrationActivity extends GenericActivity {
         public void onError(String error) {
             Log.d("Mylog", "error registration");
             dismissProgressDialog();
-            showSrotToast(getString(R.string.registration_failed_error));
+            showShortToast(getString(R.string.registration_failed_error));
         }
     }
 

@@ -1,89 +1,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@color/main_screen_container_background"
     android:orientation="vertical"
-    android:background="@color/main_screen_container_background">
+    android:padding="@dimen/activity_horizontal_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/sign_in_login_wrap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editTextLogin"
-            android:hint="@string/login" />
-        <EditText
-            android:id="@+id/sign_in_login_et"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/login"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/sign_in_login_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/sign_login_hint"
+                android:inputType="textPersonName"
+                android:maxLength="10" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/sign_in_password_wrap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:hint="@string/sign_login_hint"
-            android:maxLength="10" />
+            android:layout_height="wrap_content">
 
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/sign_in_password_wrap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editTextPassword"
-            android:hint="@string/password"/>
-
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/sign_in_password_et"
-            android:hint="@string/sign_in_password_hint"
-            android:maxLength="10"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/sign_in_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/sign_in_password_hint"
+                android:inputType="textPassword"
+                android:maxLength="10" />
+
+        </android.support.design.widget.TextInputLayout>
 
 
         <Button
+            android:id="@+id/buttonSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/SignIn"
-            android:id="@+id/buttonSignIn" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/SignIn"
-        android:id="@+id/buttonSignIn"/>
+            android:text="@string/SignIn" />
+
 
         <Button
+            android:id="@+id/buttonTransferSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/SignUp"
-            android:id="@+id/buttonSignUp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/SignUp"
-        android:id="@+id/buttonTransferSignUp" />
+            android:text="@string/SignUp" />
+
 
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>
