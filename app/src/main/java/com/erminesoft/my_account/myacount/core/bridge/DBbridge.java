@@ -25,9 +25,9 @@ public interface DBbridge {
 
     void saveIncomeToDb(int Categories, String fieldNameIncome, int sumIncome);
 
-    void saveCategoriesCostsToDb(String categoryName);
+    void saveCategoriesCostsToDb(String categoryName, boolean isSent);
 
-    void saveCategoriesIncomeToDb(String categoryName);
+    void saveCategoriesIncomeToDb(String categoryName, boolean isSent);
 
     void saveCategoriesToDb(List<Category> categories);
 

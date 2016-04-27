@@ -68,7 +68,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
         return "CREATE TABLE " + TABLE_CATEGORIES + " ( "
                 + CATEGORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CATEGORY_NAME + " text, "
-                + CATEGORY_IS_SYNC + " INTEGER, "
+                + CATEGORY_IS_SYNC + " BOOLEAN, "
                 + CATEGORY_TYPE + " INTEGER " + " )";
     }
 

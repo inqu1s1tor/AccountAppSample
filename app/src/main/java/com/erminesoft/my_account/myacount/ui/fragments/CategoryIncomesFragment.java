@@ -59,7 +59,7 @@ public class CategoryIncomesFragment extends GenericFragment {
 
     private void saveCategoryIncome() {
         String categoryIncomeEntered = addingCategoryIncome.getText().toString();
-        mActivityBridge.getUApplication().getdBbridge().saveCategoriesIncomeToDb(categoryIncomeEntered);
+        mActivityBridge.getUApplication().getdBbridge().saveCategoriesIncomeToDb(categoryIncomeEntered, false);
         addingCategoryIncome.setText("");
         fillCategoryAdapterForIncome();
     }

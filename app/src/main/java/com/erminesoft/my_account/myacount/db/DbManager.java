@@ -40,15 +40,15 @@ public final class DbManager extends Observable implements DBbridge {
     }
 
     @Override
-    public void saveCategoriesCostsToDb(String categoryName) {
-        ContentValues cv = Mapper.convertCategory(categoryName, COST_CATEGORIES_TYPE);
+    public void saveCategoriesCostsToDb(String categoryName, boolean isSent) {
+        ContentValues cv = Mapper.convertCategory(categoryName, COST_CATEGORIES_TYPE, isSent);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
         notifyObserversProcedure();
     }
 
     @Override
-    public void saveCategoriesIncomeToDb(String categoryName) {
-        ContentValues cv = Mapper.convertCategory(categoryName, INCOME_CATEGORIES_TYPE);
+    public void saveCategoriesIncomeToDb(String categoryName, boolean isSent) {
+        ContentValues cv = Mapper.convertCategory(categoryName, INCOME_CATEGORIES_TYPE, isSent);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_CATEGORIES, null, cv);
         notifyObserversProcedure();
     }

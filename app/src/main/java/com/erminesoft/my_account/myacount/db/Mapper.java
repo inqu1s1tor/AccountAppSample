@@ -23,10 +23,11 @@ final class Mapper {
         return cv;
     }
 
-    public static ContentValues convertCategory(String categoryName, int categoryType) {
+    public static ContentValues convertCategory(String categoryName, int categoryType, boolean isSent) {
         ContentValues cv = new ContentValues();
         cv.put(DataBaseHelper.CATEGORY_NAME, categoryName);
         cv.put(DataBaseHelper.CATEGORY_TYPE, categoryType);
+        cv.put(DataBaseHelper.CATEGORY_IS_SYNC, isSent);
         return cv;
     }
 

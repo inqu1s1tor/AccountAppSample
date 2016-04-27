@@ -87,7 +87,10 @@ public final class SyncService extends IntentService {
             return;
         }
 
-        categoryCost = netBridge.addNewCategory(categoryCost);
+        if(categoryCost.isSent() == false) {
+            categoryCost = netBridge.addNewCategory(categoryCost);
+        }
+
         if(categoryCost != null) {
             sendToServerCostCategory();
         }

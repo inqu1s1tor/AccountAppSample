@@ -22,7 +22,9 @@ public class ModelsMapper {
         }
 
         while (cursor.moveToNext()) {
-            categories.add(cursorToCategory(cursor));
+            if(cursorToCategory(cursor).isSent() == false){
+                categories.add(cursorToCategory(cursor));
+            }
         }
 
         return categories;
@@ -32,11 +34,12 @@ public class ModelsMapper {
 
         int nameIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_NAME);
         int typeIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_TYPE);
+        int isSentIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_IS_SYNC);
 
         Category category = new Category();
         category.setCategoryName(cursor.getString(nameIndex));
         category.setCategoryType(cursor.getInt(typeIndex));
-        category.setSent(false);
+        category.setSent(cursor.getInt(isSentIndex) == 1);
 
         return category;
     }

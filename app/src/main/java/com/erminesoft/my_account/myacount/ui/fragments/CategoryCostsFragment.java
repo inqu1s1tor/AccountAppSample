@@ -59,7 +59,7 @@ public class CategoryCostsFragment extends GenericFragment {
 
     private void saveCategoryCost() {
         String categoryEntered = addingCategoryCosts.getText().toString();
-        mActivityBridge.getUApplication().getdBbridge().saveCategoriesCostsToDb(categoryEntered);
+        mActivityBridge.getUApplication().getdBbridge().saveCategoriesCostsToDb(categoryEntered, false);
         addingCategoryCosts.setText("");
         fillCategoryAdapterForCosts();
     }
