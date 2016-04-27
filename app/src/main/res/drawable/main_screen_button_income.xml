@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/ic_income" android:gravity="left">
+        <shape android:shape="rectangle" android:tint="@color/colorAccent">
+            <color android:color="@color/colorAccent">
+
+            </color>
+        </shape>
+    </item>
+
+
+
+</layer-list>

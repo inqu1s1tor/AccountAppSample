@@ -1,8 +1,10 @@
 package com.erminesoft.my_account.myacount.ui.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -18,8 +20,27 @@ public abstract class GenericActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         application = (AAplication) getApplication();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onHomeButtonPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    protected void onHomeButtonPressed() {
+        finish();
+    }
+
+    protected final void setHomeAsUpEnabled(boolean enabled) {
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(enabled);
     }
 
     protected void showProgressDialog() {
@@ -39,11 +60,13 @@ public abstract class GenericActivity extends AppCompatActivity {
         }
     }
 
-    protected void showSrotToast(int resId) {
-        showSrotToast(getString(resId));
+    protected void showShortToast(int resId) {
+        showShortToast(getString(resId));
     }
 
-    protected void showSrotToast(String contentString) {
+    protected void showShortToast(String contentString) {
         Toast.makeText(this, contentString, Toast.LENGTH_SHORT).show();
     }
+
+
 }

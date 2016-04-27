@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyAccount</string>
+    <string name="app_name">My Account</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -67,4 +67,8 @@
     <string name="sign_in_password_hint">Password</string>
     <string name="registration_failed_error">Registration failed</string>
     <string name="invalid_data">Invalid data</string>
+    <string name="login">LOGIN</string>
+    <string name="password">PASSWORD</string>
+    <string name="main_screen_income_header">Income</string>
+    <string name="main_screen_costs_header">Costs</string>
 </resources>

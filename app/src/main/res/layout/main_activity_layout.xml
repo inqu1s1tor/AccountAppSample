@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_screen_container_background"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <Button
@@ -12,81 +14,230 @@
         android:layout_row="0"
         android:layout_column="10" />
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AccountantAppStyle">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/actionBar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize" />
+
+
+    </android.support.design.widget.AppBarLayout>
+
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_columnSpan="11"
-        android:layout_row="1"
-        android:layout_column="0">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/main_screen_buttons_wrapper_padding">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="General cost"/>
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/main_screen_header_margin_right"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_screen_header_text_margin"
+                android:src="@drawable/ic_income" />
 
-        <TextView
-            android:id="@+id/generalSumCostTextView"
-            android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/main_screen_header_text_margin"
+                android:text="@string/main_screen_income_header" />
+
+            <TextView
+                android:id="@+id/genralSumIncomeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:paddingBottom="@dimen/main_screen_header_income_padding"
+                android:paddingTop="@dimen/main_screen_header_income_padding"
+                android:text="54 000"
+                android:textSize="@dimen/main_screen_head_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:text="general"
-            android:layout_marginTop="10dp"
-            android:layout_row="0"
-            android:layout_column="0" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/main_screen_header_margin_left"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="General income"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_screen_header_text_margin"
+                android:src="@drawable/ic_costs" />
 
-        <TextView
-            android:id="@+id/genralSumIncomeTextView"
-            android:layout_height="100dp"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="general"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/main_screen_header_text_margin"
+                android:text="@string/main_screen_costs_header" />
+
+            <TextView
+                android:id="@+id/generalSumCostTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorOrangeAccent"
+                android:gravity="center"
+                android:paddingBottom="@dimen/main_screen_header_income_padding"
+                android:paddingTop="@dimen/main_screen_header_income_padding"
+                android:text="54 000"
+                android:textSize="@dimen/main_screen_head_text_size" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/main_screen_buttons_wrapper_padding"
+        android:paddingLeft="@dimen/main_screen_buttons_wrapper_padding"
+        android:paddingRight="@dimen/main_screen_buttons_wrapper_padding">
 
+        <LinearLayout
+            android:id="@+id/buttonIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
+            android:orientation="horizontal">
 
+            <View
+                android:layout_width="@dimen/main_screen_left_stripe_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent" />
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:text="@string/TextButtonCosts"
-        android:layout_marginRight="10dp"
-        android:id="@+id/buttonCosts"
-        android:layout_row="8"
-        android:layout_column="0" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ic_income" />
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:text="@string/TextButtonIncome"
-        android:id="@+id/buttonIncome"
-        android:layout_marginLeft="10dp"
-        android:layout_row="8"
-        android:layout_column="10" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
+                android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
+                android:paddingTop="@dimen/main_screen_button_text_padding_top"
+                android:text="@string/TextButtonIncome"
+                android:textColor="@color/main_screen_buttons_text_color" />
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:text="@string/TextButtonCategories"
-        android:id="@+id/buttonCategories"
-        android:layout_marginRight="10dp"
-        android:layout_row="9"
-        android:layout_column="0" />
+        </LinearLayout>
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:text="@string/TextButtonSettings"
-        android:id="@+id/buttonSettings"
-        android:layout_marginLeft="10dp"
-        android:layout_gravity="center_vertical"
-        android:layout_row="9"
-        android:layout_column="10" />
+        <LinearLayout
+            android:id="@+id/buttonCosts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
+            android:orientation="horizontal">
 
+            <View
+                android:layout_width="@dimen/main_screen_left_stripe_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent" />
 
-</GridLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ic_costs" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
+                android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
+                android:paddingTop="@dimen/main_screen_button_text_padding_top"
+                android:text="@string/TextButtonCosts"
+                android:textColor="@color/main_screen_buttons_text_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/main_screen_left_stripe_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ic_category" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
+                android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
+                android:paddingTop="@dimen/main_screen_button_text_padding_top"
+                android:text="@string/TextButtonCategories"
+                android:textColor="@color/main_screen_buttons_text_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_screen_button_margin_bottom"
+            android:background="@color/main_screen_buttons_background_color"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/main_screen_left_stripe_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ic_settings" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="@dimen/main_screen_button_text_margin_left"
+                android:paddingBottom="@dimen/main_screen_button_text_padding_bottom"
+                android:paddingTop="@dimen/main_screen_button_text_padding_top"
+                android:text="@string/TextButtonSettings"
+                android:textColor="@color/main_screen_buttons_text_color" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
