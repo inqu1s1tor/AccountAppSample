@@ -43,5 +43,17 @@ final class RequestsFactory {
                     + " WHERE "
                     + DataBaseHelper.CATEGORY_IS_SYNC + " = 0";
 
+    static final String SELECT_UNSENT_COSTS =
+            "SELECT * "
+                    + "FROM " + DataBaseHelper.TABLE_COSTS
+                    + " WHERE "
+                    + DataBaseHelper.COSTS_IS_SYNC + " = 0";
+
+    static final String SELECT_UNSENT_INCOMES=
+            "SELECT * "
+                    + "FROM " + DataBaseHelper.TABLE_INCOME
+                    + " WHERE "
+                    + DataBaseHelper.INCOME_IS_SYNC + " = 0";
+
 
 }

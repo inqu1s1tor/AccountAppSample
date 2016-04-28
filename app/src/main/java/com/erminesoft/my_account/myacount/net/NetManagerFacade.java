@@ -61,6 +61,21 @@ public final class NetManagerFacade implements NetBridge {
     }
 
     @Override
+    public void getAllCosts(MainCallback mainCallback) {
+        boltsManager.getAllCosts(mainCallback);
+    }
+
+    @Override
+    public void getAllIncomes(MainCallback mainCallback) {
+
+    }
+
+    @Override
+    public void getAllCategories(MainCallback mainCallback) {
+
+    }
+
+    @Override
     public void updateCost(int cost, MainCallback mainCallback) {
 
     }

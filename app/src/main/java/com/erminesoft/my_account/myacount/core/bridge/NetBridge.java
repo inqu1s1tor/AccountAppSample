@@ -1,6 +1,5 @@
 package com.erminesoft.my_account.myacount.core.bridge;
 
-import com.backendless.BackendlessUser;
 import com.erminesoft.my_account.myacount.core.callback.MainCallback;
 import com.erminesoft.my_account.myacount.model.Category;
 import com.erminesoft.my_account.myacount.model.Cost;
@@ -19,6 +18,12 @@ public interface NetBridge {
     Cost addNewCost(Cost cost);
 
     Income addNewIncome(Income income);
+
+    void getAllCosts(MainCallback mainCallback);
+
+    void getAllIncomes(MainCallback mainCallback);
+
+    void getAllCategories(MainCallback mainCallback);
 
     void updateCost(int cost, MainCallback mainCallback);
 }

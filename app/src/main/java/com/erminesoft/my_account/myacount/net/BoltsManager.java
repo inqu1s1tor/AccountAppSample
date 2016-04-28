@@ -1,8 +1,14 @@
 package com.erminesoft.my_account.myacount.net;
 
+import android.util.Log;
+
 import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
 import com.backendless.DataPermission;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
+import com.erminesoft.my_account.myacount.core.callback.MainCallback;
 import com.erminesoft.my_account.myacount.model.Category;
 import com.erminesoft.my_account.myacount.model.Cost;
 import com.erminesoft.my_account.myacount.model.Income;
@@ -49,5 +55,20 @@ final class BoltsManager {
             return income;
         }else{
             return null;}
+    }
+
+    void getAllCosts(final MainCallback callBack) {
+        Backendless.Data.of(Cost.class).find(new AsyncCallback<BackendlessCollection<Cost>>() {
+            @Override
+            public void handleResponse(BackendlessCollection<Cost> response) {
+                dbBridge.saveCostsToDb(response.getData());
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.d("getAllCard", "fault = " + fault.toString());
+                callBack.onError(fault.toString());
+            }
+        });
     }
 }

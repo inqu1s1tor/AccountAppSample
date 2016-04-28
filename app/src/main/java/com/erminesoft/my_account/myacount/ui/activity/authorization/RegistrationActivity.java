@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
@@ -19,6 +20,8 @@ import com.erminesoft.my_account.myacount.util.Validator;
 public class RegistrationActivity extends GenericActivity {
     private TextInputLayout mLoginWrap;
     private TextInputLayout mPasswordWrap;
+
+    private EditText signInloginEt;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, RegistrationActivity.class));

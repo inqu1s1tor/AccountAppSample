@@ -9,6 +9,7 @@ public class Cost {
     private String costName;
     private String costCategory;
     private boolean isSent;
+    private String uuid;
 
 
 
@@ -49,5 +50,13 @@ public class Cost {
 
     public void setSent(boolean sent) {
         isSent = sent;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

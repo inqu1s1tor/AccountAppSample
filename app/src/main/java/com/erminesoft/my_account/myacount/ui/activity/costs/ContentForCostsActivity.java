@@ -58,7 +58,7 @@ public final class ContentForCostsActivity extends GenericActivity {
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
-        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered, sumCostsEntered);
+        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered, sumCostsEntered, false);
     }
 
 

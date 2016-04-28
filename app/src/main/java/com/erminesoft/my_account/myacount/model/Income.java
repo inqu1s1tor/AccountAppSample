@@ -9,6 +9,7 @@ public class Income {
     private String incomeName;
     private String incomeCategory;
     private boolean isSent;
+    private String uuid;
 
 
     public int getSumIncomeId() {
@@ -49,5 +50,13 @@ public class Income {
 
     public void setSent(boolean sent) {
         isSent = sent;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

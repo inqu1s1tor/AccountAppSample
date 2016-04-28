@@ -56,7 +56,7 @@ public final class ContentForIncomeActivity extends GenericActivity {
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
-        application.getdBbridge().saveIncomeToDb(categoryId, categoryEnteredIncome, sumIncomeEntered);
+        application.getdBbridge().saveIncomeToDb(categoryId, categoryEnteredIncome, sumIncomeEntered, false);
     }
 
 

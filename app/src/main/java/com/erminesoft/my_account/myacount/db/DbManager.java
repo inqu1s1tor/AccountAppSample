@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.model.Category;
+import com.erminesoft.my_account.myacount.model.Cost;
+import com.erminesoft.my_account.myacount.model.Income;
 
 import java.util.List;
 import java.util.Observable;
@@ -28,14 +30,14 @@ public final class DbManager extends Observable implements DBbridge {
     }
 
     @Override
-    public void saveCostsToDb(int category, String nameText, int sumCost) {
-        ContentValues cv = Mapper.convertCosts(nameText, category, sumCost);
+    public void saveCostsToDb(int category, String nameText, int sumCost, boolean isSent) {
+        ContentValues cv = Mapper.convertCosts(nameText, category, sumCost, isSent);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_COSTS, null, cv);
     }
 
     @Override
-    public void saveIncomeToDb(int category, String nameText, int sumIncome) {
-        ContentValues cv = Mapper.convertIncome(nameText, category, sumIncome);
+    public void saveIncomeToDb(int category, String nameText, int sumIncome, boolean isSent) {
+        ContentValues cv = Mapper.convertIncome(nameText, category, sumIncome, isSent);
         baseHelper.getWritableDatabase().insert(DataBaseHelper.TABLE_INCOME, null, cv);
     }
 
@@ -59,9 +61,33 @@ public final class DbManager extends Observable implements DBbridge {
     }
 
     @Override
+    public Cursor getUnsentCosts() {
+        return baseHelper.getReadableDatabase().rawQuery(RequestsFactory.SELECT_UNSENT_COSTS, new String[0]);
+    }
+
+    @Override
+    public Cursor getUnsentIncomes() {
+        return baseHelper.getReadableDatabase().rawQuery(RequestsFactory.SELECT_UNSENT_INCOMES, new String[0]);
+    }
+
+    @Override
     public void saveCategoriesToDb(List<Category> categories) {
         for (int i = 0; i < categories.size(); i++) {
             saveCategoryToDb(categories.get(i));
+        }
+    }
+
+    @Override
+    public void saveCostsToDb(List<Cost> costs) {
+        for (int i = 0; i < costs.size(); i++) {
+            saveCostToDb(costs.get(i));
+        }
+    }
+
+    @Override
+    public void saveIncomesToDb(List<Income> incomes) {
+        for (int i = 0; i < incomes.size(); i++) {
+            saveIncomeToDb(incomes.get(i));
         }
     }
 
@@ -70,6 +96,21 @@ public final class DbManager extends Observable implements DBbridge {
         ContentValues contentValues = Mapper.convertCategory(category);
         baseHelper.getWritableDatabase()
                 .insertWithOnConflict(DataBaseHelper.TABLE_CATEGORIES,null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    @Override
+    public void saveCostToDb(Cost cost) {
+        ContentValues contentValues = Mapper.convertCosts(cost);
+        baseHelper.getWritableDatabase()
+                .insertWithOnConflict(DataBaseHelper.TABLE_COSTS,null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    @Override
+    public void saveIncomeToDb(Income income) {
+        ContentValues contentValues = Mapper.convertIncomes(income);
+        baseHelper.getWritableDatabase()
+                .insertWithOnConflict(DataBaseHelper.TABLE_INCOME,null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+
     }
 
     @Override

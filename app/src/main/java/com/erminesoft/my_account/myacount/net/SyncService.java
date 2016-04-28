@@ -23,8 +23,6 @@ public final class SyncService extends IntentService {
     private DBbridge dbBridge;
     private NetBridge netBridge;
 
-    private Queue<Category> categoriesCostQueue;
-    private Queue<Category> categoriesIncomeQueue;
     private Queue<Cost> modelCostQueue;
     private Queue<Income> modelIncomeQueue;
     private Queue<Category> modelCategoryQueue;
@@ -54,8 +52,6 @@ public final class SyncService extends IntentService {
         initModules();
         repackModels();
         sendToServerCategory();
-       /* sendToServerCostCategory();
-        sendToServerIncomeCategory();*/
         sendToServerModelCost();
         sendToServerModelIncome();
 
@@ -69,19 +65,13 @@ public final class SyncService extends IntentService {
 
 
     private void repackModels(){
-       /* Cursor cursorCostsCategories = dbBridge.loadCostsCategories();
-        categoriesCostQueue = ModelsMapper.cursorToCategories(cursorCostsCategories);
-
-        Cursor cursorIncomesCategories = dbBridge.loadIncomeCategories();
-        categoriesIncomeQueue = ModelsMapper.cursorToCategories(cursorIncomesCategories);*/
-
         Cursor cursorCategories = dbBridge.getUnsentCategories();
         modelCategoryQueue = ModelsMapper.cursorToCategories(cursorCategories);
 
-        Cursor modelCost = dbBridge.loadCosts();
+        Cursor modelCost = dbBridge.getUnsentCosts();
         modelCostQueue = ModelsMapper.cursorToCosts(modelCost);
 
-        Cursor modelIncome = dbBridge.loadIncome();
+        Cursor modelIncome = dbBridge.getUnsentIncomes();
         modelIncomeQueue = ModelsMapper.cursorToIncomes(modelIncome);
     }
 
@@ -99,39 +89,8 @@ public final class SyncService extends IntentService {
         if(category != null) {
             sendToServerCategory();
         }
-
     }
 
-    /*private void sendToServerCostCategory(){
-        Category categoryCost = categoriesCostQueue.poll();
-
-        if (categoryCost == null) {
-            return;
-        }
-
-        categoryCost = netBridge.addNewCategory(categoryCost);
-
-        if(categoryCost != null) {
-            sendToServerCostCategory();
-        }
-
-    }
-
-    private void sendToServerIncomeCategory(){
-        Category categoryIncome = categoriesIncomeQueue.poll();
-
-        if (categoryIncome == null) {
-            return;
-        }
-
-        categoryIncome.setSent(true);
-
-        categoryIncome = netBridge.addNewCategory(categoryIncome);
-        if(categoryIncome != null) {
-            sendToServerIncomeCategory();
-        }
-
-    }*/
 
     private void sendToServerModelCost(){
         Cost cost = modelCostQueue.poll();
@@ -140,9 +99,10 @@ public final class SyncService extends IntentService {
             return;
         }
 
-        cost.setSent(true);
-
         cost = netBridge.addNewCost(cost);
+        cost.setSent(true);
+        dbBridge.saveCostToDb(cost);
+
         if(cost != null) {
             sendToServerModelCost();
         }
@@ -156,9 +116,10 @@ public final class SyncService extends IntentService {
             return;
         }
 
-        income.setSent(true);
-
         income = netBridge.addNewIncome(income);
+        income.setSent(true);
+        dbBridge.saveIncomeToDb(income);
+
         if(income != null) {
             sendToServerModelIncome();
         }

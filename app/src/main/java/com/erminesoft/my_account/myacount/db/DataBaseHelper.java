@@ -19,6 +19,8 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String INCOME_NAME = "income_name";
     public static final String INCOME_CATEGORIES = "income_categories";
     public static final String INCOME_SUM = "income_sum";
+    public static final String INCOME_IS_SYNC = "is_sync";
+
 
     //table costs
     public static final String TABLE_COSTS = "costs";
@@ -26,6 +28,8 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COSTS_NAME = "costs_name";
     public static final String COSTS_CATEGORIES = "costs_categories";
     public static final String COSTS_SUM = "costs_sum";
+    public static final String COSTS_IS_SYNC = "is_sync";
+
 
     //table categories
     public static final String TABLE_CATEGORIES = "categories";
@@ -53,6 +57,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 + INCOME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + INCOME_NAME + " text, "
                 + INCOME_SUM + " INTEGER, "
+                + INCOME_IS_SYNC + " BOOLEAN, "
                 + INCOME_CATEGORIES + " INTEGER " + " )";
     }
 
@@ -61,6 +66,7 @@ public final class DataBaseHelper extends SQLiteOpenHelper {
                 + COSTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COSTS_NAME + " text, "
                 + COSTS_SUM + " INTEGER, "
+                + COSTS_IS_SYNC + " BOOLEAN, "
                 + COSTS_CATEGORIES + " INTEGER " + " )";
     }
 
