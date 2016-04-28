@@ -13,6 +13,8 @@ public interface NetBridge {
 
     void autoLogin(MainCallback mainCallback);
 
+    void userLogout();
+
     Category addNewCategory(Category category);
 
     Cost addNewCost(Cost cost);

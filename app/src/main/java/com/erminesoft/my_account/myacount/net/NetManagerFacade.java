@@ -46,6 +46,11 @@ public final class NetManagerFacade implements NetBridge {
     }
 
     @Override
+    public void userLogout() {
+        authManager.userLogout();
+    }
+
+    @Override
     public Category addNewCategory(Category category) {
         return boltsManager.addNewCategory(category);
     }

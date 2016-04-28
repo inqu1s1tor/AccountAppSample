@@ -9,6 +9,8 @@ import android.util.Log;
 import com.erminesoft.my_account.myacount.core.AAplication;
 import com.erminesoft.my_account.myacount.core.bridge.DBbridge;
 import com.erminesoft.my_account.myacount.core.bridge.NetBridge;
+import com.erminesoft.my_account.myacount.core.callback.MainCallback;
+import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 import com.erminesoft.my_account.myacount.model.Category;
 import com.erminesoft.my_account.myacount.model.Cost;
 import com.erminesoft.my_account.myacount.model.Income;
@@ -125,6 +127,7 @@ public final class SyncService extends IntentService {
         }
 
     }
+
 
 
 }

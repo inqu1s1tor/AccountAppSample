@@ -110,7 +110,6 @@ public final class DbManager extends Observable implements DBbridge {
         ContentValues contentValues = Mapper.convertIncomes(income);
         baseHelper.getWritableDatabase()
                 .insertWithOnConflict(DataBaseHelper.TABLE_INCOME,null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
-
     }
 
     @Override

@@ -13,6 +13,8 @@ import com.erminesoft.my_account.myacount.model.Category;
 import com.erminesoft.my_account.myacount.model.Cost;
 import com.erminesoft.my_account.myacount.model.Income;
 
+import java.util.List;
+
 /**
  * Created by Aleks on 21.04.2016.
  */
@@ -29,7 +31,6 @@ final class BoltsManager {
 
         if (category != null) {
             DataPermission.FIND.grantForAllRoles(category);
-//            dbBridge.saveCategoryToDb(category);
             return category;
         }else{
             return null;}
@@ -40,7 +41,6 @@ final class BoltsManager {
 
         if (cost != null) {
             DataPermission.FIND.grantForAllRoles(cost);
-//            dbBridge.saveCategoryToDb(category);
             return cost;
         }else{
             return null;}
@@ -51,7 +51,6 @@ final class BoltsManager {
 
         if (income != null) {
             DataPermission.FIND.grantForAllRoles(income);
-//            dbBridge.saveCategoryToDb(category);
             return income;
         }else{
             return null;}
@@ -61,12 +60,14 @@ final class BoltsManager {
         Backendless.Data.of(Cost.class).find(new AsyncCallback<BackendlessCollection<Cost>>() {
             @Override
             public void handleResponse(BackendlessCollection<Cost> response) {
+                Log.d("getAllCosts", "getData().size() = " + response.getData().size());
+
                 dbBridge.saveCostsToDb(response.getData());
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
-                Log.d("getAllCard", "fault = " + fault.toString());
+                Log.d("getAllCosts", "fault = " + fault.toString());
                 callBack.onError(fault.toString());
             }
         });

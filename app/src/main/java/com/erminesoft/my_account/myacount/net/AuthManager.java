@@ -68,4 +68,17 @@ final class AuthManager {
 
         logInUser(login, password, callback);
     }
+
+    void userLogout(){
+        Backendless.UserService.logout(new AsyncCallback<Void>() {
+            @Override
+            public void handleResponse(Void response) {
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.d("userLogout", "fault = " + fault.toString());
+            }
+        });
+    }
 }

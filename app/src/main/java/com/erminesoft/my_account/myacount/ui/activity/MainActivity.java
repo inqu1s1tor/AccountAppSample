@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
 import com.erminesoft.my_account.myacount.net.SyncService;
+import com.erminesoft.my_account.myacount.ui.activity.authorization.AuthActivity;
 import com.erminesoft.my_account.myacount.ui.activity.costs.CostsActivity;
 import com.erminesoft.my_account.myacount.ui.activity.incomes.IncomeActivity;
 
@@ -43,7 +47,6 @@ public  final class MainActivity extends GenericActivity {
         findViewById(R.id.buttonIncome).setOnClickListener(listener);
         findViewById(R.id.buttonCosts).setOnClickListener(listener);
         findViewById(R.id.buttonCategories).setOnClickListener(listener);
-        findViewById(R.id.button_sync).setOnClickListener(listener);
 
         application.getNetBridge().autoLogin(new NetCallback());
 
@@ -81,8 +84,20 @@ public  final class MainActivity extends GenericActivity {
         generalIncomeScore.setText(String.valueOf(sumInc));
     }
 
+    private void logOut(){
+        application.getNetBridge().userLogout();
+        AuthActivity.start(MainActivity.this);
+    }
+
     @Override
     public void onBackPressed() {
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_settings_menu, menu);
+        return true;
     }
 
     private final class NetCallback extends SimpleMainCallback {
@@ -93,6 +108,21 @@ public  final class MainActivity extends GenericActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_sync:
+                application.getNetBridge().getAllCosts(new NetListener());
+                SyncService.start(MainActivity.this);
+                break;
+
+            case R.id.action_log_out:
+                logOut();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     private final class Clicker implements View.OnClickListener {
@@ -108,9 +138,11 @@ public  final class MainActivity extends GenericActivity {
                 case R.id.buttonCategories:
                     CategoriesActivity.start(MainActivity.this);
                     break;
-                case R.id.button_sync:
-                    SyncService.start(MainActivity.this);
             }
         }
+    }
+
+    private final class NetListener extends SimpleMainCallback {
+
     }
 }
