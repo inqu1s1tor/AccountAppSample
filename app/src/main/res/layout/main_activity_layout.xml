@@ -33,18 +33,22 @@
             android:layout_marginRight="@dimen/main_screen_header_margin_right"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:background="@drawable/pic_income"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_screen_header_text_margin"
-                android:src="@drawable/ic_income" />
+                android:src="@drawable/ic_income_on_pic" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginBottom="@dimen/main_screen_header_text_margin"
+                android:layout_marginTop="@dimen/main_screen_header_text_margin_top"
                 android:text="@string/main_screen_income_header" />
 
             <TextView
@@ -55,7 +59,6 @@
                 android:gravity="center"
                 android:paddingBottom="@dimen/main_screen_header_income_padding"
                 android:paddingTop="@dimen/main_screen_header_income_padding"
-                android:text="54 000"
                 android:textSize="@dimen/main_screen_head_text_size" />
 
         </LinearLayout>
@@ -66,17 +69,21 @@
             android:layout_marginLeft="@dimen/main_screen_header_margin_left"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+            android:background="@drawable/pic_costs"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_screen_header_text_margin"
-                android:src="@drawable/ic_costs" />
+                android:src="@drawable/ic_cost_on_pic" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorOrangeAccent"
+                android:layout_marginTop="@dimen/main_screen_header_text_margin_top"
                 android:layout_marginBottom="@dimen/main_screen_header_text_margin"
                 android:text="@string/main_screen_costs_header" />
 
@@ -88,7 +95,6 @@
                 android:gravity="center"
                 android:paddingBottom="@dimen/main_screen_header_income_padding"
                 android:paddingTop="@dimen/main_screen_header_income_padding"
-                android:text="54 000"
                 android:textSize="@dimen/main_screen_head_text_size" />
 
         </LinearLayout>
@@ -114,13 +120,13 @@
             <View
                 android:layout_width="@dimen/main_screen_left_stripe_width"
                 android:layout_height="match_parent"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorPrimary" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="left|center_vertical"
-                android:background="@color/colorPrimary"
+                android:background="@color/main_screen_income_button_light_green"
                 android:src="@drawable/ic_income" />
 
             <TextView
@@ -146,13 +152,13 @@
             <View
                 android:layout_width="@dimen/main_screen_left_stripe_width"
                 android:layout_height="match_parent"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorOrangeAccent" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="left|center_vertical"
-                android:background="@color/colorPrimary"
+                android:background="@color/main_screen_costs_button_light_green"
                 android:src="@drawable/ic_costs" />
 
             <TextView
@@ -178,13 +184,13 @@
             <View
                 android:layout_width="@dimen/main_screen_left_stripe_width"
                 android:layout_height="match_parent"
-                android:background="@color/colorAccent" />
+                android:background="@color/main_screen_categories_button_dark_orange" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="left|center_vertical"
-                android:background="@color/colorPrimary"
+                android:background="@color/main_screen_categories_button_light_orange"
                 android:src="@drawable/ic_category" />
 
             <TextView

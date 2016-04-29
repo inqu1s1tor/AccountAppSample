@@ -1,4 +1,4 @@
-<resources>>
+<resources>
 
     <style name="AccountantAppStyle.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
