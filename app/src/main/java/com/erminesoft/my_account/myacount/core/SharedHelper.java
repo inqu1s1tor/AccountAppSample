@@ -32,4 +32,8 @@ public final class SharedHelper {
         return preferences.getString(USER_PASSWORD, "");
     }
 
+    public void sharedHelperClear() {
+        preferences.edit().clear().apply();
+    }
+
 }

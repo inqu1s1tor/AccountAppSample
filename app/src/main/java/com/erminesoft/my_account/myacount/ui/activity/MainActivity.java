@@ -85,6 +85,7 @@ public  final class MainActivity extends GenericActivity {
     }
 
     private void logOut(){
+        application.getSharedHelper().sharedHelperClear();
         application.getNetBridge().userLogout();
         AuthActivity.start(MainActivity.this);
     }
@@ -113,6 +114,8 @@ public  final class MainActivity extends GenericActivity {
         switch (item.getItemId()) {
             case R.id.action_sync:
                 application.getNetBridge().getAllCosts(new NetListener());
+                application.getNetBridge().getAllIncomes(new NetListener());
+                application.getNetBridge().getAllCategories(new NetListener());
                 SyncService.start(MainActivity.this);
                 break;
 
@@ -143,6 +146,9 @@ public  final class MainActivity extends GenericActivity {
     }
 
     private final class NetListener extends SimpleMainCallback {
-
+        @Override
+        public void onSuccess() {
+            Log.d("", "" );
+        }
     }
 }

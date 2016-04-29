@@ -71,4 +71,5 @@
     <string name="password">PASSWORD</string>
     <string name="main_screen_income_header">Income</string>
     <string name="main_screen_costs_header">Costs</string>
+    <string name="choose_category_color_text">Choose category color</string>
 </resources>

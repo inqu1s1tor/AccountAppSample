@@ -17,11 +17,13 @@ public final class NetManagerFacade implements NetBridge {
 
     private final AuthManager authManager;
     private BoltsManager boltsManager;
+    private DataManager dataManager;
 
     public NetManagerFacade(Context context, SharedHelper sharedHelper, DBbridge dBbridge) {
         initBackendLess(context);
         authManager = new AuthManager(sharedHelper, dBbridge);
         boltsManager = new BoltsManager(dBbridge);
+        dataManager = new DataManager(dBbridge);
     }
 
     private void initBackendLess(Context context) {
@@ -67,17 +69,17 @@ public final class NetManagerFacade implements NetBridge {
 
     @Override
     public void getAllCosts(MainCallback mainCallback) {
-        boltsManager.getAllCosts(mainCallback);
+        dataManager.getAllCosts(mainCallback);
     }
 
     @Override
     public void getAllIncomes(MainCallback mainCallback) {
-
+        dataManager.getAllIncomes(mainCallback);
     }
 
     @Override
     public void getAllCategories(MainCallback mainCallback) {
-
+        dataManager.getAllCategories(mainCallback);
     }
 
     @Override

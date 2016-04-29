@@ -53,6 +53,8 @@ public interface DBbridge {
 
     void removeObserver(Observer observer);
 
+    void clearAllData();
+
 
 
 

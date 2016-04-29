@@ -56,20 +56,4 @@ final class BoltsManager {
             return null;}
     }
 
-    void getAllCosts(final MainCallback callBack) {
-        Backendless.Data.of(Cost.class).find(new AsyncCallback<BackendlessCollection<Cost>>() {
-            @Override
-            public void handleResponse(BackendlessCollection<Cost> response) {
-                Log.d("getAllCosts", "getData().size() = " + response.getData().size());
-
-                dbBridge.saveCostsToDb(response.getData());
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                Log.d("getAllCosts", "fault = " + fault.toString());
-                callBack.onError(fault.toString());
-            }
-        });
-    }
 }

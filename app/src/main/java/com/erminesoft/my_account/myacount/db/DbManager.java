@@ -122,6 +122,11 @@ public final class DbManager extends Observable implements DBbridge {
         super.deleteObserver(observer);
     }
 
+    @Override
+    public void clearAllData() {
+
+    }
+
     private void notifyObserversProcedure() {
         setChanged();
         notifyObservers();
