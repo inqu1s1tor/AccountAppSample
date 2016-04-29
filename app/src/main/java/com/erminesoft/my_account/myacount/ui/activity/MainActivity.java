@@ -86,6 +86,7 @@ public  final class MainActivity extends GenericActivity {
 
     private void logOut(){
         application.getSharedHelper().sharedHelperClear();
+        application.getdBbridge().clearAllData();
         application.getNetBridge().userLogout();
         AuthActivity.start(MainActivity.this);
     }

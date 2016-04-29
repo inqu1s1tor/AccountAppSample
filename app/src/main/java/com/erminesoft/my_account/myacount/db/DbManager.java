@@ -124,7 +124,9 @@ public final class DbManager extends Observable implements DBbridge {
 
     @Override
     public void clearAllData() {
-
+        baseHelper.getWritableDatabase().delete(DataBaseHelper.TABLE_COSTS, null, null);
+        baseHelper.getWritableDatabase().delete(DataBaseHelper.TABLE_INCOME, null, null);
+        baseHelper.getWritableDatabase().delete(DataBaseHelper.TABLE_CATEGORIES, null, null);
     }
 
     private void notifyObserversProcedure() {
