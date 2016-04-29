@@ -18,8 +18,8 @@ public final class AAplication extends Application {
     public void onCreate() {
         super.onCreate();
         sharedHelper = new SharedHelper(this);
-        netBridge = new NetManagerFacade(this, sharedHelper,dBbridge);
         dBbridge = new DbManager(this);
+        netBridge = new NetManagerFacade(this, sharedHelper,dBbridge);
     }
 
     public SharedHelper getSharedHelper() {
