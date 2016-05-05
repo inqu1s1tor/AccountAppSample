@@ -43,7 +43,8 @@
         <activity android:name=".ui.activity.incomes.ContentForIncomeActivity" >
         </activity>
         <activity android:name=".ui.activity.CategoriesActivity"
-            android:theme="@style/AccountantAppStyle" >
+            android:theme="@style/AccountantAppStyle"
+            android:windowSoftInputMode="adjustPan">
         </activity>
 
         <service android:name=".net.SyncService"/>

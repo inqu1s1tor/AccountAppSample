@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.db.DataBaseHelper;
@@ -33,6 +37,10 @@ public final class ContentForCostsActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_for_costs_layout);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.actionBar);
+        toolbar.setTitle(R.string.add_cost_ac_bar);
+        setSupportActionBar(toolbar);
+
         editTextName = (EditText) findViewById(R.id.EditTextNameCosts);
         sumCost = (EditText) findViewById(R.id.EditTextSumCosts);
 
@@ -53,12 +61,19 @@ public final class ContentForCostsActivity extends GenericActivity {
 
     private void extractCategory(Cursor cursor) {
         String nameCostsEntered = editTextName.getText().toString();
-        int sumCostsEntered = Integer.parseInt(sumCost.getText().toString());
+        int sunCostEntered;
+
+        if(TextUtils.isEmpty(sumCost.getText().toString())) {
+            sunCostEntered = 0;
+        }else {
+            sunCostEntered = Integer.parseInt(sumCost.getText().toString());
+        }
+
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
-        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered, sumCostsEntered, false);
+        application.getdBbridge().saveCostsToDb(categoryId, nameCostsEntered, sunCostEntered, false);
     }
 
 

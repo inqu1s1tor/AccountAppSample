@@ -5,6 +5,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -31,6 +35,10 @@ public final class ContentForIncomeActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_for_income_layout);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.actionBar);
+        toolbar.setTitle(R.string.add_income_ac_bar);
+        setSupportActionBar(toolbar);
+
         editTextNameIncome = (EditText) findViewById(R.id.EditTextNameIncome);
         editTextSumIncome = (EditText) findViewById(R.id.EditTextSumIncome);
 
@@ -51,13 +59,20 @@ public final class ContentForIncomeActivity extends GenericActivity {
 
     private void extractCategory(Cursor cursor) {
         String categoryEnteredIncome = editTextNameIncome.getText().toString();
-        int sumIncomeEntered = Integer.parseInt(editTextSumIncome.getText().toString());
+
+        int sumIncomeEntered;
+        if(TextUtils.isEmpty(editTextSumIncome.getText().toString())){
+            sumIncomeEntered = 0;
+        }else {
+            sumIncomeEntered = Integer.parseInt(editTextSumIncome.getText().toString());
+        }
 
         int categoryIdIndex = cursor.getColumnIndex(DataBaseHelper.CATEGORY_ID);
         int categoryId = cursor.getInt(categoryIdIndex);
 
         application.getdBbridge().saveIncomeToDb(categoryId, categoryEnteredIncome, sumIncomeEntered, false);
     }
+
 
 
     private final class Clicker implements View.OnClickListener {

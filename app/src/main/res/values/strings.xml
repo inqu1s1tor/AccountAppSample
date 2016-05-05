@@ -22,7 +22,7 @@
     <string name="SignUp">SIGN UP</string>
     <string name="Login">Login</string>
     <string name="UserPassword">Password</string>
-    <string name="TextButtonIncome">INCOME</string>
+    <string name="TextButtonIncome">INCOMES</string>
     <string name="TextButtonDebts">DEBTS</string>
     <string name="TextButtonPlanning">PLANNING</string>
     <string name="TextButtonCategories">CATEGORIES</string>
@@ -53,12 +53,12 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="CategoryDeclaration">Category</string>
     <string name="nameDeclaration">nameDeclaration</string>
-    <string name="ConfirmTextButton">OK</string>
+    <string name="ConfirmTextButton">SAVE</string>
     <string name="CostCategoryText">Categories</string>
     <string name="CostCategoryName">Name</string>
     <string name="incomeTextCategory">Categories</string>
     <string name="incomeNameText">Name</string>
-    <string name="AddingCategoryButton">ADD</string>
+    <string name="AddingCategoryButton">Add category</string>
     <string name="spinner_title">SpinnerCostsTitle</string>
     <string name="enter_category_name">Enter category name</string>
     <string name="reg_password">Password</string>
@@ -69,7 +69,15 @@
     <string name="invalid_data">Invalid data</string>
     <string name="login">LOGIN</string>
     <string name="password">PASSWORD</string>
-    <string name="main_screen_income_header">Income</string>
+    <string name="main_screen_income_header">Incomes</string>
     <string name="main_screen_costs_header">Costs</string>
     <string name="choose_category_color_text">Choose category color</string>
+    <string name="transfer_add_category">ADD NEW CATEGORY</string>
+    <string name="enter_name_cost">Enter name</string>
+    <string name="enter_amount_cost">Enter amount</string>
+    <string name="add_new_category_">ADD NEW CATEGORY</string>
+    <string name="enter_name_income">Enter name</string>
+    <string name="enter_sum">Enter amount</string>
+    <string name="add_cost_ac_bar">Add cost</string>
+    <string name="add_income_ac_bar">Add income</string>
 </resources>

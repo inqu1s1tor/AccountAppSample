@@ -2,12 +2,14 @@ package com.erminesoft.my_account.myacount.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.ui.adapters.CategoriesAdapter;
@@ -23,6 +25,7 @@ public class CategoryIncomesFragment extends GenericFragment {
     private ListView categoryIncomeLv;
     private CategoriesAdapter incomeCategoriesAdapter;
     private Observer observer;
+    private Button addCategoryIncomeBtn;
 
     @Nullable
     @Override
@@ -35,9 +38,12 @@ public class CategoryIncomesFragment extends GenericFragment {
         super.onViewCreated(view, savedInstanceState);
 
         categoryIncomeLv = (ListView) view.findViewById(R.id.incomes_category_list_view);
-        view.findViewById(R.id.buttonAddingCategoryIncome).setOnClickListener(new Clicker());
+        addCategoryIncomeBtn = (Button)view.findViewById(R.id.buttonAddingCategoryIncome);
+        addCategoryIncomeBtn.setOnClickListener(new Clicker());
+        addCategoryIncomeBtn.setEnabled(false);
 
         addingCategoryIncome = (EditText)view.findViewById(R.id.editTextCategoryAddingIncome);
+        addingCategoryIncome.addTextChangedListener(new EditTextListener());
         incomeCategoriesAdapter = new CategoriesAdapter(getActivity(), mActivityBridge.getUApplication().getdBbridge().loadIncomeCategories(), true);
         categoryIncomeLv.setAdapter(incomeCategoriesAdapter);
     }
@@ -72,6 +78,29 @@ public class CategoryIncomesFragment extends GenericFragment {
 
         @Override
         public void update(Observable observable, Object data) {
+
+        }
+    }
+
+    private class EditTextListener implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if(addingCategoryIncome.length() > 0){
+                addCategoryIncomeBtn.setEnabled(true);
+            }else{
+                addCategoryIncomeBtn.setEnabled(false);
+            }
 
         }
     }

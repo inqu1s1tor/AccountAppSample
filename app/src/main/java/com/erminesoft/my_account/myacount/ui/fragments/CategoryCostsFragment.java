@@ -2,9 +2,12 @@ package com.erminesoft.my_account.myacount.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -22,6 +25,7 @@ public class CategoryCostsFragment extends GenericFragment {
     private ListView categoryCostsLv;
     private CategoriesAdapter costsCategoriesAdapter;
     private Observer observer;
+    private Button addCategoryCostBtn;
 
     @Nullable
     @Override
@@ -33,13 +37,16 @@ public class CategoryCostsFragment extends GenericFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.buttonAddingCategoryCosts).setOnClickListener(new Clicker());
+        addCategoryCostBtn = (Button)view.findViewById(R.id.buttonAddingCategoryCosts);
+        addCategoryCostBtn.setOnClickListener(new Clicker());
+        addCategoryCostBtn.setEnabled(false);
+
         addingCategoryCosts = (EditText)view.findViewById(R.id.editTextCategoryAddingCosts);
+        addingCategoryCosts.addTextChangedListener(new EditTextListener());
 
         categoryCostsLv = (ListView) view.findViewById(R.id.costs_category_list_view);
         costsCategoriesAdapter = new CategoriesAdapter(getActivity(), mActivityBridge.getUApplication().getdBbridge().loadCostsCategories(), true);
         categoryCostsLv.setAdapter(costsCategoriesAdapter);
-
     }
 
     @Override
@@ -72,6 +79,30 @@ public class CategoryCostsFragment extends GenericFragment {
 
         @Override
         public void update(Observable observable, Object data) {
+
+        }
+    }
+
+
+    private class EditTextListener implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if(addingCategoryCosts.length() > 0){
+                addCategoryCostBtn.setEnabled(true);
+            }else{
+                addCategoryCostBtn.setEnabled(false);
+            }
 
         }
     }
