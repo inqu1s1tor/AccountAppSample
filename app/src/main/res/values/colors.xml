@@ -16,4 +16,9 @@
     <color name="main_screen_buttons_text_color">#000</color>
     <color name="main_screen_container_background">#cecece</color>
     <color name="main_screen_buttons_background_color">#fff</color>
+    
+    <!--   Login\Registration form  -->
+    <color name="registration_screen_form_background">#FFF</color>
+    <color name="registration_screen_form_text_color">#9B9B9B</color>
+
 </resources>

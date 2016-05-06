@@ -6,20 +6,17 @@
     <string name="move_to_next">You are not in DataBase.Do you want to sign up?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="works">Регистрация</string>
-    <string name="wrong_login">Неверный логин</string>
-    <string name="wrong_password">Неверный пароль</string>
-    <string name="name_empty">Введите логин. Он должен быть не менее 4 символов и не более 8
-    </string>
-    <string name="password_empty">Введите пароль. Он должен быть не менее 4 символов и не более 8
-    </string>
-    <string name="registration">Введите имя пользователя и пароль.Логин и пароль
-        должен быть не менее 4 символов и не более 8</string>
-    <string name="finish_registration">Регистрация прошла успешно</string>
-    <string name="user_is">Пользователь уже существует</string>
-    <string name="login_is">Пользователь с таим логином существует</string>
+    <string name="works">Registration</string>
+    <string name="wrong_login">Wrong login</string>
+    <string name="wrong_password">Wrong pass</string>
+    <string name="name_empty">Input login. At least 4 symbols and not longer 8. </string>
+    <string name="password_empty">Input pass. At least 4 symbols and not longer 8.</string>
+    <string name="registration">Input user name and pass. At least 4 symbols and not longer 8.</string>
+    <string name="finish_registration">Register success</string>
+    <string name="user_is">This user already exist</string>
+    <string name="login_is">The user, with this name is already exist</string>
     <string name="SignIn">SIGN IN</string>
-    <string name="SignUp">SIGN UP</string>
+    <string name="SignUp"> <u> I don\'t have an account </u> </string>
     <string name="Login">Login</string>
     <string name="UserPassword">Password</string>
     <string name="TextButtonIncome">INCOMES</string>
@@ -80,4 +77,6 @@
     <string name="enter_sum">Enter amount</string>
     <string name="add_cost_ac_bar">Add cost</string>
     <string name="add_income_ac_bar">Add income</string>
+    <string name="SignUpButton">Sign up</string>
+    <string name="SignInText">I have an account</string>
 </resources>
