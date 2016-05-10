@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.erminesoft.my_account.myacount.R;
 import com.erminesoft.my_account.myacount.core.callback.SimpleMainCallback;
+import com.erminesoft.my_account.myacount.ui.FragmentLauncher;
 import com.erminesoft.my_account.myacount.ui.activity.GenericActivity;
 import com.erminesoft.my_account.myacount.ui.activity.MainActivity;
 import com.erminesoft.my_account.myacount.util.Validator;
@@ -22,6 +23,7 @@ public class RegistrationActivity extends GenericActivity {
     private TextInputLayout mPasswordWrap;
 
     private EditText signInloginEt;
+    private FragmentLauncher fragmentLauncher = new FragmentLauncher(getSupportFragmentManager());
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, RegistrationActivity.class));
@@ -53,6 +55,13 @@ public class RegistrationActivity extends GenericActivity {
 
     }
 
+    public void buttonLoginPressed() {
+
+
+
+    }
+
+
     private final class NetListener extends SimpleMainCallback {
         @Override
         public void onSuccess() {
@@ -79,7 +88,9 @@ public class RegistrationActivity extends GenericActivity {
                 case R.id.buttonSignUp:
                     buttonSignUpPressed();
                     break;
-
+                case R.id.buttonTransferSignUp:
+                    buttonLoginPressed();
+                    break;
             }
         }
     }
